@@ -10,8 +10,9 @@ Matrix::Matrix(int row, int col): _row(row), _col(col){
 	for(int i=0;i<_row;i++){
 		_mat[i].resize(_col, 0.0);
 	}
-	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin());
-	_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end());
+	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size());
+	_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size());
+
 }
 
 Matrix::Matrix(const vector<double>& vec){
@@ -21,8 +22,8 @@ Matrix::Matrix(const vector<double>& vec){
 	_mat[0].resize(_col, 0.0);
 	copy(vec.begin(), vec.end(), _mat[0].begin());
 	
-	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin());
-	_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end());
+	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size());
+	_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size());
 }
 
 int Matrix::size(int x)const{
@@ -125,9 +126,11 @@ Matrix::iterator& Matrix::end(){
 // Definition of Public Member Functions of the sub-class - Matrix::iterator
 
 Matrix::iterator::iterator(std::vector<std::vector<double> >::iterator& outer, 
-	std::vector<double>::iterator& inner){
+	std::vector<double>::iterator& inner, int width){
 		this->iter1 = outer;
 		this->iter2 = inner;
+		this->_width = width;
+		this->_step = 0;
 }
 
 
@@ -139,6 +142,17 @@ Matrix::iterator::iterator(){
 Matrix::iterator& Matrix::iterator::operator=(const iterator& iter){
 	this->iter1 = iter.iter1;
 	this->iter2 = iter.iter2;
+	return *this;
+}
+
+Matrix::iterator& Matrix::iterator::operator++(int){
+	if(_step < _width){
+		iter2++;
+	}else{
+		iter1++;
+		iter2 = iter1->begin();
+		_step = 0;
+	}
 	return *this;
 }
 

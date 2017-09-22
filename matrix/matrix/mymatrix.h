@@ -26,11 +26,15 @@ public:
 	class iterator{
 	public:
 		iterator();
-		iterator(std::vector<std::vector<double> >::iterator&, std::vector<double>::iterator&);
+		// Attention: the 3-th param is the size of the row.
+		iterator(std::vector<std::vector<double> >::iterator&, std::vector<double>::iterator&, int);
 		iterator& operator=(const iterator&);
+		iterator& operator++(int);
 	private:
 		std::vector<std::vector<double> >::iterator iter1;
 		std::vector<double>::iterator iter2;
+		int _width;
+		int _step;
 	};
 	
 	iterator& begin();

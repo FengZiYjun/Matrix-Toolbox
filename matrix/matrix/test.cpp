@@ -40,9 +40,9 @@ int test::test(){
 	// cout<< (m!=p) <<endl;
 
 	cout<<"testing Matrix::iterator iter = m.begin();"<<endl;
-	Matrix::iterator iter = m.begin();
-
-
+	Matrix::iterator begin = m.begin();
+	Matrix::iterator end = m.end();
+	cout<<"OK"<<endl;
 
 	return 0;
 }
