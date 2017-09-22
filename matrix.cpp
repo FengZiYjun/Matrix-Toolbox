@@ -104,11 +104,6 @@ bool Matrix::operator!=(const Matrix& m){
 
 
 Matrix& Matrix::operator*(const double& d){
-	// need to be changed
-	for(int i=0;i<_row;i++){
-		for(int j=0;j<_col;j++){
-			_mat[i][j] = _mat[i][j] * d;
-		}
-	}
-	return *this;
+
 }
+

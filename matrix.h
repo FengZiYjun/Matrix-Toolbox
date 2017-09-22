@@ -17,7 +17,17 @@ public:
 	bool operator==(const Matrix&);
 	bool operator!=(const Matrix&);
 	Matrix& operator*(const double&);
+	//friend Matrix& operator=(Matrix&, const Matrix&);
 	//friend Matrix& operator*(const double&, Matrix&);
+
+	class iterator{
+	public:
+		iterator();
+	private:
+		std::vector<std::vector<double> >::iterator iter1;
+		std::vector<double>::iterator iter2;
+	}
+	
 
 private:
 	int _row;

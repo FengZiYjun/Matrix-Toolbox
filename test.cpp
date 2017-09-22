@@ -25,18 +25,18 @@ int main(){
 	// m.append(vec);
 	// m.print();
 
-	// cout<<"testing operator*"<<endl;
-	// (m * 2.).print();
+	 // cout<<"testing operator*"<<endl;
+	 // (m * 2.).print();
 	
 	// cout<<"testing size()"<<endl;
 	// cout<<m.size(0)<<" "<<m.size(1)<<endl;
 	
-	cout<<"testing =="<<endl;
-	cout<< (m==n)<<endl;
-	cout<< (m==m) <<endl;
-	cout<< (m==p) <<endl;
-	cout<<"testing !="<<endl;
-	cout<< (m!=n) <<endl;
-	cout<< (m!=p) <<endl;
+	// cout<<"testing =="<<endl;
+	// cout<< (m==n)<<endl;
+	// cout<< (m==m) <<endl;
+	// cout<< (m==p) <<endl;
+	// cout<<"testing !="<<endl;
+	// cout<< (m!=n) <<endl;
+	// cout<< (m!=p) <<endl;
 
 }
