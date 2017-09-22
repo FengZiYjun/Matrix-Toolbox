@@ -41,3 +41,6 @@ should add to or customize.
 
 To do list: 
 1. to implement Matrix::iterator.
+2. operator* ----- matrix * double
+3. operator* ----- matrix * matrix
+4. operator+/-
