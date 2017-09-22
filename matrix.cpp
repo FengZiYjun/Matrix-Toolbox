@@ -19,7 +19,18 @@ Matrix::Matrix(const vector<double>& vec){
 	copy(vec.begin(), vec.end(), _mat[0].begin());
 }
 
+int Matrix::size(int x)const{
+	if(x==0){
+		return _row;
+	}else if(x==1){
+		return _col;
+	}else{
+		throw 20;
+	}
+}
+
 void Matrix::print(){
+	// need to be change
 	for(int i=0;i<_row;i++){
 		for(int j=0;j<_col;j++){
 			printf("%5.2f\t", _mat[i][j]);
@@ -28,7 +39,7 @@ void Matrix::print(){
 	}
 }
 
-double Matrix::get(int r, int c){
+double Matrix::get(int r, int c)const{
 	if(0 <= r && r < _row && 0 <= c && c < _col){
 		return _mat[r][c];
 	}else{
@@ -58,3 +69,42 @@ void  Matrix::append(const vector<double>& vec){
 }
 
 Matrix::~Matrix(){}
+
+bool Matrix::operator==(const Matrix& m){
+	if(this == &m){
+		return true;
+	}
+	if(m.size(0)!=_row || m.size(1)!=_col){
+		return false;
+	}else{
+		bool flag = true;
+		for(int i=0;i<_row;i++){
+			for(int j=0;j<_col;j++){
+				if(this->get(i, j) != m.get(i, j)){
+					flag = false;
+					break;
+				}
+			}
+			if(flag==false){
+				break;
+			}
+		}
+		if(flag==true){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+}
+
+/*
+Matrix& Matrix::operator*(const double& d){
+	// need to be changed
+	for(int i=0;i<_row;i++){
+		for(int j=0;j<_col;j++){
+			_mat[i][j] = _mat[i][j] * d;
+		}
+	}
+}
+*/

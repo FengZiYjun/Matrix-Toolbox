@@ -8,10 +8,15 @@ public:
 	Matrix(int row, int col);
 	Matrix(const std::vector<double>&);
 	~Matrix();
-	double get(int row, int col);
+	int size(int)const;
+	double get(int row, int col)const;
 	void print();
 	void read(std::istream&);
 	void append(const std::vector<double>&);
+
+	bool operator==(const Matrix&);
+	//Matrix& operator*(const double&);
+	//friend Matrix& operator*(const double&, Matrix&);
 
 private:
 	int _row;
