@@ -15,7 +15,8 @@ public:
 	void append(const std::vector<double>&);
 
 	bool operator==(const Matrix&);
-	//Matrix& operator*(const double&);
+	bool operator!=(const Matrix&);
+	Matrix& operator*(const double&);
 	//friend Matrix& operator*(const double&, Matrix&);
 
 private:

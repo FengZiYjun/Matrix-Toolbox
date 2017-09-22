@@ -35,6 +35,8 @@ int main(){
 	cout<< (m==n)<<endl;
 	cout<< (m==m) <<endl;
 	cout<< (m==p) <<endl;
-
+	cout<<"testing !="<<endl;
+	cout<< (m!=n) <<endl;
+	cout<< (m!=p) <<endl;
 
 }
