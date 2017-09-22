@@ -2,6 +2,7 @@
 #pragma once
 
 #include <vector>
+#include <algorithm>
 #include <istream>
 
 class Matrix
@@ -25,14 +26,20 @@ public:
 	class iterator{
 	public:
 		iterator();
+		iterator(std::vector<std::vector<double> >::iterator&, std::vector<double>::iterator&);
+		iterator& operator=(const iterator&);
 	private:
 		std::vector<std::vector<double> >::iterator iter1;
 		std::vector<double>::iterator iter2;
 	};
 	
+	iterator& begin();
+	iterator& end();
 
 private:
 	int _row;
 	int _col;
 	std::vector<std::vector<double> > _mat;	
+	iterator _begin;
+	iterator _end;
 };

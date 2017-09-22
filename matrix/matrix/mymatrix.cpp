@@ -10,6 +10,8 @@ Matrix::Matrix(int row, int col): _row(row), _col(col){
 	for(int i=0;i<_row;i++){
 		_mat[i].resize(_col, 0.0);
 	}
+	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin());
+	_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end());
 }
 
 Matrix::Matrix(const vector<double>& vec){
@@ -18,6 +20,9 @@ Matrix::Matrix(const vector<double>& vec){
 	_mat.resize(_row);
 	_mat[0].resize(_col, 0.0);
 	copy(vec.begin(), vec.end(), _mat[0].begin());
+	
+	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin());
+	_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end());
 }
 
 int Matrix::size(int x)const{
@@ -105,6 +110,35 @@ bool Matrix::operator!=(const Matrix& m){
 
 
 Matrix& Matrix::operator*(const double& d){
+	return *this;
+}
+
+Matrix::iterator& Matrix::begin(){
+	return _begin;
+}
+
+Matrix::iterator& Matrix::end(){
+	return _end;
+}
+
+
+// Definition of Public Member Functions of the sub-class - Matrix::iterator
+
+Matrix::iterator::iterator(std::vector<std::vector<double> >::iterator& outer, 
+	std::vector<double>::iterator& inner){
+		this->iter1 = outer;
+		this->iter2 = inner;
+}
+
+
+
+Matrix::iterator::iterator(){
+	
+}
+
+Matrix::iterator& Matrix::iterator::operator=(const iterator& iter){
+	this->iter1 = iter.iter1;
+	this->iter2 = iter.iter2;
 	return *this;
 }
 

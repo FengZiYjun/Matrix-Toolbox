@@ -39,6 +39,10 @@ int test::test(){
 	// cout<< (m!=n) <<endl;
 	// cout<< (m!=p) <<endl;
 
+	cout<<"testing Matrix::iterator iter = m.begin();"<<endl;
+	Matrix::iterator iter = m.begin();
+
+
 
 	return 0;
 }
