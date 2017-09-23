@@ -39,14 +39,28 @@ int test::test(){
 	// cout<< (m!=n) <<endl;
 	// cout<< (m!=p) <<endl;
 
-	cout<<"testing Matrix::iterator iter = m.begin();"<<endl;
-	Matrix::iterator begin = m.begin();
-	Matrix::iterator end = m.end();
-	cout<<"OK"<<endl;
+	//cout<<"testing Matrix::iterator iter = m.begin();"<<endl;
+	//Matrix::iterator begin = m.begin();
+	//Matrix::iterator end = m.end();
+	//cout<<"OK"<<endl;
 
-	for(;begin!=end;begin++){
-		cout<<*begin<<" ";
-	}
+	//for(;begin!=end;begin++){
+	//	cout<<*begin<<" ";
+	//}
+
+	cout<<"testing copy constructor"<<endl;
+	Matrix cp(m);
+	cout<<cp.size(0)<<" "<<cp.size(1)<<endl;
+	cp.print();
+
+	cout<<"testing assignment operator"<<endl;
+	Matrix a = m;
+	a.print();
+	cout<<"change in a"<<endl;
+	a.append(vec);
+	a.print();
+	cout<<"for m"<<endl;
+	m.print();
 
 	return 0;
 }

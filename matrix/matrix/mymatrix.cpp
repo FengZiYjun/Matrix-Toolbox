@@ -26,6 +26,14 @@ Matrix::Matrix(const vector<double>& vec){
 	_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size());
 }
 
+Matrix::Matrix(const Matrix& m){
+	this->_row = m._row;
+	this->_col = m._col;
+	this->_mat = m._mat;
+	this->_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size());
+	this->_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size());
+}
+
 int Matrix::size(int x)const{
 	if(x==0){
 		return _row;
@@ -85,6 +93,7 @@ bool Matrix::operator==(const Matrix& m){
 		return false;
 	}else{
 		bool flag = true;
+		
 		for(int i=0;i<_row;i++){
 			for(int j=0;j<_col;j++){
 				if(this->get(i, j) != m.get(i, j)){
@@ -107,6 +116,16 @@ bool Matrix::operator==(const Matrix& m){
 
 bool Matrix::operator!=(const Matrix& m){
 	return !((*this) == m);
+}
+
+
+Matrix& Matrix::operator=(const Matrix& m){
+	this->_row = m._row;
+	this->_col = m._col;
+	this->_mat = m._mat; // £¿
+	this->_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size());
+	this->_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size());
+	return *this;
 }
 
 
@@ -139,6 +158,7 @@ Matrix::iterator::iterator(){
 	this->_step = 0;
 
 }
+
 
 Matrix::iterator& Matrix::iterator::operator=(const iterator& iter){
 	this->iter1 = iter.iter1;

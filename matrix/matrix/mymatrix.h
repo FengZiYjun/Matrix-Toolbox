@@ -9,8 +9,12 @@ class Matrix
 {
 public:
 	// Constructors
-	Matrix(int row, int col);
+	// Initialize with row and column
+	Matrix(int, int);
+	// Initialize with a vector
 	Matrix(const std::vector<double>&);
+	// Copy constructor
+	Matrix(const Matrix&);
 
 	// Destructor
 	~Matrix();
@@ -51,7 +55,10 @@ public:
 	bool operator==(const Matrix&);
 	bool operator!=(const Matrix&);
 	Matrix& operator*(const double&);
-	//friend Matrix& operator=(Matrix&, const Matrix&);
+	
+	// Assignment Operator
+	Matrix& operator=(const Matrix&);
+
 	//friend Matrix& operator*(const double&, Matrix&);
 
 	class iterator{
