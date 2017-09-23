@@ -9,8 +9,6 @@ int test::test(){
 	double arr[] = {1., 2., 3., 4., 5., 6., 7., 8.};
 	vector<double> vec(arr, arr+3);
 	Matrix m(vec);
-	m.append(vec);
-	m.append(vec);
 	//Matrix n(vector<double>(arr+4, arr+7));
 	//Matrix p(vector<double>(arr, arr+3));
 
@@ -46,8 +44,9 @@ int test::test(){
 	Matrix::iterator end = m.end();
 	cout<<"OK"<<endl;
 
-	cout<<"testing iterator++"<<endl;
-	begin++;
+	for(;begin!=end;begin++){
+		cout<<*begin<<" ";
+	}
 
 	return 0;
 }

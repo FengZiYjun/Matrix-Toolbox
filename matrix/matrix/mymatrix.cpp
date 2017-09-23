@@ -158,3 +158,18 @@ Matrix::iterator& Matrix::iterator::operator++(int){
 	return *this;
 }
 
+bool operator==(const Matrix::iterator& left, const Matrix::iterator& right){
+	if(left.iter1 == right.iter1 && left.iter2 == right.iter2){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+bool operator!=(const Matrix::iterator& left, const Matrix::iterator& right){
+	return !(left == right);
+}
+
+double Matrix::iterator::operator*(){
+	return *iter2;
+}

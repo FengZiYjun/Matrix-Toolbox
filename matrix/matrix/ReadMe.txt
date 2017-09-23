@@ -58,9 +58,6 @@ should add to or customize.
 
 ## Development Schedule:
 Implement Matrix Class.
-1. to implement Matrix::iterator.
-	1.1 iterator++
-	1.2 iterator ==
 2. operator* ----- matrix * double
 3. operator* ----- matrix * matrix
 4. operator+/-

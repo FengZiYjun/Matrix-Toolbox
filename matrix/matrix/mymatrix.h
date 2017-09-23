@@ -61,6 +61,9 @@ public:
 		iterator(std::vector<std::vector<double> >::iterator&, std::vector<double>::iterator&, int);
 		iterator& operator=(const iterator&);
 		iterator& operator++(int);
+		double operator*();
+		friend bool operator==(const iterator&, const iterator&);
+		friend bool operator!=(const iterator&, const iterator&);
 	private:
 		std::vector<std::vector<double> >::iterator iter1;
 		std::vector<double>::iterator iter2;
