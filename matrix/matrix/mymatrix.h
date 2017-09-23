@@ -34,6 +34,13 @@ public:
 	double get(int row, int col)const;
 
 	/*
+		 Set a element to a certain value
+		 Input: row, colume, value
+		 Output: 0 or 1 (success or failure).
+	*/
+	int set(int row, int col, double value);
+
+	/*
 		Print the matrix on the console window.
 	*/
 	void print();

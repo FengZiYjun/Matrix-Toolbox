@@ -48,18 +48,22 @@ int test::test(){
 	//	cout<<*begin<<" ";
 	//}
 
-	cout<<"testing copy constructor"<<endl;
-	Matrix cp(m);
-	cout<<cp.size(0)<<" "<<cp.size(1)<<endl;
-	cp.print();
+	//cout<<"testing copy constructor"<<endl;
+	//Matrix cp(m);
+	//cout<<cp.size(0)<<" "<<cp.size(1)<<endl;
+	//cp.print();
 
-	cout<<"testing assignment operator"<<endl;
-	Matrix a = m;
-	a.print();
-	cout<<"change in a"<<endl;
-	a.append(vec);
-	a.print();
-	cout<<"for m"<<endl;
+	//cout<<"testing assignment operator"<<endl;
+	//Matrix a = m;
+	//a.print();
+	//cout<<"change in a"<<endl;
+	//a.append(vec);
+	//a.print();
+	//cout<<"for m"<<endl;
+	//m.print();
+
+	cout<<"testing set()"<<endl;
+	m.set(0,1,21);
 	m.print();
 
 	return 0;

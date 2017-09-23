@@ -63,6 +63,17 @@ double Matrix::get(int r, int c)const{
 	
 }
 
+
+int Matrix::set(int row, int col, double value){
+	int ret = 0;
+	if(row < _row && col < _col){
+		_mat[row][col] = value;
+	}else{
+		ret = 1;
+	}
+	return ret;
+}
+
 void Matrix::read(istream& is){
 	double tmp = 0.;
 	for(int i=0;i<_row;i++){
