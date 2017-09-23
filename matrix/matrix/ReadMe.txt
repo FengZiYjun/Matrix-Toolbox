@@ -2,6 +2,37 @@
     CONSOLE APPLICATION : Matrix-Computation Project Overview
 ========================================================================
 
+===========================Development Instructions=============================
+
+1. We adopt Test-Driven development, which means we test every features or functionalities before we commit them.
+2. We will follow the standard C++ design principles to design our classes.
+3. Please write as many comments as possible to make your commmit clear and understandable.
+
+
+===============================Code Standards====================================
+
+1. Each method is declared in "mymatrix.h" and implemented in "mymatrix.cpp".
+2. Comments of the method in "mymatrix.h" are followed by
+ - Simple discription.
+ - Input
+ - Output
+3. add later...
+
+=============================Development Schedule===============================
+
+1. Implement Matrix Class
+ 1.1 matrix addition, subtract, multiply, transpose, spliting
+ 1.2 reverse, determine
+
+2. Optimize Matrix I/O
+
+
+==================================Attention=======================================
+
+1. The Matrix class index from ZERO, not one.
+
+
+/////////////////////////////////////////////////////////////////////////////////
 AppWizard has created this matrix application for you.
 
 This file contains a summary of what you will find in each of the files that
@@ -39,25 +70,3 @@ Other notes:
 
 AppWizard uses "TODO:" comments to indicate parts of the source code you
 should add to or customize.
-
-/////////////////////////////////////////////////////////////////////////////
-
-## Development Instructions:
-1. We adopt Test-Driven development, which means we test every features or functionalities before we commit them.
-2. We will follow the standard C++ design principles to design our classes.
-3. Please write as many comments as possible to make your commmit clear and understandable.
-
-
-## Code Standards:
-1. Each method is declared in "mymatrix.h" and implemented in "mymatrix.cpp".
-2. Comments of the method in "mymatrix.h" are followed by
- - Simple discription.
- - Input
- - Output
-3. add later...
-
-## Development Schedule:
-Implement Matrix Class.
-2. operator* ----- matrix * double
-3. operator* ----- matrix * matrix
-4. operator+/-
