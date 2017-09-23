@@ -9,8 +9,10 @@ int test::test(){
 	double arr[] = {1., 2., 3., 4., 5., 6., 7., 8.};
 	vector<double> vec(arr, arr+3);
 	Matrix m(vec);
-	Matrix n(vector<double>(arr+4, arr+7));
-	Matrix p(vector<double>(arr, arr+3));
+	m.append(vec);
+	m.append(vec);
+	//Matrix n(vector<double>(arr+4, arr+7));
+	//Matrix p(vector<double>(arr, arr+3));
 
 	//cout<<"testing read()"<<endl;
 	//m.read(cin);
@@ -43,6 +45,9 @@ int test::test(){
 	Matrix::iterator begin = m.begin();
 	Matrix::iterator end = m.end();
 	cout<<"OK"<<endl;
+
+	cout<<"testing iterator++"<<endl;
+	begin++;
 
 	return 0;
 }

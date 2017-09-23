@@ -1,5 +1,5 @@
 ========================================================================
-    CONSOLE APPLICATION : matrix Project Overview
+    CONSOLE APPLICATION : Matrix-Computation Project Overview
 ========================================================================
 
 AppWizard has created this matrix application for you.
@@ -24,6 +24,9 @@ matrix.vcxproj.filters
 matrix.cpp
     This is the main application source file.
 
+test.cpp
+	This is the test file.
+
 /////////////////////////////////////////////////////////////////////////////
 Other standard files:
 
@@ -39,8 +42,25 @@ should add to or customize.
 
 /////////////////////////////////////////////////////////////////////////////
 
-To do list: 
+## Development Instructions:
+1. We adopt Test-Driven development, which means we test every features or functionalities before we commit them.
+2. We will follow the standard C++ design principles to design our classes.
+3. Please write as many comments as possible to make your commmit clear and understandable.
+
+
+## Code Standards:
+1. Each method is declared in "mymatrix.h" and implemented in "mymatrix.cpp".
+2. Comments of the method in "mymatrix.h" are followed by
+ - Simple discription.
+ - Input
+ - Output
+3. add later...
+
+## Development Schedule:
+Implement Matrix Class.
 1. to implement Matrix::iterator.
+	1.1 iterator++
+	1.2 iterator ==
 2. operator* ----- matrix * double
 3. operator* ----- matrix * matrix
 4. operator+/-

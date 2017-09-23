@@ -136,12 +136,14 @@ Matrix::iterator::iterator(std::vector<std::vector<double> >::iterator& outer,
 
 
 Matrix::iterator::iterator(){
-	
+	this->_step = 0;
+
 }
 
 Matrix::iterator& Matrix::iterator::operator=(const iterator& iter){
 	this->iter1 = iter.iter1;
 	this->iter2 = iter.iter2;
+	this->_width = iter._width;
 	return *this;
 }
 
