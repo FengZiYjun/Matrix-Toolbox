@@ -58,6 +58,12 @@ public:
 	*/
 	void append(const std::vector<double>&);
 
+	/*
+		transpose to make a new matrix
+	*/
+	Matrix transpose();
+
+
 	//
 	//	Overloaded Operators
 	//
@@ -68,7 +74,15 @@ public:
 
 	// multiply with a double 
 	Matrix operator*(const double&);
+	// multiply with a matrix
+	Matrix operator*(const Matrix&);
+
+	// plus 
+	Matrix operator+(const Matrix&);
 	
+	// minus
+	Matrix operator-(const Matrix&);
+
 	// Assignment Operator
 	Matrix& operator=(const Matrix&);
 

@@ -161,6 +161,32 @@ Matrix::iterator& Matrix::end(){
 }
 
 
+Matrix Matrix::operator*(const Matrix& m){
+	// to do 
+
+	return m;
+}
+
+Matrix Matrix::operator+(const Matrix& m){
+	// to do
+
+	return m;
+}
+
+Matrix Matrix::operator-(const Matrix& m){
+	// to do
+
+	return m;
+}
+
+Matrix Matrix::transpose(){
+	// to do 
+
+	return *this;
+}
+
+
+
 // Definition of Public Member Functions of the sub-class - Matrix::iterator
 
 Matrix::iterator::iterator(std::vector<std::vector<double> >::iterator& outer, 
