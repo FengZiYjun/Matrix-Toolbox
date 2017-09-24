@@ -30,6 +30,17 @@
 ==================================Attention=======================================
 
 1. The Matrix class index from ZERO, not one.
+2. The core Matrix elements are stored in vector of vector.
+
+
+====================================Help=========================================
+1. When defining member function operator*(double), the use of STL transform is 
+prohibited by the VS compiler. It is no use to define a macro to get rid of the 
+error as is told by the MSDN. 
+Actually the operation for each element in the matrix should be done by iterator with 
+STL algorithm rather than two loops.
+It is very likely that the iterator defined is not complete to supply this ?
+
 
 
 /////////////////////////////////////////////////////////////////////////////////

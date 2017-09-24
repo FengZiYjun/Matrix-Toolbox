@@ -62,8 +62,12 @@ int test::test(){
 	//cout<<"for m"<<endl;
 	//m.print();
 
-	cout<<"testing set()"<<endl;
-	m.set(0,1,21);
+	//cout<<"testing set()"<<endl;
+	//m.set(0,1,21);
+	//m.print();
+
+	cout<<"testing multiply d"<<endl;
+	m = m * 2;
 	m.print();
 
 	return 0;

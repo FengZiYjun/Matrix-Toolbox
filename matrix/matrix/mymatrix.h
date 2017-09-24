@@ -3,7 +3,9 @@
 
 #include <vector>
 #include <algorithm>
+#include <functional>
 #include <istream>
+
 
 class Matrix
 {
@@ -59,9 +61,13 @@ public:
 	//
 	//	Overloaded Operators
 	//
+	// Equal
 	bool operator==(const Matrix&);
+	// Not equal
 	bool operator!=(const Matrix&);
-	Matrix& operator*(const double&);
+
+	// multiply with a double 
+	Matrix operator*(const double&);
 	
 	// Assignment Operator
 	Matrix& operator=(const Matrix&);
@@ -91,7 +97,7 @@ public:
 private:
 	int _row;
 	int _col;
-	std::vector<std::vector<double> > _mat;	
+	std::vector<std::vector<double> > _mat;
 	iterator _begin;
 	iterator _end;
 };

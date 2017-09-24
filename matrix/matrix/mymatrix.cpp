@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <algorithm>
+#include <functional>
 #include "mymatrix.h"
 #include "stdafx.h"
+
 
 using namespace std;
 
@@ -133,15 +135,21 @@ bool Matrix::operator!=(const Matrix& m){
 Matrix& Matrix::operator=(const Matrix& m){
 	this->_row = m._row;
 	this->_col = m._col;
-	this->_mat = m._mat; // £¿
+	this->_mat = m._mat; 
 	this->_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size());
 	this->_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size());
 	return *this;
 }
 
 
-Matrix& Matrix::operator*(const double& d){
-	return *this;
+Matrix Matrix::operator*(const double& d){
+	Matrix ret(_row, _col);
+	for(int i=0;i<_row;i++){
+		for(int j=0;j<_col;j++){
+			ret._mat[i][j] = _mat[i][j] * d;
+		}
+	}
+	return ret;
 }
 
 Matrix::iterator& Matrix::begin(){
