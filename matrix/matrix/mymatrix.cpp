@@ -4,6 +4,7 @@
 #include "mymatrix.h"
 #include "stdafx.h"
 
+#define D_SCL_SECURE_NO_WARNINGS
 
 using namespace std;
 
@@ -169,14 +170,26 @@ Matrix Matrix::operator*(const Matrix& m){
 
 Matrix Matrix::operator+(const Matrix& m){
 	// to do
-
-	return m;
+	Matrix ret(m._row, m._col);
+	//transform(_begin, _end, m._begin, ret._begin, plus<double>());
+	for(int i=0;i<_row;i++){
+		for(int j=0;j<_col;j++){
+			ret._mat[i][j] = m._mat[i][j] + _mat[i][j];
+		}
+	}
+	return ret;
 }
 
 Matrix Matrix::operator-(const Matrix& m){
 	// to do
-
-	return m;
+	Matrix ret(m._row, m._col);
+	
+	for(int i=0;i<_row;i++){
+		for(int j=0;j<_col;j++){
+			ret._mat[i][j] = m._mat[i][j] - _mat[i][j];
+		}
+	}
+	return ret;
 }
 
 Matrix Matrix::transpose(){

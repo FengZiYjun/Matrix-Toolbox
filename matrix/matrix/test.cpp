@@ -9,7 +9,7 @@ int test::test(){
 	double arr[] = {1., 2., 3., 4., 5., 6., 7., 8.};
 	vector<double> vec(arr, arr+3);
 	Matrix m(vec);
-	//Matrix n(vector<double>(arr+4, arr+7));
+	Matrix n(vector<double>(arr+4, arr+7));
 	//Matrix p(vector<double>(arr, arr+3));
 
 	//cout<<"testing read()"<<endl;
@@ -66,9 +66,13 @@ int test::test(){
 	//m.set(0,1,21);
 	//m.print();
 
-	cout<<"testing multiply d"<<endl;
-	m = m * 2;
-	m.print();
+	//cout<<"testing multiply d"<<endl;
+	//m = m * 2;
+	cout<<"testing + and -"<<endl;
+	Matrix ans = m + n;
+	ans.print();
+	ans = m - n;
+	ans.print();
 
 	return 0;
 }

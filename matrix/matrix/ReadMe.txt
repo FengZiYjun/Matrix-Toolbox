@@ -4,9 +4,8 @@
 
 ===========================Development Instructions=============================
 
-1. We adopt Test-Driven development, which means we test every features or functionalities before we commit them.
-2. We will follow the standard C++ design principles to design our classes.
-3. Please write as many comments as possible to make your commmit clear and understandable.
+1. Development Environment: Visual Studio Express 2012 for Windows Desktop.
+
 
 
 ===============================Code Standards====================================
@@ -21,7 +20,7 @@
 =============================Development Schedule===============================
 
 1. Implement Matrix Class
- 1.1 matrix addition, subtract, multiply, transpose, spliting
+ 1.1 matrix multiply, transpose, spliting
  1.2 reverse, determine
 
 2. Optimize Matrix I/O
