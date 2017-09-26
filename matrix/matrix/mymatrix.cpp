@@ -18,6 +18,11 @@ Matrix::Matrix(int row, int col): _row(row), _col(col){
 
 }
 
+Matrix::Matrix(double** head){
+	// to do
+
+}
+
 Matrix::Matrix(const vector<double>& vec){
 	_col = vec.size();
 	_row = 1;
@@ -155,6 +160,12 @@ Matrix Matrix::operator*(const double& d){
 	return ret;
 }
 
+Matrix operator*(double d, const Matrix& m){
+	// to do
+	return m;
+}
+
+
 Matrix::iterator& Matrix::begin(){
 	return _begin;
 }
@@ -189,6 +200,18 @@ Matrix Matrix::transpose(){
 	return *this;
 }
 
+Matrix Matrix::getRow(int row_indx){
+	// to do
+
+	return *this;
+}
+
+
+Matrix Matrix::getColumn(int col_index){
+	// to do
+
+	return *this;
+}
 
 
 // Definition of Public Member Functions of the sub-class - Matrix::iterator

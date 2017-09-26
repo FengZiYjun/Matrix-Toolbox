@@ -13,6 +13,8 @@ public:
 	// Constructors
 	// Initialize with row and column
 	Matrix(int, int);
+	// Initialize with array of array------To do
+	Matrix(double**);
 	// Initialize with a vector
 	Matrix(const std::vector<double>&);
 	// Copy constructor
@@ -74,6 +76,8 @@ public:
 
 	// multiply with a double 
 	Matrix operator*(const double&);
+	friend Matrix operator*(const double&, Matrix&);
+	
 	// multiply with a matrix
 	Matrix operator*(const Matrix&);
 
@@ -86,8 +90,10 @@ public:
 	// Assignment Operator
 	Matrix& operator=(const Matrix&);
 
-	//friend Matrix& operator*(const double&, Matrix&);
-
+	// row and column selecting 
+	Matrix getRow(int);
+	Matrix getColumn(int);
+	
 	class iterator: public std::iterator<std::forward_iterator_tag, double>{
 	public:
 		iterator();

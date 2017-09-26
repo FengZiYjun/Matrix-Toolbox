@@ -4,7 +4,9 @@
 
 ===========================Development Instructions=============================
 
-1. Development Environment: Visual Studio Express 2012 for Windows Desktop.
+1. Development Environment: 
+ IDE: Microsoft Visual Studio Express 2012 for Windows Desktop.
+ OS: Windows 8.1 64-bit
 
 
 
@@ -22,6 +24,7 @@
 1. Implement Matrix Class
  1.1 matrix multiply, transpose, spliting
  1.2 reverse, determine
+ 1.3 optimize matrix operations with iterator
 
 2. Optimize Matrix I/O
 
