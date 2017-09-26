@@ -69,11 +69,11 @@ int test::test(){
 
 	//cout<<"testing multiply d"<<endl;
 	//m = m * 2;
-	//cout<<"testing + and -"<<endl;
-	//Matrix ans = m + n;
-		//ans.print();
-		//ans = m - n;
-		//ans.print();
+	cout<<"testing + and -"<<endl;
+	Matrix ans = m + n;
+	ans.print();
+	ans = m - n;
+	ans.print();
 
 	cout<<"testing iterators"<<endl;
 	copy(m.begin(), m.end(), n.begin());

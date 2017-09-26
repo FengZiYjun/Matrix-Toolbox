@@ -48,7 +48,7 @@ int Matrix::size(int x)const{
 }
 
 void Matrix::print(){
-	// need to be change
+	// Original printing
 	for(int i=0;i<_row;i++){
 		for(int j=0;j<_col;j++){
 			printf("%5.2f\t", _mat[i][j]);
@@ -58,6 +58,7 @@ void Matrix::print(){
 }
 
 double Matrix::get(int r, int c)const{
+	// perform range check
 	if(0 <= r && r < _row && 0 <= c && c < _col){
 		return _mat[r][c];
 	}else{
@@ -68,6 +69,7 @@ double Matrix::get(int r, int c)const{
 
 
 int Matrix::set(int row, int col, double value){
+	// perform range check
 	int ret = 0;
 	if(row < _row && col < _col){
 		_mat[row][col] = value;
@@ -171,24 +173,13 @@ Matrix Matrix::operator*(const Matrix& m){
 Matrix Matrix::operator+(const Matrix& m){
 	// to do
 	Matrix ret(m._row, m._col);
-	//transform(_begin, _end, m._begin, ret._begin, plus<double>());
-	for(int i=0;i<_row;i++){
-		for(int j=0;j<_col;j++){
-			ret._mat[i][j] = m._mat[i][j] + _mat[i][j];
-		}
-	}
+	transform(_begin, _end, m._begin, ret._begin, plus<double>());
 	return ret;
 }
 
 Matrix Matrix::operator-(const Matrix& m){
-	// to do
 	Matrix ret(m._row, m._col);
-	
-	for(int i=0;i<_row;i++){
-		for(int j=0;j<_col;j++){
-			ret._mat[i][j] = m._mat[i][j] - _mat[i][j];
-		}
-	}
+	transform(_begin, _end, m._begin, ret._begin, minus<double>());
 	return ret;
 }
 
