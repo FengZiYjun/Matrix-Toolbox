@@ -225,7 +225,8 @@ Matrix::iterator& Matrix::iterator::operator=(const iterator& iter){
 	return *this;
 }
 
-Matrix::iterator& Matrix::iterator::operator++(int){
+Matrix::iterator Matrix::iterator::operator++(int){
+	Matrix::iterator ret(*this);
 	if(_step < _width){
 		iter2++;
 	}else{
@@ -233,7 +234,18 @@ Matrix::iterator& Matrix::iterator::operator++(int){
 		iter2 = iter1->begin();
 		_step = 0;
 	}
-	return *this;
+	return ret;
+}
+
+Matrix::iterator Matrix::iterator::operator++(){
+	if(_step < _width){
+		iter2++;
+	}else{
+		iter1++;
+		iter2 = iter1->begin();
+		_step = 0;
+	}
+	return *this;	
 }
 
 bool operator==(const Matrix::iterator& left, const Matrix::iterator& right){
@@ -248,6 +260,6 @@ bool operator!=(const Matrix::iterator& left, const Matrix::iterator& right){
 	return !(left == right);
 }
 
-double Matrix::iterator::operator*(){
+double& Matrix::iterator::operator*(){
 	return *iter2;
 }

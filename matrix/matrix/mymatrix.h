@@ -88,14 +88,15 @@ public:
 
 	//friend Matrix& operator*(const double&, Matrix&);
 
-	class iterator{
+	class iterator: public std::iterator<std::forward_iterator_tag, double>{
 	public:
 		iterator();
 		// Attention: the 3-th param is the size of the row.
 		iterator(std::vector<std::vector<double> >::iterator&, std::vector<double>::iterator&, int);
 		iterator& operator=(const iterator&);
-		iterator& operator++(int);
-		double operator*();
+		iterator operator++(int);
+		iterator operator++();
+		double& operator*();
 		friend bool operator==(const iterator&, const iterator&);
 		friend bool operator!=(const iterator&, const iterator&);
 	private:
