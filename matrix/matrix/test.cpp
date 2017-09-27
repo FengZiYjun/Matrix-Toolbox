@@ -67,18 +67,18 @@ int test::test(){
 	//m.set(0,1,21);
 	//m.print();
 
-	//cout<<"testing multiply d"<<endl;
-	//m = m * 2;
-	cout<<"testing + and -"<<endl;
-	Matrix ans = m + n;
-	ans.print();
-	ans = m - n;
-	ans.print();
+	cout<<"testing multiply d"<<endl;
+	m = m * 3;
+	//cout<<"testing + and -"<<endl;
+	//Matrix ans = m + n;
+	//ans.print();
+	//ans = m - n;
+	//ans.print();
 
-	cout<<"testing iterators"<<endl;
-	copy(m.begin(), m.end(), n.begin());
+	//cout<<"testing iterators"<<endl;
+	//copy(m.begin(), m.end(), n.begin());
 	m.print();
-	n.print();
+	//n.print();
 	
 
 	return 0;

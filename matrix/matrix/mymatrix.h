@@ -1,4 +1,10 @@
-// C++ matrix class
+/////////////////////////////////////////////////////////////////////////
+//	This file "mymatrix.h" includes the definition of class Matrix.
+//	It aims to provide users with the most convenient approach to handle 
+//	matrix computation. We are also exploring ways to fasten all these 
+//	operations with C++. 
+//	This class is being built...
+////////////////////////////////////////////////////////////////////////
 #pragma once
 
 #include <vector>
@@ -58,17 +64,20 @@ public:
 		Add a new row.
 		Input: A vector of the same length as other rows in the matrix.
 	*/
-	void append(const std::vector<double>&);
+	void appendRow(const std::vector<double>&);
+	void appendCol(const std::vector<double>&);
 
-	/*
-		transpose to make a new matrix
-	*/
+	//	transpose to make a new matrix
 	Matrix transpose();
 
+	// reverse to make a new matrix
+	Matrix inverse();
 
-	//
-	//	Overloaded Operators
-	//
+	// det
+	double determine();
+
+	///////////////	Overloaded Operators  ////////////////////////
+	
 	// Equal
 	bool operator==(const Matrix&);
 	// Not equal
@@ -83,17 +92,44 @@ public:
 
 	// plus 
 	Matrix operator+(const Matrix&);
+	friend Matrix operator+(const double&, Matrix&);
 	
 	// minus
 	Matrix operator-(const Matrix&);
+	friend Matrix operator-(const double&, Matrix&);
+	
 
 	// Assignment Operator
 	Matrix& operator=(const Matrix&);
 
+	///////////////////  End  /////// / ///////////////////
+
+
+	///////////////////  Row / Column Operation /////////////
+	
 	// row and column selecting 
 	Matrix getRow(int);
 	Matrix getColumn(int);
-	
+
+	// Splitting 
+	// horizontal split
+	std::vector<Matrix> hsplit(const std::vector<int>&);
+	// vertical split
+	std::vector<Matrix> vsplit(const std::vector<int>&);
+
+	// sum along rows or columns (0 or 1)
+	Matrix sum(int);
+	// sum up all elements
+	double sum();
+
+	// Similar for product
+	Matrix product(int);
+	double product();
+
+
+
+	/////////////////////////  End  /////////////////////////////
+
 	class iterator: public std::iterator<std::forward_iterator_tag, double>{
 	public:
 		iterator();

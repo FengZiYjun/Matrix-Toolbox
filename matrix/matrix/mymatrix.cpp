@@ -95,7 +95,7 @@ void Matrix::read(istream& is){
 	}
 }
 
-void  Matrix::append(const vector<double>& vec){
+void  Matrix::appendRow(const vector<double>& vec){
 	if(vec.size() != _col){
 		throw 20;
 	}else{
@@ -104,9 +104,15 @@ void  Matrix::append(const vector<double>& vec){
 	}
 }
 
+void Matrix::appendCol(const vector<double>& vec){
+	// to do
+
+}
+
 Matrix::~Matrix(){}
 
 bool Matrix::operator==(const Matrix& m){
+	// change to STL?
 	if(this == &m){
 		return true;
 	}
@@ -151,12 +157,16 @@ Matrix& Matrix::operator=(const Matrix& m){
 
 
 Matrix Matrix::operator*(const double& d){
+	using namespace placeholders;
 	Matrix ret(_row, _col);
+	//transform(_begin, _end, ret._begin, bind(multiplies<double>(), d));
+	
 	for(int i=0;i<_row;i++){
 		for(int j=0;j<_col;j++){
 			ret._mat[i][j] = _mat[i][j] * d;
 		}
 	}
+	
 	return ret;
 }
 
@@ -188,16 +198,34 @@ Matrix Matrix::operator+(const Matrix& m){
 	return ret;
 }
 
+Matrix operator+(double d, Matrix& m){
+	// to do
+
+	return m;
+}
+
 Matrix Matrix::operator-(const Matrix& m){
 	Matrix ret(m._row, m._col);
 	transform(_begin, _end, m._begin, ret._begin, minus<double>());
 	return ret;
 }
 
+
+Matrix operator-(double d, Matrix& m){
+	// to do
+
+	return m;
+}
+
 Matrix Matrix::transpose(){
 	// to do 
 
 	return *this;
+}
+
+double Matrix::determine(){
+	// to do
+	return 0;
 }
 
 Matrix Matrix::getRow(int row_indx){
@@ -211,6 +239,51 @@ Matrix Matrix::getColumn(int col_index){
 	// to do
 
 	return *this;
+}
+
+vector<Matrix> Matrix::hsplit(const vector<int>& vec){
+	// to do 
+
+	return vector<Matrix>();
+}
+
+
+vector<Matrix> Matrix::vsplit(const vector<int>& vec){
+	// to do 
+
+	return vector<Matrix>();
+}
+
+Matrix Matrix::inverse(){
+	// to do
+
+	return *this;
+}
+
+
+Matrix Matrix::sum(int i){
+	// to do
+
+	return *this;
+}
+
+double Matrix::sum(){
+	// to do
+
+	return 0;
+}
+
+
+Matrix Matrix::product(int i){
+	// to do 
+
+	return *this;
+}
+
+double Matrix::product(){
+	// to do
+
+	return 0;
 }
 
 
