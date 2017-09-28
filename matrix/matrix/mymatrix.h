@@ -16,7 +16,9 @@
 class Matrix
 {
 public:
-	// Constructors
+	/* 
+		Constructors
+	*/
 	// Initialize with row and column
 	Matrix(int, int);
 	// Initialize with a vector
@@ -24,9 +26,12 @@ public:
 	// Copy constructor
 	Matrix(const Matrix&);
 
-	// Destructor
+	/*
+		Destructor
+	*/
 	~Matrix();
 
+	////////////////////  Common Methods  ////////////////
 	/*
 		The size of the matrix. 
 		Input: 0 or 1
@@ -58,12 +63,34 @@ public:
 	*/
 	void read(std::istream&);
 
+	///////////////////  Row / Column Operation /////////////
+	
+	// row and column selecting 
+	Matrix getRow(int);
+	Matrix getColumn(int);
+
 	/*
 		Add a new row.
 		Input: A vector of the same length as other rows in the matrix.
 	*/
 	void appendRow(const std::vector<double>&);
 	void appendCol(const std::vector<double>&);
+
+
+	// Splitting 
+	// horizontal split
+	std::vector<Matrix> hsplit(const std::vector<int>&);
+	// vertical split
+	std::vector<Matrix> vsplit(const std::vector<int>&);
+
+	// sum along rows or columns (0 or 1)
+	Matrix sum(int);
+	// sum up all elements
+	double sum();
+
+	// Similar for product
+	Matrix product(int);
+	double product();
 
 	//	transpose to make a new matrix
 	Matrix transpose();
@@ -100,33 +127,8 @@ public:
 	// Assignment Operator
 	Matrix& operator=(const Matrix&);
 
-	///////////////////  End  /////// / ///////////////////
 
-
-	///////////////////  Row / Column Operation /////////////
-	
-	// row and column selecting 
-	Matrix getRow(int);
-	Matrix getColumn(int);
-
-	// Splitting 
-	// horizontal split
-	std::vector<Matrix> hsplit(const std::vector<int>&);
-	// vertical split
-	std::vector<Matrix> vsplit(const std::vector<int>&);
-
-	// sum along rows or columns (0 or 1)
-	Matrix sum(int);
-	// sum up all elements
-	double sum();
-
-	// Similar for product
-	Matrix product(int);
-	double product();
-
-
-
-	/////////////////////////  End  /////////////////////////////
+	/////////////////////////  Itreator  /////////////////////////////
 
 	class iterator: public std::iterator<std::forward_iterator_tag, double>{
 	public:
