@@ -189,16 +189,16 @@ Matrix Matrix::operator*(const Matrix& m){
 }
 
 Matrix Matrix::operator+(const Matrix& m){
-	// to do
 	Matrix ret(m._row, m._col);
 	transform(_begin, _end, m._begin, ret._begin, plus<double>());
 	return ret;
 }
 
-Matrix operator+(double d, Matrix& m){
-	// to do
-
-	return m;
+Matrix operator+(const double& d, Matrix& m){
+	using namespace placeholders;
+	Matrix ret(m.size(0), m.size(1));
+	transform(m.begin(), m.end(), ret.begin(), bind(plus<double>(), _1, d));
+	return ret;
 }
 
 Matrix Matrix::operator-(const Matrix& m){

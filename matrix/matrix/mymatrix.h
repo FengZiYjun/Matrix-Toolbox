@@ -149,6 +149,8 @@ public:
 	iterator& begin();
 	iterator& end();
 
+	//typedef const iterator& const_iterator;
+
 private:
 	int _row;
 	int _col;

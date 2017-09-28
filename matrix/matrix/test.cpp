@@ -1,15 +1,16 @@
 #include "test.h"
 #include "stdafx.h"
 #include <algorithm>
+#include "mymatrix.h"
 
 using namespace std;
 
 int test::test(){
 	cout<<"testing constructor "<<endl;
 	//Matrix m(2,2);
-	//double arr[] = {1., 2., 3., 4., 5., 6., 7., 8.};
-	//vector<double> vec(arr, arr+3);
-	//Matrix m(vec);
+	double arr[] = {1., 2., 3., 4., 5., 6., 7., 8.};
+	vector<double> vec(arr, arr+3);
+	Matrix m(vec);
 	//Matrix n(vector<double>(arr+4, arr+7));
 	//Matrix p(vector<double>(arr, arr+3));
 	
@@ -81,6 +82,9 @@ int test::test(){
 	//m.print();
 	//n.print();
 	
+	cout<<"testing d + m"<<endl;
+	Matrix ret = 3.0 + m;
+	ret.print();
 
 	return 0;
 }
