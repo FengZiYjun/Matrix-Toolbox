@@ -12,8 +12,8 @@ int test::test(){
 	vector<double> vec(arr, arr+3);
 	Matrix m(vec);
 	
-	cout<<"testing d * m"<<endl;
-	Matrix p = 4.2 * m;
+	cout<<"testing m * d"<<endl;
+	Matrix p = m * 5.3;
 	p.print();
 
 	return 0;

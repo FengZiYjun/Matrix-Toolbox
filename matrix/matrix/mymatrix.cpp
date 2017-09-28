@@ -154,14 +154,7 @@ Matrix& Matrix::operator=(const Matrix& m){
 Matrix Matrix::operator*(const double& d){
 	using namespace placeholders;
 	Matrix ret(_row, _col);
-	//transform(_begin, _end, ret._begin, bind(multiplies<double>(), d));
-	
-	for(int i=0;i<_row;i++){
-		for(int j=0;j<_col;j++){
-			ret._mat[i][j] = _mat[i][j] * d;
-		}
-	}
-	
+	transform(_begin, _end, ret._begin, bind(multiplies<double>(), d, placeholders::_1));
 	return ret;
 }
 
