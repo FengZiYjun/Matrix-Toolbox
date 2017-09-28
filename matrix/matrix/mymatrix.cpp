@@ -195,9 +195,8 @@ Matrix Matrix::operator+(const Matrix& m){
 }
 
 Matrix operator+(const double& d, Matrix& m){
-	using namespace placeholders;
 	Matrix ret(m.size(0), m.size(1));
-	transform(m.begin(), m.end(), ret.begin(), bind(plus<double>(), _1, d));
+	transform(m.begin(), m.end(), ret.begin(), bind(plus<double>(), placeholders::_1, d));
 	return ret;
 }
 
@@ -208,10 +207,10 @@ Matrix Matrix::operator-(const Matrix& m){
 }
 
 
-Matrix operator-(double d, Matrix& m){
-	// to do
-
-	return m;
+Matrix operator-(const double& d, Matrix& m){
+	Matrix ret(m._row, m._col);
+	transform(m.begin(), m.end(), ret.begin(), bind(minus<double>(), d, placeholders::_1));
+	return ret;
 }
 
 Matrix Matrix::transpose(){
