@@ -165,10 +165,9 @@ Matrix Matrix::operator*(const double& d){
 	return ret;
 }
 
-Matrix operator*(double d, const Matrix& m){
-	// to do
+Matrix operator*(const double& d, Matrix& m){
 	Matrix ret(m.size(0), m.size(1));
-	//transform(m.begin(), m.end(), ret.begin(), bind(multiplies<double>(), d));
+	transform(m.begin(), m.end(), ret.begin(), bind(multiplies<double>(), d, placeholders::_1));
 	return ret;
 }
 
