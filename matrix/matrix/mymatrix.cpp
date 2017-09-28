@@ -18,11 +18,6 @@ Matrix::Matrix(int row, int col): _row(row), _col(col){
 
 }
 
-Matrix::Matrix(double** head){
-	// to do
-
-}
-
 Matrix::Matrix(const vector<double>& vec){
 	_col = vec.size();
 	_row = 1;
@@ -172,7 +167,9 @@ Matrix Matrix::operator*(const double& d){
 
 Matrix operator*(double d, const Matrix& m){
 	// to do
-	return m;
+	Matrix ret(m.size(0), m.size(1));
+	//transform(m.begin(), m.end(), ret.begin(), bind(multiplies<double>(), d));
+	return ret;
 }
 
 

@@ -22,7 +22,8 @@
 =============================Development Schedule===============================
 
 1. Implement Matrix Class
- 1.1 matrix multiply, transpose, spliting
+ 1.0 const_iterator
+ 1.1 matrix multiply, transpose, spliting,
  1.2 reverse, determine
  1.3 optimize matrix operations with iterator
 
@@ -35,6 +36,8 @@
 
 1. The Matrix class index from ZERO, not one.
 2. The core Matrix elements are stored in vector of vector.
+3. Matrix constructors should not support prmitave array (like double[][]) for safety reason.
+
 
 
 ====================================Help=========================================

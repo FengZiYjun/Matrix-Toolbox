@@ -19,8 +19,6 @@ public:
 	// Constructors
 	// Initialize with row and column
 	Matrix(int, int);
-	// Initialize with array of array------To do
-	Matrix(double**);
 	// Initialize with a vector
 	Matrix(const std::vector<double>&);
 	// Copy constructor

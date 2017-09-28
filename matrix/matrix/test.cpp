@@ -7,11 +7,12 @@ using namespace std;
 int test::test(){
 	cout<<"testing constructor "<<endl;
 	//Matrix m(2,2);
-	double arr[] = {1., 2., 3., 4., 5., 6., 7., 8.};
-	vector<double> vec(arr, arr+3);
-	Matrix m(vec);
-	Matrix n(vector<double>(arr+4, arr+7));
+	//double arr[] = {1., 2., 3., 4., 5., 6., 7., 8.};
+	//vector<double> vec(arr, arr+3);
+	//Matrix m(vec);
+	//Matrix n(vector<double>(arr+4, arr+7));
 	//Matrix p(vector<double>(arr, arr+3));
+	
 
 	//cout<<"testing read()"<<endl;
 	//m.read(cin);
@@ -67,8 +68,8 @@ int test::test(){
 	//m.set(0,1,21);
 	//m.print();
 
-	cout<<"testing multiply d"<<endl;
-	m = m * 3;
+	//cout<<"testing multiply d"<<endl;
+	//m = m * 3;
 	//cout<<"testing + and -"<<endl;
 	//Matrix ans = m + n;
 	//ans.print();
@@ -77,7 +78,7 @@ int test::test(){
 
 	//cout<<"testing iterators"<<endl;
 	//copy(m.begin(), m.end(), n.begin());
-	m.print();
+	//m.print();
 	//n.print();
 	
 
