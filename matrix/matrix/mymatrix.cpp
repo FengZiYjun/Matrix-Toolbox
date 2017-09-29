@@ -100,8 +100,14 @@ void  Matrix::appendRow(const vector<double>& vec){
 }
 
 void Matrix::appendCol(const vector<double>& vec){
-	// to do
-
+	if (vec.size() != _row) {
+		throw 20;
+	} else {
+		_col++;
+		for (int i = 0; i < _row; i++) {
+			_mat[i].push_back(vec[i]);
+		}
+	}
 }
 
 Matrix::~Matrix(){}

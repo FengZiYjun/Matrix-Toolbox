@@ -63,7 +63,7 @@ public:
 	*/
 	void read(std::istream&);
 
-	///////////////////  Row / Column Operation /////////////
+	///////////////////  Scientific Computation /////////////////
 	
 	// row and column selecting 
 	Matrix getRow(int);
@@ -100,6 +100,9 @@ public:
 
 	// det
 	double determine();
+
+	// trace
+	double trace();
 
 	///////////////	Overloaded Operators  ////////////////////////
 	
