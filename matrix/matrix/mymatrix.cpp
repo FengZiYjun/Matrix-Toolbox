@@ -222,6 +222,11 @@ double Matrix::determine(){
 	return 0;
 }
 
+double Matrix::trace()
+{
+	return 0.0;
+}
+
 Matrix Matrix::getRow(int row_indx){
 	// to do
 

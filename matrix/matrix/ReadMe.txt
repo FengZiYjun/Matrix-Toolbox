@@ -5,9 +5,7 @@
 ===========================Development Instructions=============================
 
 1. Development Environment: 
- IDE: Microsoft Visual Studio Express 2012 for Windows Desktop.
- OS: Windows 8.1 64-bit
-
+ IDE: Microsoft Visual Studio 2017.
 
 
 ===============================Code Standards====================================
@@ -23,13 +21,23 @@
 
 1. Implement Matrix Class
  1.0 const_iterator
- 1.1 matrix multiply, transpose, spliting,
+ 1.1 matrix multiply, transpose, spliting, etc
  1.2 reverse, determine
  1.3 optimize matrix operations with iterator
+ 1.4 performance evaluation
 
 2. Optimize Matrix I/O
+  - file read/write
 
-3. external lib that support matrix computation (math)
+3. The second class "matlab" provides methods for 
+  - generating special matrices 
+  - more element-wise arithmetic operations
+  - operations associated with more than two matrices
+
+4. The third class "ml" encapsulates machine learning architecture
+  - prepocessing 
+  - linear/logistic regression
+  - shadow neural network
 
 
 ==================================Attention=======================================
@@ -41,13 +49,7 @@
 
 
 ====================================Help=========================================
-1. When defining member function operator*(double), the use of STL transform is 
-prohibited by the VS compiler. It is no use to define a macro to get rid of the 
-error as is told by the MSDN. 
-Actually the operation for each element in the matrix should be done by iterator with 
-STL algorithm rather than two loops.
-It is very likely that the iterator defined is not complete to supply this ?
-
+1. how to implement const iterator?
 
 
 /////////////////////////////////////////////////////////////////////////////////
