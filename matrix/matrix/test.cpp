@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include <algorithm>
 #include "mymatrix.h"
+#include "matlab.h"
 
 using namespace std;
 

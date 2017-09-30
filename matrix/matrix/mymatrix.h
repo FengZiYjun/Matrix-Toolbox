@@ -19,6 +19,7 @@ public:
 	/* 
 		Constructors
 	*/
+	Matrix();
 	// Initialize with row and column
 	Matrix(int, int);
 	// Initialize with a vector

@@ -20,11 +20,10 @@
 =============================Development Schedule===============================
 
 1. Implement Matrix Class
- 1.0 const_iterator
  1.1 matrix multiply, transpose, spliting, etc
  1.2 reverse, determine
  1.3 optimize matrix operations with iterator
- 1.4 performance evaluation
+ 1.4 exceptions
 
 2. Optimize Matrix I/O
   - file read/write
@@ -50,7 +49,8 @@
 
 
 ====================================Help=========================================
-1. how to implement const iterator?
+1. give up the implementation of const iterator because of additional complexity
+which does not bring much convenience. 
 
 
 /////////////////////////////////////////////////////////////////////////////////

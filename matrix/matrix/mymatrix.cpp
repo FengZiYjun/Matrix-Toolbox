@@ -8,6 +8,11 @@
 
 using namespace std;
 
+Matrix::Matrix()
+{
+
+}
+
 Matrix::Matrix(int row, int col): _row(row), _col(col){
 	_mat.resize(_row);
 	for(int i=0;i<_row;i++){
