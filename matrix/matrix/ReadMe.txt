@@ -30,9 +30,10 @@
   - file read/write
 
 3. The second class "matlab" provides methods for 
-  - generating special matrices 
+  - generating special matrices: diagonal, unit
   - more element-wise arithmetic operations
-  - operations associated with more than two matrices
+  - operations associated with more than two matrices (SVD, eigendecomposition)
+  - statistics methods: mean, variance, covariance, etc.
 
 4. The third class "ml" encapsulates machine learning architecture
   - prepocessing 

@@ -13,10 +13,11 @@ int test::test(){
 	Matrix m(vec);
 	m.appendRow(vector<double>(arr+3, arr+6));
 	m.appendRow(vector<double>(arr+6, arr+9));
-	
-	cout << "testing colAppend" << endl;
-	m.appendCol(vector<double>(arr, arr+3));
+	cout << "this is m" << endl;
 	m.print();
+
+	Matrix p = m.getRow(1);
+	p.print();
 
 	return 0;
 }

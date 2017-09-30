@@ -227,10 +227,12 @@ double Matrix::trace()
 	return 0.0;
 }
 
-Matrix Matrix::getRow(int row_indx){
-	// to do
-
-	return *this;
+Matrix Matrix::getRow(int row_index){
+	// range check
+	if (row_index >= _row || row_index < 0 ) {
+		throw 20;
+	}
+	return Matrix(_mat[row_index]);
 }
 
 
