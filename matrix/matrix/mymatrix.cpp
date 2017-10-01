@@ -259,9 +259,12 @@ Matrix Matrix::getRow(int row_index){
 
 
 Matrix Matrix::getColumn(int col_index){
-	// to do
-
-	return *this;
+	Matrix ret(_row, 1);
+	using namespace concurrency;
+	parallel_for(0, _row, [&](int i) {
+		ret.set(i, 0, _mat[i][col_index]);
+	});
+	return ret;
 }
 
 vector<Matrix> Matrix::hsplit(const vector<int>& vec){

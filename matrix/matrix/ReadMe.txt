@@ -20,9 +20,9 @@
 =============================Development Schedule===============================
 
 1. Implement Matrix Class
- 1.1 matrix multiply, transpose, spliting, etc
+ 1.1 matrix transpose, spliting, etc
  1.2 reverse, determine
- 1.3 optimize matrix operations with iterator
+ 1.3 optimize matrix operations with iterator & parallelism
  1.4 exceptions
 
 2. Optimize Matrix I/O

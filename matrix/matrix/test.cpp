@@ -17,8 +17,8 @@ int test::test(){
 	cout << "this is m" << endl;
 	m.print();
 
-	cout << "m * m" << endl;
-	Matrix p = m * m;
+	cout << "testing getCol" << endl;
+	Matrix p = m.getColumn(2);
 	p.print();
 
 	return 0;
