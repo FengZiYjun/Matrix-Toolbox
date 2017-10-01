@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <functional>
 #include <istream>
+#include <ppl.h>
 
 
 class Matrix
@@ -64,6 +65,11 @@ public:
 	*/
 	void read(std::istream&);
 
+	/*
+		Convert matrix to std::vector
+	*/
+	std::vector<std::vector<double> > toVector();
+
 	///////////////////  Scientific Computation /////////////////
 	
 	// row and column selecting 
@@ -77,12 +83,13 @@ public:
 	void appendRow(const std::vector<double>&);
 	void appendCol(const std::vector<double>&);
 
-
 	// Splitting 
 	// horizontal split
 	std::vector<Matrix> hsplit(const std::vector<int>&);
+	std::vector<Matrix> hsplit();
 	// vertical split
 	std::vector<Matrix> vsplit(const std::vector<int>&);
+	std::vector<Matrix> vsplit();
 
 	// sum along rows or columns (0 or 1)
 	Matrix sum(int);

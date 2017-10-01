@@ -95,6 +95,11 @@ void Matrix::read(istream& is){
 	}
 }
 
+std::vector<std::vector<double>> Matrix::toVector()
+{
+	return _mat;
+}
+
 void  Matrix::appendRow(const vector<double>& vec){
 	if(vec.size() != _col){
 		throw 20;
@@ -186,9 +191,21 @@ Matrix::iterator& Matrix::end(){
 
 
 Matrix Matrix::operator*(const Matrix& m){
-	// to do 
-
-	return m;
+	using namespace concurrency;
+	if (_col != m._row) {
+		throw 20;
+	}
+	Matrix ret(_row, m._col);
+	parallel_for(0, _row, [&](int i) {
+		for (int t = 0; t < m._col; t++) {
+			double tmp = 0.;
+			for (int j = 0; j < m._row; j++) {
+				tmp += _mat[i][j] * m._mat[j][t];
+			}
+			ret.set(i, t, tmp);
+		}
+	});
+	return ret;
 }
 
 Matrix Matrix::operator+(const Matrix& m){
@@ -253,11 +270,21 @@ vector<Matrix> Matrix::hsplit(const vector<int>& vec){
 	return vector<Matrix>();
 }
 
+std::vector<Matrix> Matrix::hsplit()
+{
+	return std::vector<Matrix>();
+}
+
 
 vector<Matrix> Matrix::vsplit(const vector<int>& vec){
 	// to do 
 
 	return vector<Matrix>();
+}
+
+std::vector<Matrix> Matrix::vsplit()
+{
+	return std::vector<Matrix>();
 }
 
 Matrix Matrix::inverse(){
