@@ -291,14 +291,21 @@ std::vector<Matrix> Matrix::hsplit()
 
 
 vector<Matrix> Matrix::vsplit(const vector<int>& vec){
-	// to do 
+	vector<Matrix> ret;
+	for (size_t i = 0; i < vec.size(); i++) {
+		ret.push_back(Matrix(_mat[vec[i]]));
+	}
 
-	return vector<Matrix>();
+	return ret;
 }
 
 std::vector<Matrix> Matrix::vsplit()
 {
-	return std::vector<Matrix>();
+	vector<int> v;
+	for (int i = 0; i < _row; i++) {
+		v.push_back(i);
+	}
+	return vsplit(v);
 }
 
 Matrix Matrix::inverse(){
