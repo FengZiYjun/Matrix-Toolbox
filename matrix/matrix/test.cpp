@@ -3,6 +3,8 @@
 #include <algorithm>
 #include "mymatrix.h"
 #include "matlab.h"
+// "stdafx.h" is required by VS application project.
+// If you deploy the codes in other places, drop it out.
 
 using namespace std;
 

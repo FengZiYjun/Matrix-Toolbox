@@ -3,6 +3,8 @@
 #include <functional>
 #include "mymatrix.h"
 #include "stdafx.h"
+// "stdafx.h" is required by VS application project.
+// If you deploy the codes in other places, drop it out.
 
 #define D_SCL_SECURE_NO_WARNINGS
 
