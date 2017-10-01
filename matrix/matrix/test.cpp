@@ -17,9 +17,11 @@ int test::test(){
 	cout << "this is m" << endl;
 	m.print();
 
-	cout << "testing getCol" << endl;
-	Matrix p = m.getColumn(2);
-	p.print();
+	cout << "testing hsplit" << endl;
+	vector<Matrix> vofm = m.hsplit();
+	for (int i = 0; i < vofm.size(); i++) {
+		vofm[i].print();
+	}
 
 	return 0;
 }

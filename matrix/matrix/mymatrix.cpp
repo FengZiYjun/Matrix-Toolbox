@@ -268,14 +268,25 @@ Matrix Matrix::getColumn(int col_index){
 }
 
 vector<Matrix> Matrix::hsplit(const vector<int>& vec){
-	// to do 
-
-	return vector<Matrix>();
+	using namespace concurrency;
+	vector<Matrix> ret;
+	for (size_t i = 0; i < vec.size(); i++) {
+		Matrix m(_row, 1);
+		parallel_for(0, _row, [&](int row) {
+			m.set(row, 0, _mat[row][vec[i]]);
+		});
+		ret.push_back(m);
+	}
+	return ret;
 }
 
 std::vector<Matrix> Matrix::hsplit()
 {
-	return std::vector<Matrix>();
+	vector<int> v;
+	for (int i = 0; i < _col; i++) {
+		v.push_back(i);
+	}
+	return hsplit(v);
 }
 
 
