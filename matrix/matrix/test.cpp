@@ -17,8 +17,8 @@ int test::test(){
 	cout << "this is m" << endl;
 	m.print();
 
-	cout << "testing hsplit" << endl;
-	vector<Matrix> vofm = m.hsplit();
+	cout << "testing vsplit" << endl;
+	vector<Matrix> vofm = m.vsplit();
 	for (int i = 0; i < vofm.size(); i++) {
 		vofm[i].print();
 	}
