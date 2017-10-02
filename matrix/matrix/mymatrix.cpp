@@ -236,9 +236,13 @@ Matrix operator-(const double& d, Matrix& m){
 }
 
 Matrix Matrix::transpose(){
-	// to do 
-
-	return *this;
+	Matrix ret(_col, _row);
+	for (int i = 0; i < _row; i++) {
+		for (int j = 0; j < _col; j++) {
+			ret._mat[j][i] = _mat[i][j];
+		}
+	}
+	return ret;
 }
 
 double Matrix::determine(){
