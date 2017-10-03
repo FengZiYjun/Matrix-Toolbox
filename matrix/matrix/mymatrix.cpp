@@ -252,7 +252,12 @@ double Matrix::determine(){
 
 double Matrix::trace()
 {
-	return 0.0;
+	int diag = min<int>(_row, _col);
+	double trace = 1.0;
+	for (int i = 0; i < diag; i++) {
+		trace *= _mat[i][i];
+	}
+	return trace;
 }
 
 Matrix Matrix::getRow(int row_index){
