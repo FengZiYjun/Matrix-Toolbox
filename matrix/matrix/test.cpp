@@ -16,14 +16,12 @@ int test::test(){
 	Matrix m(vec);
 	m.appendRow(vector<double>(arr+3, arr+6));
 	m.appendRow(vector<double>(arr+6, arr+9));
+	m.appendRow(vector<double>(arr + 6, arr + 9));
 	cout << "this is m" << endl;
 	m.print();
 
-	cout << "testing vsplit" << endl;
-	vector<Matrix> vofm = m.vsplit();
-	for (int i = 0; i < vofm.size(); i++) {
-		vofm[i].print();
-	}
+	cout << "testing sun" << endl;
+	cout << m.sum();
 
 	return 0;
 }

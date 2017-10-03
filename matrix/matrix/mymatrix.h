@@ -9,6 +9,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <numeric>
 #include <functional>
 #include <istream>
 #include <ppl.h>

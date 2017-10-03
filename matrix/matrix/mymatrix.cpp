@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <algorithm>
+#include <numeric>
 #include <functional>
 #include "mymatrix.h"
 #include "stdafx.h"
@@ -326,16 +327,39 @@ Matrix Matrix::inverse(){
 }
 
 
-Matrix Matrix::sum(int i){
-	// to do
-
-	return *this;
+Matrix Matrix::sum(int sign){
+	using namespace concurrency;
+	if (sign != 0 && sign != 1) {
+		throw 20;
+	}
+	Matrix ret;
+	if (sign == 0) {
+		ret = Matrix(_row, 1);
+		parallel_for(0, _row, [&](int i) {
+			double result = accumulate(_mat[i].begin(), _mat[i].end(), 0.0);
+			ret.set(i, 0, result);
+		});
+	}
+	else if (sign == 1) {
+		ret = Matrix(1, _col);
+		parallel_for(0, _col, [&](int i) {
+			double result = 0.0;
+			for (int t = 0; t < _row; t++) {
+				result += _mat[t][i];
+			}
+			ret.set(0, i, result);
+		});
+	}
+	return ret;
 }
 
 double Matrix::sum(){
-	// to do
-
-	return 0;
+	using namespace concurrency;
+	double ret = 0.0;
+	parallel_for_each(_mat.begin(), _mat.end(), [&](vector<double> vec) {
+		ret += accumulate(vec.begin(), vec.end(), 0.0);
+	});
+	return ret;
 }
 
 
