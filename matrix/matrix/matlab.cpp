@@ -30,6 +30,11 @@ Matrix Matlab::random(int, int)
 	return Matrix();
 }
 
+Matrix Matlab::abs(const Matrix &)
+{
+	return Matrix();
+}
+
 Matrix Matlab::log(const Matrix &)
 {
 	return Matrix();
@@ -75,27 +80,107 @@ double Matlab::mean()
 	return 0.0;
 }
 
-vector<double> Matlab::mean(int)
+Matrix Matlab::mean(int)
 {
-	return vector<double>();
+	return Matrix();
 }
+
+
 
 double Matlab::var()
 {
 	return 0.0;
 }
 
-std::vector<double> Matlab::var(int)
+Matrix Matlab::var(int)
 {
-	return std::vector<double>();
+	return Matrix();
 }
+
+
 
 double Matlab::stderror()
 {
 	return 0.0;
 }
 
-std::vector<double> Matlab::stderror(int)
+Matrix Matlab::stderror(int)
 {
-	return std::vector<double>();
+	return Matrix();
+}
+
+
+Matrix Matlab::covar()
+{
+	return Matrix();
+}
+
+double Matlab::norm(const Matrix &, int)
+{
+	return 0.0;
+}
+
+double Matlab::norm1(const Matrix &)
+{
+	return 0.0;
+}
+
+double Matlab::norm2(const Matrix &)
+{
+	return 0.0;
+}
+
+double Matlab::FrobeniusNorm(const Matrix &)
+{
+	return 0.0;
+}
+
+std::tuple<Matrix> Matlab::eigenDecompose(const Matrix &)
+{
+	return std::tuple<Matrix>();
+}
+
+std::tuple<Matrix> Matlab::SVD(const Matrix &)
+{
+	return std::tuple<Matrix>();
+}
+
+Matrix Matlab::pseudoInverse(const Matrix &)
+{
+	return Matrix();
+}
+
+
+
+Matrix Matlab::max(int)
+{
+	return Matrix();
+}
+
+double Matlab::max()
+{
+	return 0.0;
+}
+
+Matrix Matlab::min(int)
+{
+	return Matrix();
+}
+
+
+double Matlab::min()
+{
+	return 0.0;
+}
+
+Matrix Matlab::median(int)
+{
+	return Matrix();
+}
+
+
+
+double Matlab::median()
+{
+	return 0.0;
 }

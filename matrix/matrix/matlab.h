@@ -1,6 +1,7 @@
 #pragma once
 #include "mymatrix.h"
 #include <vector>
+#include <tuple>
 
 namespace Matlab{
 
@@ -25,6 +26,7 @@ namespace Matlab{
 	/*
 		Element-wise Operations
 	*/
+	Matrix abs(const Matrix&);
 	Matrix log(const Matrix&);
 	Matrix exp(const Matrix&);
 	Matrix square(const Matrix&);
@@ -38,14 +40,31 @@ namespace Matlab{
 	/*
 		Statistic Operations
 	*/
+	Matrix max(int);
+	double max();
+	Matrix min(int);
+	double min();
+	Matrix median(int);
+	double median();
 	double mean();
-	std::vector<double> mean(int);
+	Matrix mean(int);
 	double var();
-	std::vector<double> var(int);
+	Matrix var(int);
 	// standard error
 	double stderror();
-	std::vector<double> stderror(int);
+	Matrix stderror(int);
+	// covariance matrix
+	Matrix covar();
+	
+	/*
+		Linear Algebra 
+	*/
+	double norm(const Matrix&, int);
+	double norm1(const Matrix&);
+	double norm2(const Matrix&);
+	double FrobeniusNorm(const Matrix&);
 
-	
-	
+	std::tuple<Matrix> eigenDecompose(const Matrix&);
+	std::tuple<Matrix> SVD(const Matrix&);
+	Matrix pseudoInverse(const Matrix&);
 }
