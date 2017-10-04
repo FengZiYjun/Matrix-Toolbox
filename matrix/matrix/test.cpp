@@ -21,7 +21,7 @@ int test::test(){
 	m.print();
 
 	cout << "testing sun" << endl;
-	cout << m.sum();
+	cout << m.product();
 
 	return 0;
 }
