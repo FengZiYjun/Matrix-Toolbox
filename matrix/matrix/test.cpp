@@ -21,10 +21,8 @@ int test::test(){
 	cout << "this is m" << endl;
 	m.print();
 
-	diagMatrix p(4, 3.0);
-	p.print();
-	diagMatrix q(vector<double>(arr, arr+4));
-	q.print();
+	randomMatrix r(3,4);
+	r.print();
 
 	return 0;
 }

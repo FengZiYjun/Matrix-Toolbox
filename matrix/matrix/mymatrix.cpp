@@ -436,6 +436,7 @@ Matrix::iterator Matrix::iterator::operator++(int){
 	Matrix::iterator ret(*this);
 	if(_step < _width){
 		iter2++;
+		_step++;
 	}else{
 		iter1++;
 		iter2 = iter1->begin();
@@ -447,6 +448,7 @@ Matrix::iterator Matrix::iterator::operator++(int){
 Matrix::iterator Matrix::iterator::operator++(){
 	if(_step < _width){
 		iter2++;
+		_step++;
 	}else{
 		iter1++;
 		iter2 = iter1->begin();

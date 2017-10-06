@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
+#include <algorithm>
 #include "mymatrix.h"
+#include <stdlib.h>
 
 class diagMatrix: public Matrix {
 public:
