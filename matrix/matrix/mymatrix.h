@@ -165,6 +165,9 @@ public:
 
 	//typedef const iterator& const_iterator;
 
+protected:
+	Matrix(int, int, double);
+
 private:
 	int _row;
 	int _col;

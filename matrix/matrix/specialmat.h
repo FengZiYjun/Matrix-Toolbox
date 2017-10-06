@@ -18,9 +18,9 @@ public:
 	zerosMatrix(int, int);
 };
 
-class unitMatrix : public Matrix {
+class unitMatrix : public diagMatrix {
 public:
-	unitMatrix(int, int);
+	unitMatrix(int);
 };
 
 class randomMatrix : public Matrix {

@@ -3,6 +3,7 @@
 #include <algorithm>
 #include "mymatrix.h"
 #include "matlab.h"
+#include "specialmat.h"
 // "stdafx.h" is required by VS application project.
 // If you deploy the codes in other places, drop it out.
 
@@ -20,8 +21,10 @@ int test::test(){
 	cout << "this is m" << endl;
 	m.print();
 
-	cout << "testing sun" << endl;
-	cout << m.product();
+	diagMatrix p(4, 3.0);
+	p.print();
+	diagMatrix q(vector<double>(arr, arr+4));
+	q.print();
 
 	return 0;
 }

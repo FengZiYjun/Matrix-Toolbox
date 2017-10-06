@@ -14,16 +14,13 @@ diagMatrix::diagMatrix(std::vector<double> vec):Matrix(vec.size(), vec.size()){
 }
 
 
-onesMatrix::onesMatrix(int, int)
-{
+onesMatrix::onesMatrix(int r, int c):Matrix(r, c, 1.0){
 }
 
-zerosMatrix::zerosMatrix(int, int)
-{
+zerosMatrix::zerosMatrix(int r, int c):Matrix(r, c, 0.0){
 }
 
-unitMatrix::unitMatrix(int, int)
-{
+unitMatrix::unitMatrix(int r): diagMatrix(r, 1.0){
 }
 
 randomMatrix::randomMatrix(int, int)

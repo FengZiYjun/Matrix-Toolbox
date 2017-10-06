@@ -5,34 +5,7 @@
 // If you deploy the codes in other places, drop it out.
 
 using namespace std;
-Matrix Matlab::diag(std::vector<double> vec)
-{
-	Matrix ret(vec.size(), vec.size());
-	for (size_t i = 0; i < vec.size(); i++) {
-		ret.set(i,i, vec[i]);
-	}
-	return ret;
-}
 
-Matrix Matlab::ones(int, int)
-{
-	return Matrix();
-}
-
-Matrix Matlab::zeros(int, int)
-{
-	return Matrix();
-}
-
-Matrix Matlab::unit(int, int)
-{
-	return Matrix();
-}
-
-Matrix Matlab::random(int, int)
-{
-	return Matrix();
-}
 
 Matrix Matlab::abs(const Matrix &)
 {

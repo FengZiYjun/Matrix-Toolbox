@@ -15,3 +15,5 @@
 // TODO: reference additional headers your program requires here
 #include "mymatrix.h"
 #include "test.h"
+#include "matlab.h"
+#include "specialmat.h"

@@ -191,6 +191,15 @@ Matrix::iterator& Matrix::end(){
 	return _end;
 }
 
+Matrix::Matrix(int r, int c, double d):_row(r), _col(c){
+	_mat.resize(_row);
+	for (int i = 0; i<_row; i++) {
+		_mat[i].resize(_col, d);
+	}
+	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size());
+	_end = Matrix::iterator(_mat.end() - 1, (_mat.end() - 1)->end(), _mat[0].size());
+}
+
 
 Matrix Matrix::operator*(const Matrix& m){
 	using namespace concurrency;
