@@ -11,8 +11,7 @@
 
 using namespace std;
 
-Matrix::Matrix()
-{
+Matrix::Matrix():_row(0),_col(0){
 
 }
 

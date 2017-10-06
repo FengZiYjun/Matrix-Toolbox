@@ -5,9 +5,13 @@
 // If you deploy the codes in other places, drop it out.
 
 using namespace std;
-Matrix Matlab::diag(std::vector<double>)
+Matrix Matlab::diag(std::vector<double> vec)
 {
-	return Matrix();
+	Matrix ret(vec.size(), vec.size());
+	for (size_t i = 0; i < vec.size(); i++) {
+		ret.set(i,i, vec[i]);
+	}
+	return ret;
 }
 
 Matrix Matlab::ones(int, int)
