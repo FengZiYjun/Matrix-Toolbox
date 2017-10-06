@@ -108,6 +108,7 @@ void  Matrix::appendRow(const vector<double>& vec){
 	}else{
 		_row++;
 		_mat.push_back(vector<double>(vec.begin(), vec.end()));
+		_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size(), _mat.size());
 		_end = Matrix::iterator(_mat.end() - 1, (_mat.end() - 1)->end(), _mat[0].size(), _mat.size());
 	}
 }
@@ -120,6 +121,7 @@ void Matrix::appendCol(const vector<double>& vec){
 		for (int i = 0; i < _row; i++) {
 			_mat[i].push_back(vec[i]);
 		}
+		_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size(), _mat.size());
 		_end = Matrix::iterator(_mat.end() - 1, (_mat.end() - 1)->end(), _mat[0].size(), _mat.size());
 	}
 }
@@ -432,6 +434,8 @@ Matrix::iterator& Matrix::iterator::operator=(const iterator& iter){
 	this->iter2 = iter.iter2;
 	this->_width = iter._width;
 	this->_height = iter._height;
+	this->_line = iter._line;
+	this->_step = iter._step;
 	return *this;
 }
 
