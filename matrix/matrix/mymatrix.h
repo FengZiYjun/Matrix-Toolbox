@@ -146,7 +146,7 @@ public:
 	public:
 		iterator();
 		// Attention: the 3-th param is the size of the row.
-		iterator(std::vector<std::vector<double> >::iterator&, std::vector<double>::iterator&, int);
+		iterator(std::vector<std::vector<double> >::iterator&, std::vector<double>::iterator&, int, int);
 		iterator& operator=(const iterator&);
 		iterator operator++(int);
 		iterator operator++();
@@ -157,7 +157,9 @@ public:
 		std::vector<std::vector<double> >::iterator iter1;
 		std::vector<double>::iterator iter2;
 		int _width;
+		int _height;
 		int _step;
+		int _line;
 	};
 	
 	iterator& begin();

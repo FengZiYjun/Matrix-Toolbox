@@ -20,8 +20,8 @@ Matrix::Matrix(int row, int col): _row(row), _col(col){
 	for(int i=0;i<_row;i++){
 		_mat[i].resize(_col, 0.0);
 	}
-	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size());
-	_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size());
+	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size(), _mat.size());
+	_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size(), _mat.size());
 
 }
 
@@ -32,16 +32,16 @@ Matrix::Matrix(const vector<double>& vec){
 	_mat[0].resize(_col, 0.0);
 	copy(vec.begin(), vec.end(), _mat[0].begin());
 	
-	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size());
-	_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size());
+	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size(), _mat.size());
+	_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size(), _mat.size());
 }
 
 Matrix::Matrix(const Matrix& m){
 	this->_row = m._row;
 	this->_col = m._col;
 	this->_mat = m._mat;
-	this->_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size());
-	this->_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size());
+	this->_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size(), _mat.size());
+	this->_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size(), _mat.size());
 }
 
 int Matrix::size(int x)const{
@@ -108,6 +108,7 @@ void  Matrix::appendRow(const vector<double>& vec){
 	}else{
 		_row++;
 		_mat.push_back(vector<double>(vec.begin(), vec.end()));
+		_end = Matrix::iterator(_mat.end() - 1, (_mat.end() - 1)->end(), _mat[0].size(), _mat.size());
 	}
 }
 
@@ -119,6 +120,7 @@ void Matrix::appendCol(const vector<double>& vec){
 		for (int i = 0; i < _row; i++) {
 			_mat[i].push_back(vec[i]);
 		}
+		_end = Matrix::iterator(_mat.end() - 1, (_mat.end() - 1)->end(), _mat[0].size(), _mat.size());
 	}
 }
 
@@ -163,8 +165,8 @@ Matrix& Matrix::operator=(const Matrix& m){
 	this->_row = m._row;
 	this->_col = m._col;
 	this->_mat = m._mat; 
-	this->_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size());
-	this->_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size());
+	this->_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size(), _mat.size());
+	this->_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size(), _mat.size());
 	return *this;
 }
 
@@ -196,8 +198,8 @@ Matrix::Matrix(int r, int c, double d):_row(r), _col(c){
 	for (int i = 0; i<_row; i++) {
 		_mat[i].resize(_col, d);
 	}
-	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size());
-	_end = Matrix::iterator(_mat.end() - 1, (_mat.end() - 1)->end(), _mat[0].size());
+	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size(), _mat.size());
+	_end = Matrix::iterator(_mat.end() - 1, (_mat.end() - 1)->end(), _mat[0].size(), _mat.size());
 }
 
 
@@ -410,18 +412,18 @@ double Matrix::product(){
 // Definition of Public Member Functions of the sub-class - Matrix::iterator
 
 Matrix::iterator::iterator(std::vector<std::vector<double> >::iterator& outer, 
-	std::vector<double>::iterator& inner, int width){
+	std::vector<double>::iterator& inner, int width, int height){
 		this->iter1 = outer;
 		this->iter2 = inner;
 		this->_width = width;
+		this->_height = height;
 		this->_step = 0;
+		this->_line = 0;
 }
 
 
 
-Matrix::iterator::iterator(){
-	this->_step = 0;
-
+Matrix::iterator::iterator():_step(0),_line(0){
 }
 
 
@@ -429,30 +431,37 @@ Matrix::iterator& Matrix::iterator::operator=(const iterator& iter){
 	this->iter1 = iter.iter1;
 	this->iter2 = iter.iter2;
 	this->_width = iter._width;
+	this->_height = iter._height;
 	return *this;
 }
 
 Matrix::iterator Matrix::iterator::operator++(int){
 	Matrix::iterator ret(*this);
-	if(_step < _width){
+	if(_step < _width-1){
 		iter2++;
 		_step++;
-	}else{
+	}else if(_line < _height-1){
 		iter1++;
 		iter2 = iter1->begin();
 		_step = 0;
+		_line++;
+	} else {
+		iter2++;
 	}
 	return ret;
 }
 
 Matrix::iterator Matrix::iterator::operator++(){
-	if(_step < _width){
+	if(_step < _width-1){
 		iter2++;
 		_step++;
-	}else{
+	}else if(_line < _height-1){
 		iter1++;
 		iter2 = iter1->begin();
 		_step = 0;
+	}
+	else {
+		iter2++;
 	}
 	return *this;	
 }
