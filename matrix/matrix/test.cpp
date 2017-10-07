@@ -21,12 +21,9 @@ int test::test(){
 	cout << "this is m" << endl;
 	m.print();
 
-	//randomMatrix r(3,4);
-	//r.print();
-	Matrix::iterator iter = m.begin();
-	for (; iter != m.end(); iter++) {
-		cout << *iter << " ";
-	}
+	randomMatrix r(3,4);
+	r.print();
+	
 
 	return 0;
 }

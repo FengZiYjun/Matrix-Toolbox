@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <algorithm>
+#include <random>
 #include "mymatrix.h"
 #include <stdlib.h>
 

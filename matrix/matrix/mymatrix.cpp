@@ -463,6 +463,7 @@ Matrix::iterator Matrix::iterator::operator++(){
 		iter1++;
 		iter2 = iter1->begin();
 		_step = 0;
+		_line++;
 	}
 	else {
 		iter2++;
