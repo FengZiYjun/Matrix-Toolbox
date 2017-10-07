@@ -1,5 +1,5 @@
 
-# CONSOLE APPLICATION : Matrix-Computation Project Overview
+# Matrix-Toolbox Project Overview
 
 ## Development Environment
  IDE: Microsoft Visual Studio 2017.
@@ -8,7 +8,7 @@
 1. Implement Matrix Class
  - inverse, determine
  - optimize matrix operations with iterator & parallelism
- - exceptions
+ - exceptions handling optimization
 
 2. Optimize Matrix I/O
   - file read/write
@@ -32,21 +32,27 @@
 
 ### Files
 - matrix.cpp
+  
   This is the entry of the application.
 
 - mymatrix.h
+  
   This is the definition of matrix class.
 
 - specialmatrix.h
+	
 	Some special matrices that inherite the base Matrix class.
 
 - matlab.h
+  
   This is the definition of matlab class.
 
 - exception.h 
+  
   This is the definition of Matrix related exception classes.
 
 - test.cpp
+	
 	This is the test file.
 
 
