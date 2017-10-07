@@ -50,8 +50,8 @@ int Matrix::size(int x)const{
 	}else if(x==1){
 		return _col;
 	}else{
-		// invalid param excep
-		throw 20;
+		
+		throw new invalidParamExcep("in Matrix::size()");
 	}
 }
 
@@ -70,8 +70,7 @@ double Matrix::get(int r, int c)const{
 	if(0 <= r && r < _row && 0 <= c && c < _col){
 		return _mat[r][c];
 	}else{
-		// out of range
-		throw 20;
+		throw new outOfRangeExcep("in Matrix::get()");
 	}
 	
 }
@@ -107,7 +106,7 @@ std::vector<std::vector<double>> Matrix::toVector()
 void  Matrix::appendRow(const vector<double>& vec){
 	if(vec.size() != _col){
 		// dimension dismatch excep
-		throw 20;
+		throw new dimenDismatchExcep("in Matrix::appendRow()");
 	}else{
 		_row++;
 		_mat.push_back(vector<double>(vec.begin(), vec.end()));
@@ -119,7 +118,7 @@ void  Matrix::appendRow(const vector<double>& vec){
 void Matrix::appendCol(const vector<double>& vec){
 	if (vec.size() != _row) {
 		// dimension dismatch excep
-		throw 20;
+		throw new dimenDismatchExcep("in Matrix::appendCol()");
 	} else {
 		_col++;
 		for (int i = 0; i < _row; i++) {
@@ -213,7 +212,7 @@ Matrix Matrix::operator*(const Matrix& m){
 	using namespace concurrency;
 	if (_col != m._row) {
 		// dimension dismatch excep
-		throw 20;
+		throw new dimenDismatchExcep("in Matrix::operator*(Matrix)");
 	}
 	Matrix ret(_row, m._col);
 	parallel_for(0, _row, [&](int i) {
@@ -282,7 +281,7 @@ Matrix Matrix::getRow(int row_index){
 	// range check
 	if (row_index >= _row || row_index < 0 ) {
 		// out of range
-		throw 20;
+		throw new outOfRangeExcep("in Matrix::getRow()");
 	}
 	return Matrix(_mat[row_index]);
 }
@@ -349,7 +348,7 @@ Matrix Matrix::sum(int sign){
 	using namespace concurrency;
 	if (sign != 0 && sign != 1) {
 		// invalid param excep
-		throw 20;
+		throw new invalidParamExcep("in Matrix::sum()");
 	}
 	Matrix ret;
 	if (sign == 0) {
@@ -386,7 +385,7 @@ Matrix Matrix::product(int sign){
 	using namespace concurrency;
 	if (sign != 0 && sign != 1) {
 		// invalid param excep
-		throw 20;
+		throw new invalidParamExcep("in Matrix::product()");
 	}
 	Matrix ret;
 	if (sign == 0) {
