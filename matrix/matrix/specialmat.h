@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <random>
 #include "mymatrix.h"
-#include <stdlib.h>
 
 class diagMatrix: public Matrix {
 public:

@@ -6,10 +6,9 @@
 
 ## Development Schedule
 1. Implement Matrix Class
- 1.1 matrix transpose, spliting, etc
- 1.2 reverse, determine
- 1.3 optimize matrix operations with iterator & parallelism
- 1.4 exceptions
+ - inverse, determine
+ - optimize matrix operations with iterator & parallelism
+ - exceptions
 
 2. Optimize Matrix I/O
   - file read/write
@@ -50,3 +49,4 @@
 Supplimentary Materials:
 1. About user-defined iterator. See https://stackoverflow.com/questions/8054273/how-to-implement-an-stl-style-iterator-and-avoid-common-pitfalls.
 2. About disable "D_SCL_SECURE_NO_WARNING". See https://stackoverflow.com/a/25046975/7110228.
+3. C++11 random number generator. See https://stackoverflow.com/a/19666713/7110228.

@@ -50,6 +50,7 @@ int Matrix::size(int x)const{
 	}else if(x==1){
 		return _col;
 	}else{
+		// invalid param excep
 		throw 20;
 	}
 }
@@ -69,6 +70,7 @@ double Matrix::get(int r, int c)const{
 	if(0 <= r && r < _row && 0 <= c && c < _col){
 		return _mat[r][c];
 	}else{
+		// out of range
 		throw 20;
 	}
 	
@@ -104,6 +106,7 @@ std::vector<std::vector<double>> Matrix::toVector()
 
 void  Matrix::appendRow(const vector<double>& vec){
 	if(vec.size() != _col){
+		// dimension dismatch excep
 		throw 20;
 	}else{
 		_row++;
@@ -115,6 +118,7 @@ void  Matrix::appendRow(const vector<double>& vec){
 
 void Matrix::appendCol(const vector<double>& vec){
 	if (vec.size() != _row) {
+		// dimension dismatch excep
 		throw 20;
 	} else {
 		_col++;
@@ -208,6 +212,7 @@ Matrix::Matrix(int r, int c, double d):_row(r), _col(c){
 Matrix Matrix::operator*(const Matrix& m){
 	using namespace concurrency;
 	if (_col != m._row) {
+		// dimension dismatch excep
 		throw 20;
 	}
 	Matrix ret(_row, m._col);
@@ -276,6 +281,7 @@ double Matrix::trace()
 Matrix Matrix::getRow(int row_index){
 	// range check
 	if (row_index >= _row || row_index < 0 ) {
+		// out of range
 		throw 20;
 	}
 	return Matrix(_mat[row_index]);
@@ -342,6 +348,7 @@ Matrix Matrix::inverse(){
 Matrix Matrix::sum(int sign){
 	using namespace concurrency;
 	if (sign != 0 && sign != 1) {
+		// invalid param excep
 		throw 20;
 	}
 	Matrix ret;
@@ -378,6 +385,7 @@ double Matrix::sum(){
 Matrix Matrix::product(int sign){
 	using namespace concurrency;
 	if (sign != 0 && sign != 1) {
+		// invalid param excep
 		throw 20;
 	}
 	Matrix ret;
