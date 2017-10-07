@@ -13,7 +13,7 @@
 #include <functional>
 #include <istream>
 #include <ppl.h>
-
+#include "exception.h"
 
 class Matrix
 {

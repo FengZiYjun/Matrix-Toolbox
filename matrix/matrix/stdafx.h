@@ -17,3 +17,4 @@
 #include "test.h"
 #include "matlab.h"
 #include "specialmat.h"
+#include "exception.h"

@@ -1,33 +1,33 @@
 #pragma once
 #include <exception>
 #include <string>
+#include "stdafx.h"
 
-class outOfRangeExcep : public std::exception {
+class MatrixException :public std::exception {
+public:
+	MatrixException();
+	MatrixException(const std::string&);
+	const std::string& getMessage();
+protected:
+	std::string message;
+};
+
+
+class outOfRangeExcep : public MatrixException {
 public:
 	outOfRangeExcep();
 	outOfRangeExcep(const std::string&);
-
-	virtual const char* what() const throw() {
-		return "Matrix access out of range.";
-	}
 };
 
-class dimenDismatchExcep :public std::exception {
+class dimenDismatchExcep :public MatrixException {
 public:
 	dimenDismatchExcep();
 	dimenDismatchExcep(const std::string&);
-
-	virtual const char* what() const throw() {
-		return "Matrix dimensions dismatch.";
-	}
+	void setMessage(int, int, int, int);
 };
 
-class invalidParamExcep :public std::exception {
+class invalidParamExcep :public MatrixException {
 public:
 	invalidParamExcep();
 	invalidParamExcep(const std::string&);
-
-	virtual const char* what() const throw() {
-		return "Invalid parameters.";
-	}
 };
