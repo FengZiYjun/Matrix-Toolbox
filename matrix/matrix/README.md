@@ -6,18 +6,18 @@
 
 ## Development Schedule
 1. Implement Matrix Class
- - inverse, determine
- - optimize matrix operations with iterator & parallelism
- - exceptions handling optimization
+ - inverse, determine (waiting, but not urgent)
+ - optimize matrix operations with iterator & parallelism (not urgent)
+ - exceptions handling optimization (not urgent)
 
 2. Optimize Matrix I/O
-  - file read/write
+  - file read/write (waiting, urgent)
 
 3. The second class "matlab" provides methods for 
-  - generating special matrices: diagonal, unit
-  - more element-wise arithmetic operations
-  - operations associated with more than two matrices (SVD, eigendecomposition)
-  - statistics methods: mean, variance, covariance, etc.
+  - generating special matrices: diagonal, unit (done)
+  - more element-wise arithmetic operations (waiting)
+  - operations associated with more than two matrices (SVD, eigendecomposition) (waiting, not urgent)
+  - statistics methods: mean, variance, covariance, etc. (not urgent)
 
 4. The third class "ml" encapsulates machine learning architecture
   - prepocessing 
