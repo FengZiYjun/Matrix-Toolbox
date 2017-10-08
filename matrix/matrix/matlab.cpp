@@ -127,6 +127,49 @@ Matrix Matlab::pseudoInverse(const Matrix &)
 	return Matrix();
 }
 
+Matrix Matlab::read(const char* str)
+{
+	ifstream file;
+	try {
+		file.open(str);
+	}
+	catch(istream::failure e){
+		std::cerr << "Exception opening file\n";
+		throw new invalidParamExcep("file path error.");
+	}
+	string row;
+	vector<double> vec;
+	Matrix ret;
+
+	while (getline(file, row)) {
+		stringstream linestream(row);
+		string value;
+		double d;
+		try{
+			while (getline(linestream, value, ',')) {
+				d = std::stod(value);
+				vec.push_back(d);
+			}
+		}
+		catch (std::exception e) {
+			throw new MatrixException("failed to convert string to double.");
+		}
+		if (ret.size(0) == 0) {
+		// first input to matrix
+			ret = Matrix(vec);
+		}
+		else {
+			ret.appendRow(vec);
+		}
+		vec.clear();
+	}
+	return ret;
+}
+
+void Matlab::write(const Matrix &)
+{
+}
+
 
 
 Matrix Matlab::max(int)

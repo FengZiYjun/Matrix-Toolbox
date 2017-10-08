@@ -2,6 +2,10 @@
 #include "mymatrix.h"
 #include <vector>
 #include <tuple>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
 
 namespace Matlab{
 
@@ -49,4 +53,10 @@ namespace Matlab{
 	std::tuple<Matrix> eigenDecompose(const Matrix&);
 	std::tuple<Matrix> SVD(const Matrix&);
 	Matrix pseudoInverse(const Matrix&);
+
+	/*
+		File I/O
+	*/
+	Matrix read(const char*);
+	void write(const Matrix&);
 }

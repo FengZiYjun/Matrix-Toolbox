@@ -10,6 +10,7 @@
 using namespace std;
 
 int test::test(){
+	/*
 	cout<<"testing constructor "<<endl;
 
 	double arr[] = {1., 2., 3., 4., 5., 6., 7., 8.,9.,0.};
@@ -20,10 +21,10 @@ int test::test(){
 	m.appendRow(vector<double>(arr + 6, arr + 9));
 	cout << "this is m" << endl;
 	m.print();
+	*/
 
-	randomMatrix r(3,4);
-	r.print();
-	
+	Matrix m = Matlab::read("D:\\Courses\\DeepLearning&NerualNetwork\\matrix\\matrix\\matrix\\test\\data.csv");
+
 
 	return 0;
 }
