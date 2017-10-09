@@ -198,6 +198,16 @@ Matrix::iterator& Matrix::end(){
 	return _end;
 }
 
+const Matrix::iterator & Matrix::begin() const
+{
+	return _begin;
+}
+
+const Matrix::iterator & Matrix::end() const
+{
+	return _end;
+}
+
 Matrix::Matrix(int r, int c, double d):_row(r), _col(c){
 	_mat.resize(_row);
 	for (int i = 0; i<_row; i++) {

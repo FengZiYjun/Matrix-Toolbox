@@ -164,8 +164,8 @@ public:
 	
 	iterator& begin();
 	iterator& end();
-
-	//typedef const iterator& const_iterator;
+	const iterator& begin()const;
+	const iterator& end()const;
 
 protected:
 	Matrix(int, int, double);

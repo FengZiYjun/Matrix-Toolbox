@@ -22,7 +22,12 @@ class ml::ligisticClassifier {
 };
 
 class ml::linearClassifier {
-
+public:
+	linearClassifier();
+	void train(const Matrix&);
+	Matrix predict(const Matrix&);
+private:
+	Matrix weights;
 };
 
 class ml::neuralNetwork {

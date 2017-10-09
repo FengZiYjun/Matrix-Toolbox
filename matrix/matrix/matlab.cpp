@@ -7,8 +7,10 @@
 using namespace std;
 
 
-Matrix Matlab::abs(const Matrix &)
+Matrix Matlab::abs(const Matrix & m)
 {
+	Matrix ret(m.size(0), m.size(1));
+	transform(m.begin(), m.end(), ret.begin(), abs);
 	return Matrix();
 }
 

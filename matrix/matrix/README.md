@@ -8,10 +8,10 @@
 1. Implement Matrix Class
  - inverse, determine (waiting, but not urgent)
  - optimize matrix operations with iterator & parallelism (not urgent)
- - exceptions handling optimization (not urgent)
+ - exceptions handling optimization (partially done)
 
 2. Optimize Matrix I/O
-  - file read/write (waiting, urgent)
+  - file read/write (read done, write not)
 
 3. The second class "matlab" provides methods for 
   - generating special matrices: diagonal, unit (done)
