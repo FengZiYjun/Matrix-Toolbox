@@ -17,9 +17,14 @@ Matrix Matlab::abs(const Matrix & m)
 	return ret;
 }
 
-Matrix Matlab::log(const Matrix &)
+Matrix Matlab::log(const Matrix & m)
 {
-	return Matrix();
+	if (!Matlab::isPositive(m)) {
+		throw new invalidParamExcep("non-positive value for log");
+	}
+	Matrix ret(m.size(0), m.size(1));
+	transform(m.begin(), m.end(), ret.begin(), std::logf);
+	return ret;
 }
 
 Matrix Matlab::exp(const Matrix &)
@@ -55,6 +60,14 @@ Matrix Matlab::plus(const Matrix &, const Matrix &)
 Matrix Matlab::minus(const Matrix &, const Matrix &)
 {
 	return Matrix();
+}
+
+bool Matlab::isPositive(const Matrix & m)
+{
+	Matrix::const_iterator iter = find_if_not(m.begin(), m.end(), [&](double d) {
+		return d > 0;
+	});
+	return (iter == m.end());
 }
 
 double Matlab::mean()

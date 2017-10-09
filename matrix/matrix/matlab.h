@@ -23,6 +23,7 @@ namespace Matlab{
 	Matrix plus(const Matrix&, const Matrix&);
 	Matrix minus(const Matrix&, const Matrix&);
 	Matrix divide(const Matrix&, const Matrix&);
+	bool isPositive(const Matrix&);
 
 	/*
 		Statistic Operations

@@ -29,8 +29,9 @@ int test::test(){
 	q.appendRow(vector<double>(ar+3, ar+6));
 	q.print();
 
-	Matrix r = Matlab::abs(q);
+	Matrix r = Matlab::log(Matlab::abs(q));
 	r.print();
+	
 
 	return 0;
 }

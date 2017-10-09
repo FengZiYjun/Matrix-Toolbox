@@ -162,10 +162,12 @@ public:
 		int _line;
 	};
 	
+	typedef const iterator& const_iterator;
+
 	iterator& begin();
 	iterator& end();
-	const iterator& begin()const;
-	const iterator& end()const;
+	const_iterator begin()const;
+	const_iterator end()const;
 
 protected:
 	Matrix(int, int, double);
