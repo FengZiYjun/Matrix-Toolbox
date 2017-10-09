@@ -1,6 +1,7 @@
 #include "matlab.h"
 #include "mymatrix.h"
 #include "stdafx.h"
+#include <cmath>
 // "stdafx.h" is required by VS application project.
 // If you deploy the codes in other places, drop it out.
 
@@ -10,8 +11,10 @@ using namespace std;
 Matrix Matlab::abs(const Matrix & m)
 {
 	Matrix ret(m.size(0), m.size(1));
-	transform(m.begin(), m.end(), ret.begin(), abs);
-	return Matrix();
+	transform(m.begin(), m.end(), ret.begin(), [&](double d) {
+		return std::abs(d);
+	});
+	return ret;
 }
 
 Matrix Matlab::log(const Matrix &)

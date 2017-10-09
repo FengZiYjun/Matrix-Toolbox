@@ -23,8 +23,14 @@ int test::test(){
 	m.print();
 	*/
 
-	Matrix m = Matlab::read("D:\\Courses\\DeepLearning&NerualNetwork\\matrix\\matrix\\matrix\\test\\data.csv");
+	//Matrix m = Matlab::read("D:\\Courses\\DeepLearning&NerualNetwork\\matrix\\matrix\\matrix\\test\\data.csv");
+	double ar[] = {-1.2, -3.2, 2.5, 4.8, -0.1, -4.2, 2.1, 2, 5, 7, };
+	Matrix q(vector<double>(ar, ar + 3));
+	q.appendRow(vector<double>(ar+3, ar+6));
+	q.print();
 
+	Matrix r = Matlab::abs(q);
+	r.print();
 
 	return 0;
 }
