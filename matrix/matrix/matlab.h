@@ -62,5 +62,5 @@ namespace Matlab{
 		File I/O
 	*/
 	Matrix read(const char*);
-	void write(const Matrix&);
+	void write(const Matrix&, const char*);
 }

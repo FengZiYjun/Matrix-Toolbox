@@ -206,11 +206,27 @@ Matrix Matlab::read(const char* str)
 		}
 		vec.clear();
 	}
+	file.close();
 	return ret;
 }
 
-void Matlab::write(const Matrix &)
+void Matlab::write(const Matrix & m, const char* path)
 {
+	ofstream file;
+	try {
+		file.open(path);
+	}
+	catch (ostream::failure e) {
+		std::cerr << "Exception opening file\n";
+		throw new invalidParamExcep("file path error.");
+	}
+	for (int i = 0; i < m.size(0); i++) {
+		for (int j = 0; j < m.size(1); j++) {
+			file << m.get(i, j) << ',';
+		}
+		file << '\n';
+	}
+	file.close();
 }
 
 

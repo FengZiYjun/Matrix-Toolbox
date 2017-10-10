@@ -29,12 +29,7 @@ int test::test(){
 	q.appendRow(vector<double>(ar+3, ar+6));
 	q.print();
 
-	Matrix r = Matlab::square(q);
-	r.print();
-	r = Matlab::power(q, 3);
-	r.print();
-	r = Matlab::sqrt(q);
-	r.print();
+	Matlab::write(q, "D:\\Courses\\DeepLearning&NerualNetwork\\matrix\\matrix\\matrix\\test\\write.csv");
 	
 
 	return 0;
