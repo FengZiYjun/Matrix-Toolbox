@@ -30,21 +30,21 @@ namespace Matlab{
 	/*
 		Statistic Operations
 	*/
-	Matrix max(int);
-	double max();
-	Matrix min(int);
-	double min();
-	Matrix median(int);
-	double median();
-	double mean();
-	Matrix mean(int);
-	double var();
-	Matrix var(int);
+	Matrix max(const Matrix&, int);
+	double max(const Matrix&);
+	Matrix min(const Matrix&, int);
+	double min(const Matrix&);
+	Matrix median(const Matrix&, int);
+	double median(const Matrix&);
+	double mean(const Matrix&);
+	Matrix mean(const Matrix&, int);
+	double var(const Matrix&);
+	Matrix var(const Matrix&, int);
 	// standard error
-	double stderror();
-	Matrix stderror(int);
+	double stderror(const Matrix&);
+	Matrix stderror(const Matrix&, int);
 	// covariance matrix
-	Matrix covar();
+	Matrix covar(const Matrix&);
 	
 	/*
 		Linear Algebra 

@@ -95,45 +95,71 @@ bool Matlab::isPositive(const Matrix & m)
 	return (iter == m.end());
 }
 
-double Matlab::mean()
+Matrix Matlab::max(const Matrix &, int)
+{
+	return Matrix();
+}
+
+double Matlab::max(const Matrix &)
 {
 	return 0.0;
 }
 
-Matrix Matlab::mean(int)
+Matrix Matlab::min(const Matrix &, int)
 {
 	return Matrix();
 }
 
-
-
-double Matlab::var()
+double Matlab::min(const Matrix &)
 {
 	return 0.0;
 }
 
-Matrix Matlab::var(int)
+Matrix Matlab::median(const Matrix &, int)
 {
 	return Matrix();
 }
 
-
-
-double Matlab::stderror()
+double Matlab::median(const Matrix &)
 {
 	return 0.0;
 }
 
-Matrix Matlab::stderror(int)
+double Matlab::mean(const Matrix &)
+{
+	return 0.0;
+}
+
+Matrix Matlab::mean(const Matrix &, int)
 {
 	return Matrix();
 }
 
+double Matlab::var(const Matrix &)
+{
+	return 0.0;
+}
 
-Matrix Matlab::covar()
+Matrix Matlab::var(const Matrix &, int)
 {
 	return Matrix();
 }
+
+double Matlab::stderror(const Matrix &)
+{
+	return 0.0;
+}
+
+Matrix Matlab::stderror(const Matrix &, int)
+{
+	return Matrix();
+}
+
+Matrix Matlab::covar(const Matrix &)
+{
+	return Matrix();
+}
+
 
 double Matlab::norm(const Matrix &, int)
 {
@@ -230,36 +256,3 @@ void Matlab::write(const Matrix & m, const char* path)
 }
 
 
-
-Matrix Matlab::max(int)
-{
-	return Matrix();
-}
-
-double Matlab::max()
-{
-	return 0.0;
-}
-
-Matrix Matlab::min(int)
-{
-	return Matrix();
-}
-
-
-double Matlab::min()
-{
-	return 0.0;
-}
-
-Matrix Matlab::median(int)
-{
-	return Matrix();
-}
-
-
-
-double Matlab::median()
-{
-	return 0.0;
-}
