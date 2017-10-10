@@ -29,7 +29,11 @@ int test::test(){
 	q.appendRow(vector<double>(ar+3, ar+6));
 	q.print();
 
-	Matrix r = Matlab::exp(Matlab::abs(q));
+	Matrix r = Matlab::square(q);
+	r.print();
+	r = Matlab::power(q, 3);
+	r.print();
+	r = Matlab::sqrt(q);
 	r.print();
 	
 

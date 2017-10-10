@@ -7,6 +7,12 @@
 
 using namespace std;
 
+/*
+	Actually we want to design element-wise operations
+	with parallelism but our Matrix::iterator only is 
+	designed for tranversal. If we want to apply parallelism
+	our itrerator has to be redesigned.
+*/
 
 Matrix Matlab::abs(const Matrix & m)
 {
@@ -36,19 +42,34 @@ Matrix Matlab::exp(const Matrix & m)
 	return ret;
 }
 
-Matrix Matlab::square(const Matrix &)
+Matrix Matlab::square(const Matrix & m)
 {
-	return Matrix();
+	Matrix ret(m.size(0), m.size(1));
+	transform(m.begin(), m.end(), ret.begin(), [&](double d) {
+		return std::pow(d, 2);
+	});
+	return ret;
 }
 
-Matrix Matlab::power(const Matrix &, double)
+Matrix Matlab::power(const Matrix & m, double dd)
 {
-	return Matrix();
+	Matrix ret(m.size(0), m.size(1));
+	transform(m.begin(), m.end(), ret.begin(), [&](double d) {
+		return std::pow(d, dd);
+	});
+	return ret;
 }
 
-Matrix Matlab::sqrt(const Matrix &)
+Matrix Matlab::sqrt(const Matrix & m)
 {
-	return Matrix();
+	if (!Matlab::isPositive(m)) {
+		throw new invalidParamExcep("non-positive value for sqrt");
+	}
+	Matrix ret(m.size(0), m.size(1));
+	transform(m.begin(), m.end(), ret.begin(), [&](double d) {
+		return std::sqrt(d);
+	});
+	return ret;
 }
 
 Matrix Matlab::multiply(const Matrix &, const Matrix &)

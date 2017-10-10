@@ -7,6 +7,8 @@
 #include <sstream>
 #include <algorithm>
 #include <cmath>
+#include <functional>
+#include <ppl.h>
 
 namespace Matlab{
 
