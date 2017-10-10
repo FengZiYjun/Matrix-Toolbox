@@ -56,10 +56,11 @@ int Matrix::size(int x)const{
 }
 
 void Matrix::print(){
-	// Original printing
+	// next line information is needed to print matrix 
+	// but iterator does not provide such information.
 	for(int i=0;i<_row;i++){
 		for(int j=0;j<_col;j++){
-			printf("%5.2f\t", _mat[i][j]);
+			printf("%6.3f\t", _mat[i][j]);
 		}
 		printf("\n");
 	}
@@ -190,11 +191,11 @@ Matrix operator*(const double& d, Matrix& m){
 }
 
 
-Matrix::iterator& Matrix::begin(){
+Matrix::iterator Matrix::begin(){
 	return _begin;
 }
 
-Matrix::iterator& Matrix::end(){
+Matrix::iterator Matrix::end(){
 	return _end;
 }
 

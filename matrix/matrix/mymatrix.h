@@ -164,8 +164,8 @@ public:
 	
 	typedef const iterator& const_iterator;
 
-	iterator& begin();
-	iterator& end();
+	iterator begin();
+	iterator end();
 	const_iterator begin()const;
 	const_iterator end()const;
 
