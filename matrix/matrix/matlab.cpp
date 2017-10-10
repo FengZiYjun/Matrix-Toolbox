@@ -27,9 +27,13 @@ Matrix Matlab::log(const Matrix & m)
 	return ret;
 }
 
-Matrix Matlab::exp(const Matrix &)
+Matrix Matlab::exp(const Matrix & m)
 {
-	return Matrix();
+	Matrix ret(m.size(0), m.size(1));
+	transform(m.begin(), m.end(), ret.begin(), [&](double d) {
+		return std::exp(d);
+	});
+	return ret;
 }
 
 Matrix Matlab::square(const Matrix &)

@@ -170,7 +170,9 @@ public:
 	const_iterator end()const;
 
 protected:
+	// protected class for advanced construction
 	Matrix(int, int, double);
+	//Matrix(Matrix::const_iterator, Matrix::const_iterator);
 
 private:
 	int _row;

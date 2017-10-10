@@ -217,6 +217,13 @@ Matrix::Matrix(int r, int c, double d):_row(r), _col(c){
 	_end = Matrix::iterator(_mat.end() - 1, (_mat.end() - 1)->end(), _mat[0].size(), _mat.size());
 }
 
+/*
+Matrix::Matrix(Matrix::const_iterator begin, Matrix::const_iterator end)
+{
+	
+}
+*/
+
 
 Matrix Matrix::operator*(const Matrix& m){
 	using namespace concurrency;

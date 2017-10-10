@@ -29,7 +29,7 @@ int test::test(){
 	q.appendRow(vector<double>(ar+3, ar+6));
 	q.print();
 
-	Matrix r = Matlab::log(Matlab::abs(q));
+	Matrix r = Matlab::exp(Matlab::abs(q));
 	r.print();
 	
 
