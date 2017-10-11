@@ -23,6 +23,7 @@ class dimenDismatchExcep :public MatrixException {
 public:
 	dimenDismatchExcep();
 	dimenDismatchExcep(const std::string&);
+	dimenDismatchExcep(int, int, int, int);
 	void setMessage(int, int, int, int);
 };
 

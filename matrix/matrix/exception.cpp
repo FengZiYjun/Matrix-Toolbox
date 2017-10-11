@@ -30,6 +30,11 @@ dimenDismatchExcep::dimenDismatchExcep()
 dimenDismatchExcep::dimenDismatchExcep(const std::string & str) :MatrixException(str) {
 }
 
+dimenDismatchExcep::dimenDismatchExcep(int a, int b, int c, int d)
+{
+	setMessage(a, b, c, d);
+}
+
 void dimenDismatchExcep::setMessage(int r1, int c1, int r2, int c2)
 {
 	message = message + "\n" + 

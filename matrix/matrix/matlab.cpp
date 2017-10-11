@@ -72,9 +72,14 @@ Matrix Matlab::sqrt(const Matrix & m)
 	return ret;
 }
 
-Matrix Matlab::multiply(const Matrix &, const Matrix &)
+Matrix Matlab::multiply(const Matrix & left, const Matrix & right)
 {
-	return Matrix();
+	if ((left.size(0) != right.size(0)) || (left.size(1) != right.size(1))) {
+		throw new dimenDismatchExcep(left.size(0), left.size(1), right.size(0), right.size(1));
+	}
+	Matrix ret(left.size(0), left.size(1));
+	transform(left.begin(), left.end(), right.begin(), ret.begin(), multiplies<double>());
+	return ret;
 }
 
 Matrix Matlab::plus(const Matrix &, const Matrix &)

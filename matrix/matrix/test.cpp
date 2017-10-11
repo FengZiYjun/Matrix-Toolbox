@@ -29,8 +29,10 @@ int test::test(){
 	q.appendRow(vector<double>(ar+3, ar+6));
 	q.print();
 
-	Matlab::write(q, "D:\\Courses\\DeepLearning&NerualNetwork\\matrix\\matrix\\matrix\\test\\write.csv");
-	
+	Matrix p = Matlab::abs(q);
+	p.print();
+	Matrix r = Matlab::multiply(p, q);
+	r.print();
 
 	return 0;
 }
