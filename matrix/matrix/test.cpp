@@ -31,7 +31,9 @@ int test::test(){
 
 	Matrix p = Matlab::abs(q);
 	p.print();
-	Matrix r = Matlab::multiply(p, q);
+	Matrix r = Matlab::plus(p, q);
+	r.print();
+	r = Matlab::minus(p, q);
 	r.print();
 
 	return 0;
