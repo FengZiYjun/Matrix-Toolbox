@@ -29,12 +29,9 @@ int test::test(){
 	q.appendRow(vector<double>(ar+3, ar+6));
 	q.print();
 
-	Matrix p = Matlab::abs(q);
-	p.print();
-	Matrix r = Matlab::plus(p, q);
-	r.print();
-	r = Matlab::minus(p, q);
-	r.print();
+	Matrix r = Matlab::max(q, 0);
+	Matrix p = Matlab::max(q, 1);
+	r.print(); p.print();
 
 	return 0;
 }

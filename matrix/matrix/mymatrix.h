@@ -101,6 +101,10 @@ public:
 	Matrix product(int);
 	double product();
 
+	Matrix max(int)const;
+	Matrix min(int)const;
+
+
 	//	transpose to make a new matrix
 	Matrix transpose();
 

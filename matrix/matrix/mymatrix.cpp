@@ -287,7 +287,7 @@ double Matrix::determine(){
 
 double Matrix::trace()
 {
-	int diag = min<int>(_row, _col);
+	int diag = std::min<int>(_row, _col);
 	double trace = 1.0;
 	for (int i = 0; i < diag; i++) {
 		trace *= _mat[i][i];
@@ -433,6 +433,38 @@ double Matrix::product(){
 		ret *= accumulate(vec.begin(), vec.end(), 1.0, multiplies<double>());
 	});
 	return ret;
+}
+
+Matrix Matrix::max(int sign)const
+{
+	if (sign != 0 && sign != 1) {
+		throw new invalidParamExcep("invalid param in Matrix::max");
+	}
+	Matrix ret;
+	using namespace concurrency;
+	if (sign == 1) {
+		ret = Matrix(_row, 1);
+		parallel_for(0, _row, [&](int i) {
+			double d = *(max_element(_mat[i].begin(), _mat[i].end()));
+			ret.set(i, 0, d);
+		});
+	}
+	else {
+		ret = Matrix(1, _col);
+		parallel_for(0, _col, [&](int i) {
+			double d = _mat[0][i];
+			for (int t = 0; t < _row; t++) {
+				d = (_mat[t][i] > d)? _mat[t][i] : d;
+			}
+			ret.set(0, i, d);
+		});
+	}
+	return ret;
+}
+
+Matrix Matrix::min(int)const
+{
+	return Matrix();
 }
 
 

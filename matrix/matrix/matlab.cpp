@@ -11,7 +11,8 @@ using namespace std;
 	Actually we want to design element-wise operations
 	with parallelism but our Matrix::iterator only is 
 	designed for tranversal. If we want to apply parallelism
-	our itrerator has to be redesigned.
+	our itrerator has to be redesigned or make it member function
+	of the Matrix class.
 */
 
 Matrix Matlab::abs(const Matrix & m)
@@ -110,9 +111,9 @@ bool Matlab::isPositive(const Matrix & m)
 	return (iter == m.end());
 }
 
-Matrix Matlab::max(const Matrix &, int)
+Matrix Matlab::max(const Matrix & m, int sign)
 {
-	return Matrix();
+	return m.max(sign);
 }
 
 double Matlab::max(const Matrix &)
