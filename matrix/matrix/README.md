@@ -5,24 +5,26 @@
  IDE: Microsoft Visual Studio 2017.
 
 ## Development Schedule
-1. Implement Matrix Class
- - inverse, determine (waiting, but not urgent)
- - optimize matrix operations with iterator & parallelism (not urgent)
- - exceptions handling optimization (partially done)
+1. Implement Matrix Class (mostly done)
+ - inverse, determine (waiting)
+ - optimize matrix operations with iterator & parallelism (needs optimization)
+ - exceptions handling optimization (needs optimization)
 
-2. Optimize Matrix I/O
-  - file read/write (read done, write not)
+2. Optimize Matrix I/O (done)
+  - file read/write (needs optimization)
 
 3. The second class "matlab" provides methods for 
-  - generating special matrices: diagonal, unit (done)
-  - more element-wise arithmetic operations (waiting)
-  - operations associated with more than two matrices (SVD, eigendecomposition) (waiting, not urgent)
-  - statistics methods: mean, variance, covariance, etc. (not urgent)
+  - more element-wise arithmetic operations  (needs optimization)
+  - operations associated with more than two matrices (SVD, eigendecomposition) (waiting)
+  - statistics methods: mean, variance, covariance, etc. (undergoing)
 
-4. The third class "ml" encapsulates machine learning architecture
+4. The third class "ml" encapsulates machine learning architecture (waiting)
   - prepocessing 
   - linear/logistic regression
   - shadow neural network
+
+5. Documentation 
+
 
 ### Attention
 1. The Matrix class index from ZERO, not one.
@@ -33,28 +35,35 @@
 ### Files
 - matrix.cpp
   
-  This is the entry of the application.
+  The entry of the application.
 
 - mymatrix.h
   
-  This is the definition of matrix class.
+  The definition of matrix class.
 
-- specialmatrix.h
+- specialmat.h
 	
 	Some special matrices that inherite the base Matrix class.
 
 - matlab.h
   
-  This is the definition of matlab class.
+  The definition of matlab class.
 
 - exception.h 
   
-  This is the definition of Matrix related exception classes.
+  The definition of Matrix related exception classes.
+
+- ml.h
+
+	The definition of encapsulation of machine learning algorithm.
 
 - test.cpp
-	
-	This is the test file.
 
+	The test file.
+
+- stdafx.h targetver.h
+	
+	Additional file required by Visual Studio.
 
 
 
