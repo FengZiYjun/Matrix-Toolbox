@@ -131,7 +131,7 @@ double Matlab::min(const Matrix & m)
 	return *(std::min_element(m.begin(), m.end()));
 }
 
-Matrix Matlab::median(const Matrix &, int)
+Matrix Matlab::median(const Matrix & m, int sign)
 {
 	return Matrix();
 }

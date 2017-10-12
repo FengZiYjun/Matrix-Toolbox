@@ -101,9 +101,13 @@ public:
 	Matrix product(int);
 	double product();
 
+	// max/min element
 	Matrix max(int)const;
 	Matrix min(int)const;
 
+	// sorting the matrix by row or column
+	void sort(int);
+	
 
 	//	transpose to make a new matrix
 	Matrix transpose();

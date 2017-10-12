@@ -489,6 +489,22 @@ Matrix Matrix::min(int sign)const
 	return ret;
 }
 
+void Matrix::sort(int sign)
+{
+	if (sign != 0 && sign != 1) {
+		throw new invalidParamExcep("invalid param in Matrix::max");
+	}
+	using namespace concurrency;
+	if (sign == 1) {
+		parallel_for(0, _row, [&](int i) {
+			std::sort(_mat[i].begin(), _mat[i].end());
+		});
+	}
+	else {
+		// to do
+	}
+}
+
 
 // Definition of Public Member Functions of the sub-class - Matrix::iterator
 
