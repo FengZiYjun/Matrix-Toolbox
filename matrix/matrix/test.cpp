@@ -29,9 +29,7 @@ int test::test(){
 	q.appendRow(vector<double>(ar+3, ar+6));
 	q.print();
 
-	Matrix r = Matlab::max(q, 0);
-	Matrix p = Matlab::max(q, 1);
-	r.print(); p.print();
+	cout << Matlab::max(q);
 
 	return 0;
 }

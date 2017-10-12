@@ -116,9 +116,9 @@ Matrix Matlab::max(const Matrix & m, int sign)
 	return m.max(sign);
 }
 
-double Matlab::max(const Matrix &)
+double Matlab::max(const Matrix & m)
 {
-	return 0.0;
+	return *(std::max_element(m.begin(), m.end()));
 }
 
 Matrix Matlab::min(const Matrix &, int)
