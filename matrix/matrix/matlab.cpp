@@ -121,14 +121,14 @@ double Matlab::max(const Matrix & m)
 	return *(std::max_element(m.begin(), m.end()));
 }
 
-Matrix Matlab::min(const Matrix &, int)
+Matrix Matlab::min(const Matrix & m, int sign)
 {
-	return Matrix();
+	return m.min(sign);
 }
 
-double Matlab::min(const Matrix &)
+double Matlab::min(const Matrix & m)
 {
-	return 0.0;
+	return *(std::min_element(m.begin(), m.end()));
 }
 
 Matrix Matlab::median(const Matrix &, int)

@@ -462,9 +462,31 @@ Matrix Matrix::max(int sign)const
 	return ret;
 }
 
-Matrix Matrix::min(int)const
+Matrix Matrix::min(int sign)const
 {
-	return Matrix();
+	if (sign != 0 && sign != 1) {
+		throw new invalidParamExcep("invalid param in Matrix::max");
+	}
+	Matrix ret;
+	using namespace concurrency;
+	if (sign == 1) {
+		ret = Matrix(_row, 1);
+		parallel_for(0, _row, [&](int i) {
+			double d = *(min_element(_mat[i].begin(), _mat[i].end()));
+			ret.set(i, 0, d);
+		});
+	}
+	else {
+		ret = Matrix(1, _col);
+		parallel_for(0, _col, [&](int i) {
+			double d = _mat[0][i];
+			for (int t = 0; t < _row; t++) {
+				d = (_mat[t][i] < d) ? _mat[t][i] : d;
+			}
+			ret.set(0, i, d);
+		});
+	}
+	return ret;
 }
 
 

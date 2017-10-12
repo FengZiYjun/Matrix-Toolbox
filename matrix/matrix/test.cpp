@@ -29,7 +29,9 @@ int test::test(){
 	q.appendRow(vector<double>(ar+3, ar+6));
 	q.print();
 
-	cout << Matlab::max(q);
+	cout << Matlab::min(q)<<endl;
+	Matrix p = Matlab::min(q, 1);
+	p.print();
 
 	return 0;
 }
