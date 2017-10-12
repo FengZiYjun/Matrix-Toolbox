@@ -93,7 +93,7 @@ public:
 	std::vector<Matrix> vsplit();
 
 	// sum along rows or columns (0 or 1)
-	Matrix sum(int);
+	Matrix sum(int)const;
 	// sum up all elements
 	double sum();
 
@@ -143,6 +143,8 @@ public:
 	Matrix operator-(const Matrix&);
 	friend Matrix operator-(const double&, Matrix&);
 	
+	Matrix operator/(const Matrix&);
+	friend Matrix operator/(const double&, Matrix&);
 
 	// Assignment Operator
 	Matrix& operator=(const Matrix&);

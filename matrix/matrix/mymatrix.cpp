@@ -263,11 +263,21 @@ Matrix Matrix::operator-(const Matrix& m){
 	return ret;
 }
 
+Matrix Matrix::operator/(const Matrix &)
+{
+	return Matrix();
+}
+
 
 Matrix operator-(const double& d, Matrix& m){
 	Matrix ret(m._row, m._col);
 	transform(m.begin(), m.end(), ret.begin(), bind(minus<double>(), d, placeholders::_1));
 	return ret;
+}
+
+Matrix operator/(const double &, Matrix &)
+{
+	return Matrix();
 }
 
 Matrix Matrix::transpose(){
@@ -362,7 +372,7 @@ Matrix Matrix::inverse(){
 }
 
 
-Matrix Matrix::sum(int sign){
+Matrix Matrix::sum(int sign)const{
 	using namespace concurrency;
 	if (sign != 0 && sign != 1) {
 		// invalid param excep
