@@ -218,13 +218,6 @@ Matrix::Matrix(int r, int c, double d):_row(r), _col(c){
 	_end = Matrix::iterator(_mat.end() - 1, (_mat.end() - 1)->end(), _mat[0].size(), _mat.size());
 }
 
-/*
-Matrix::Matrix(Matrix::const_iterator begin, Matrix::const_iterator end)
-{
-	
-}
-*/
-
 
 Matrix Matrix::operator*(const Matrix& m){
 	using namespace concurrency;
@@ -323,6 +316,31 @@ Matrix Matrix::getColumn(int col_index){
 		ret.set(i, 0, _mat[i][col_index]);
 	});
 	return ret;
+}
+
+void Matrix::setRow(int row_index, const Matrix & m)
+{
+	if (m.size(0) != 1 || m.size(1) != _col) {
+		throw new dimenDismatchExcep(_row, _col, m.size(0), m.size(1));
+	}
+	if (row_index < 0 || row_index >= _row) {
+		throw new invalidParamExcep("invalid row index.");
+	}
+	copy(m.begin(), m.end(), _mat[row_index].begin());
+}
+
+void Matrix::setCol(int col_index, const Matrix & m)
+{
+	if (m.size(0) != _row || m.size(1) != 1) {
+		throw new dimenDismatchExcep(_row, _col, m.size(0), m.size(1));
+	}
+	if (col_index < 0 || col_index >= _col) {
+		throw new invalidParamExcep("invalid column index.");
+	}
+	using namespace concurrency;
+	parallel_for(0, _row, [&](int i) {
+		_mat[i][col_index] = m.get(i, 0);
+	});
 }
 
 vector<Matrix> Matrix::hsplit(const vector<int>& vec){

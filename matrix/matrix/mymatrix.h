@@ -76,6 +76,8 @@ public:
 	// row and column selecting 
 	Matrix getRow(int);
 	Matrix getColumn(int);
+	void setRow(int, const Matrix&);
+	void setCol(int, const Matrix&);
 
 	/*
 		Add a new row.

@@ -29,9 +29,10 @@ int test::test(){
 	q.appendRow(vector<double>(ar+3, ar+6));
 	q.print();
 
-	Matrix r = Matlab::mean(q, 0);
-	r.print();
-	cout << Matlab::mean(q);
+	double arr[] = {5.2, 6.2, 7.2, 8.2, 2.3, 4.3, 1.2};
+	Matrix c(vector<double>(arr, arr+3));
+	q.setRow(0, c);
+	q.print();
 
 	return 0;
 }
