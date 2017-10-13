@@ -530,7 +530,16 @@ void Matrix::sort(int sign)
 		});
 	}
 	else {
-		// to do
+		parallel_for(0, _col, [&](int i) {
+			vector<double> tmp;
+			parallel_for_each(_mat.begin(), _mat.end(), [&](const vector<double>& vec) {
+				tmp.push_back(vec[i]);
+			});
+			parallel_sort(tmp.begin(), tmp.end());
+			parallel_for(0, _row, [&](int t) {
+				_mat[t][i] = tmp[t];
+			});
+		});
 	}
 }
 

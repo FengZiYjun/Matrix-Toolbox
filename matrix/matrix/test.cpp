@@ -24,15 +24,19 @@ int test::test(){
 	*/
 
 	//Matrix m = Matlab::read("D:\\Courses\\DeepLearning&NerualNetwork\\matrix\\matrix\\matrix\\test\\data.csv");
-	double ar[] = {-1.2, -3.2, 2.5, 4.8, -0.1, -4.2, 2.1, 2, 5, 7, };
+	double ar[] = {-1.2, -3.2, 2.5, 4.8, -0.1, -4.2, 2.1, 2, 5, 7, 10.9, 11.2};
 	Matrix q(vector<double>(ar, ar + 3));
 	q.appendRow(vector<double>(ar+3, ar+6));
+	q.appendRow(vector<double>(ar + 6, ar + 9));
+	q.print();
+	cout << "sorting rows" << endl;
+	q.sort(0);
+	q.print();
+	cout << "sorting columns" << endl;
+	q.sort(1);
 	q.print();
 
-	double arr[] = {5.2, 6.2, 7.2, 8.2, 2.3, 4.3, 1.2};
-	Matrix c(vector<double>(arr, arr+3));
-	q.setRow(0, c);
-	q.print();
+	
 
 	return 0;
 }
