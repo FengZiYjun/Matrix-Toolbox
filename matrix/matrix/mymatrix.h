@@ -95,7 +95,7 @@ public:
 	// sum along rows or columns (0 or 1)
 	Matrix sum(int)const;
 	// sum up all elements
-	double sum();
+	double sum()const;
 
 	// Similar for product
 	Matrix product(int);

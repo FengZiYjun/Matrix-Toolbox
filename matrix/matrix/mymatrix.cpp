@@ -400,7 +400,7 @@ Matrix Matrix::sum(int sign)const{
 	return ret;
 }
 
-double Matrix::sum(){
+double Matrix::sum()const{
 	using namespace concurrency;
 	double ret = 0.0;
 	parallel_for_each(_mat.begin(), _mat.end(), [&](vector<double> vec) {

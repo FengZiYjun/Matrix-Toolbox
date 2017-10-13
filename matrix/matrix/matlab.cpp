@@ -142,16 +142,14 @@ double Matlab::median(const Matrix &)
 	return 0.0;
 }
 
-double Matlab::mean(const Matrix &)
+double Matlab::mean(const Matrix & m)
 {
-	return 0.0;
+	return m.sum()/(m.size(1)*m.size(0));
 }
 
 Matrix Matlab::mean(const Matrix & m, int sign)
 {
-	// to do
-	//return m.sum(sign)/m.size(sign);
-	return Matrix();
+	return m.sum(sign)/m.size(sign);
 }
 
 double Matlab::var(const Matrix &)

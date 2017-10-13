@@ -29,8 +29,9 @@ int test::test(){
 	q.appendRow(vector<double>(ar+3, ar+6));
 	q.print();
 
-	Matrix r = q / 2.0;
+	Matrix r = Matlab::mean(q, 0);
 	r.print();
+	cout << Matlab::mean(q);
 
 	return 0;
 }
