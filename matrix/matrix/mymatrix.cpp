@@ -263,9 +263,14 @@ Matrix Matrix::operator-(const Matrix& m){
 	return ret;
 }
 
-Matrix Matrix::operator/(const Matrix &)
+Matrix Matrix::operator/(double d)
 {
-	return Matrix();
+	if (d == 0) {
+		throw new invalidParamExcep("divided by zero.");
+	}
+	Matrix ret(_row, _col);
+	transform(begin(), end(), ret.begin(), bind(divides<double>(), placeholders::_1, d));
+	return ret;
 }
 
 
@@ -275,10 +280,6 @@ Matrix operator-(const double& d, Matrix& m){
 	return ret;
 }
 
-Matrix operator/(const double &, Matrix &)
-{
-	return Matrix();
-}
 
 Matrix Matrix::transpose(){
 	Matrix ret(_col, _row);

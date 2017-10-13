@@ -133,7 +133,7 @@ double Matlab::min(const Matrix & m)
 
 Matrix Matlab::median(const Matrix & m, int sign)
 {
-	// need sort function
+	// need sort function. to do
 	return Matrix();
 }
 
@@ -149,8 +149,9 @@ double Matlab::mean(const Matrix &)
 
 Matrix Matlab::mean(const Matrix & m, int sign)
 {
-	// need operator /
-	return m.sum(sign)/m.size(sign);
+	// to do
+	//return m.sum(sign)/m.size(sign);
+	return Matrix();
 }
 
 double Matlab::var(const Matrix &)

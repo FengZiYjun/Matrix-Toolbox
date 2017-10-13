@@ -143,8 +143,7 @@ public:
 	Matrix operator-(const Matrix&);
 	friend Matrix operator-(const double&, Matrix&);
 	
-	Matrix operator/(const Matrix&);
-	friend Matrix operator/(const double&, Matrix&);
+	Matrix operator/(double);
 
 	// Assignment Operator
 	Matrix& operator=(const Matrix&);
