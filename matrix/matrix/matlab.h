@@ -49,7 +49,6 @@ namespace Matlab{
 	/*
 		Linear Algebra 
 	*/
-	double norm(const Matrix&, int);
 	double norm1(const Matrix&);
 	double norm2(const Matrix&);
 	double FrobeniusNorm(const Matrix&);

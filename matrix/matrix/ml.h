@@ -28,6 +28,7 @@ public:
 	Matrix predict(const Matrix&);
 private:
 	Matrix weights;
+	Matrix bias;
 };
 
 class ml::neuralNetwork {

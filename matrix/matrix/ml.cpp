@@ -6,8 +6,9 @@ ml::linearClassifier::linearClassifier()
 {
 }
 
-void ml::linearClassifier::train(const Matrix &)
+void ml::linearClassifier::train(const Matrix & train_X)
 {
+
 }
 
 Matrix ml::linearClassifier::predict(const Matrix &)

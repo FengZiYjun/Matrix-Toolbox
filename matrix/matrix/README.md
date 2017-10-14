@@ -7,21 +7,21 @@
 ## Development Schedule
 1. Implement Matrix Class (mostly done)
  - inverse, determine (waiting)
- - optimize matrix operations with iterator & parallelism (needs optimization)
- - exceptions handling optimization (needs optimization)
-
-2. Optimize Matrix I/O (done)
-  - file read/write (needs optimization)
-
-3. The second class "matlab" provides methods for 
-  - more element-wise arithmetic operations  (needs optimization)
+ 
+2. The second class "matlab" provides methods for 
   - operations associated with more than two matrices (SVD, eigendecomposition) (waiting)
   - statistics methods: mean, variance, covariance, etc. (undergoing)
 
-4. The third class "ml" encapsulates machine learning architecture (waiting)
+3. The third class "ml" encapsulates machine learning architecture
   - prepocessing 
-  - linear/logistic regression
+  - linear/logistic regression (undergoing)
   - shadow neural network
+
+### Optimization items:
+- matrix operations with iterator & parallelism
+- exceptions handling optimization
+- file read/write
+- more element-wise arithmetic operations
 
 5. Documentation 
 

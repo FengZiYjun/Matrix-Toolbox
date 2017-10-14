@@ -196,11 +196,6 @@ Matrix Matlab::covar(const Matrix &)
 }
 
 
-double Matlab::norm(const Matrix &, int)
-{
-	return 0.0;
-}
-
 double Matlab::norm1(const Matrix &)
 {
 	return 0.0;
