@@ -543,6 +543,13 @@ void Matrix::sort(int sign)
 	}
 }
 
+Matrix Matrix::sort(int i) const
+{
+	Matrix ret(*this);
+	ret.sort(i);
+	return ret;
+}
+
 
 // Definition of Public Member Functions of the sub-class - Matrix::iterator
 

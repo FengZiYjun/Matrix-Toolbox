@@ -109,7 +109,7 @@ public:
 
 	// sorting the matrix by row or column
 	void sort(int);
-	
+	Matrix sort(int)const;
 
 	//	transpose to make a new matrix
 	Matrix transpose();

@@ -28,15 +28,13 @@ int test::test(){
 	Matrix q(vector<double>(ar, ar + 3));
 	q.appendRow(vector<double>(ar+3, ar+6));
 	q.appendRow(vector<double>(ar + 6, ar + 9));
-	q.print();
-	cout << "sorting rows" << endl;
-	q.sort(0);
-	q.print();
-	cout << "sorting columns" << endl;
-	q.sort(1);
+	q.appendRow(vector<double>(ar + 4, ar + 7));
 	q.print();
 
-	
+	Matrix r = Matlab::median(q, 0);
+	Matrix p = Matlab::median(q, 1);
+	r.print();
+	p.print();
 
 	return 0;
 }

@@ -133,8 +133,31 @@ double Matlab::min(const Matrix & m)
 
 Matrix Matlab::median(const Matrix & m, int sign)
 {
-	// need sort function. to do
-	return Matrix();
+	if (sign != 0 && sign != 1) {
+		throw new invalidParamExcep("invalid param in Matrix::median");
+	}
+	Matrix sorted = m.sort(sign);
+	Matrix ret;
+	using namespace concurrency;
+	if (sign == 0) {
+		int median_index = sorted.size(0) / 2;
+		if (sorted.size(0) % 2 == 0) {
+			ret = (sorted.getRow(median_index) + sorted.getRow(median_index - 1)) / 2.0;
+		}
+		else {
+			ret = sorted.getRow(median_index);
+		}
+	}
+	else {
+		int median_index = sorted.size(1) / 2;
+		if (sorted.size(1) % 2 == 0) {
+			ret = (sorted.getColumn(median_index) + sorted.getColumn(median_index - 1)) / 2.0;
+		}
+		else {
+			ret = sorted.getColumn(median_index);
+		}
+	}
+	return ret;
 }
 
 double Matlab::median(const Matrix &)
