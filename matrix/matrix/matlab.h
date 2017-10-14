@@ -35,7 +35,7 @@ namespace Matlab{
 	Matrix min(const Matrix&, int);
 	double min(const Matrix&);
 	Matrix median(const Matrix&, int);
-	double median(const Matrix&);
+
 	double mean(const Matrix&);
 	Matrix mean(const Matrix&, int);
 	double var(const Matrix&);

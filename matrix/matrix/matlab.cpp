@@ -160,11 +160,6 @@ Matrix Matlab::median(const Matrix & m, int sign)
 	return ret;
 }
 
-double Matlab::median(const Matrix &)
-{
-	return 0.0;
-}
-
 double Matlab::mean(const Matrix & m)
 {
 	return m.sum()/(m.size(1)*m.size(0));
@@ -216,9 +211,14 @@ double Matlab::norm2(const Matrix &)
 	return 0.0;
 }
 
-double Matlab::FrobeniusNorm(const Matrix &)
+double Matlab::FrobeniusNorm(const Matrix & m)
 {
-	return 0.0;
+	using namespace concurrency;
+	double ret = 0.0;
+	parallel_for_each(m.begin(), m.end(), [&](double d) {
+		ret += d * d;
+	});
+	return std::sqrt(ret);
 }
 
 std::tuple<Matrix> Matlab::eigenDecompose(const Matrix &)

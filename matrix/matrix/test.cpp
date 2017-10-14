@@ -10,20 +10,7 @@
 using namespace std;
 
 int test::test(){
-	/*
-	cout<<"testing constructor "<<endl;
-
-	double arr[] = {1., 2., 3., 4., 5., 6., 7., 8.,9.,0.};
-	vector<double> vec(arr, arr+3);
-	Matrix m(vec);
-	m.appendRow(vector<double>(arr+3, arr+6));
-	m.appendRow(vector<double>(arr+6, arr+9));
-	m.appendRow(vector<double>(arr + 6, arr + 9));
-	cout << "this is m" << endl;
-	m.print();
-	*/
-
-	//Matrix m = Matlab::read("D:\\Courses\\DeepLearning&NerualNetwork\\matrix\\matrix\\matrix\\test\\data.csv");
+	
 	double ar[] = {-1.2, -3.2, 2.5, 4.8, -0.1, -4.2, 2.1, 2, 5, 7, 10.9, 11.2};
 	Matrix q(vector<double>(ar, ar + 3));
 	q.appendRow(vector<double>(ar+3, ar+6));
@@ -31,10 +18,7 @@ int test::test(){
 	q.appendRow(vector<double>(ar + 4, ar + 7));
 	q.print();
 
-	Matrix r = Matlab::median(q, 0);
-	Matrix p = Matlab::median(q, 1);
-	r.print();
-	p.print();
+	cout << Matlab::FrobeniusNorm(q);
 
 	return 0;
 }
