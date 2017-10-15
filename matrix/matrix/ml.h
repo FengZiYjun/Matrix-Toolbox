@@ -24,11 +24,12 @@ class ml::ligisticClassifier {
 class ml::linearClassifier {
 public:
 	linearClassifier();
-	void train(const Matrix&);
+	void train(const Matrix&, const Matrix&);
 	Matrix predict(const Matrix&);
+	double loss_func(const Matrix&, const Matrix&);
 private:
 	Matrix weights;
-	Matrix bias;
+	double bias;
 };
 
 class ml::neuralNetwork {

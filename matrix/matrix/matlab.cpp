@@ -111,6 +111,11 @@ bool Matlab::isPositive(const Matrix & m)
 	return (iter == m.end());
 }
 
+double Matlab::dotProduct(const Matrix & a, const Matrix & b)
+{
+	return Matlab::multiply(a, b).sum();
+}
+
 Matrix Matlab::max(const Matrix & m, int sign)
 {
 	return m.max(sign);

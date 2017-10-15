@@ -26,6 +26,7 @@ namespace Matlab{
 	Matrix minus(const Matrix&, const Matrix&);
 	Matrix divide(const Matrix&, const Matrix&);
 	bool isPositive(const Matrix&);
+	double dotProduct(const Matrix&, const Matrix&);
 
 	/*
 		Statistic Operations

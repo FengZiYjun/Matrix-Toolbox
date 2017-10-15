@@ -250,7 +250,7 @@ Matrix operator+(const double& d, Matrix& m){
 	return ret;
 }
 
-Matrix Matrix::operator-(const Matrix& m){
+Matrix Matrix::operator-(const Matrix& m)const{
 	Matrix ret(m._row, m._col);
 	transform(_begin, _end, m._begin, ret._begin, minus<double>());
 	return ret;
@@ -299,7 +299,7 @@ double Matrix::trace()
 	return trace;
 }
 
-Matrix Matrix::getRow(int row_index){
+Matrix Matrix::getRow(int row_index)const{
 	// range check
 	if (row_index >= _row || row_index < 0 ) {
 		// out of range
@@ -309,7 +309,7 @@ Matrix Matrix::getRow(int row_index){
 }
 
 
-Matrix Matrix::getColumn(int col_index){
+Matrix Matrix::getColumn(int col_index)const{
 	Matrix ret(_row, 1);
 	using namespace concurrency;
 	parallel_for(0, _row, [&](int i) {

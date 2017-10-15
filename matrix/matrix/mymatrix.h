@@ -74,8 +74,8 @@ public:
 	///////////////////  Scientific Computation /////////////////
 	
 	// row and column selecting 
-	Matrix getRow(int);
-	Matrix getColumn(int);
+	Matrix getRow(int)const;
+	Matrix getColumn(int)const;
 	void setRow(int, const Matrix&);
 	void setCol(int, const Matrix&);
 
@@ -142,7 +142,7 @@ public:
 	friend Matrix operator+(const double&, Matrix&);
 	
 	// minus
-	Matrix operator-(const Matrix&);
+	Matrix operator-(const Matrix&)const;
 	friend Matrix operator-(const double&, Matrix&);
 	
 	Matrix operator/(double);
