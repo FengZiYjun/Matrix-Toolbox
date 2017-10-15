@@ -196,14 +196,14 @@ Matrix Matlab::covar(const Matrix &)
 }
 
 
-double Matlab::norm1(const Matrix &)
+double Matlab::norm1(const Matrix & m)
 {
-	return 0.0;
+	return (Matlab::abs(m)).sum();
 }
 
-double Matlab::norm2(const Matrix &)
+double Matlab::norm2(const Matrix & m)
 {
-	return 0.0;
+	return Matlab::FrobeniusNorm(m);
 }
 
 double Matlab::FrobeniusNorm(const Matrix & m)

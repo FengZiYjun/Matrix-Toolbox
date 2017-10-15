@@ -18,7 +18,7 @@ int test::test(){
 	q.appendRow(vector<double>(ar + 4, ar + 7));
 	q.print();
 
-	cout << Matlab::FrobeniusNorm(q);
+	cout << Matlab::norm1(q);
 
 	return 0;
 }
