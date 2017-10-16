@@ -105,10 +105,13 @@ std::vector<std::vector<double>> Matrix::toVector()
 }
 
 void  Matrix::appendRow(const vector<double>& vec){
-	if(vec.size() != _col){
+	if(_col != 0 && vec.size() != _col){
 		// dimension dismatch excep
 		throw new dimenDismatchExcep("in Matrix::appendRow()");
 	}else{
+		if (_col == 0) {
+			_col = vec.size();
+		}
 		_row++;
 		_mat.push_back(vector<double>(vec.begin(), vec.end()));
 		_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size(), _mat.size());
@@ -117,10 +120,13 @@ void  Matrix::appendRow(const vector<double>& vec){
 }
 
 void Matrix::appendCol(const vector<double>& vec){
-	if (vec.size() != _row) {
+	if (_row != 0 && vec.size() != _row) {
 		// dimension dismatch excep
 		throw new dimenDismatchExcep("in Matrix::appendCol()");
 	} else {
+		if (_row == 0) {
+			_row = vec.size();
+		}
 		_col++;
 		for (int i = 0; i < _row; i++) {
 			_mat[i].push_back(vec[i]);

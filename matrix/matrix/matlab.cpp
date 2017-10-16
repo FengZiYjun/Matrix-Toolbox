@@ -73,13 +73,46 @@ Matrix Matlab::sqrt(const Matrix & m)
 	return ret;
 }
 
+std::vector<double> Matlab::_exact_multiply(const Matrix& left, const Matrix & right) {
+	// the two matices are of the same shape: 1xm or mx1
+	// return vector for calling appendRow/appendCol
+	std::vector<double> ret(left.size(0) * left.size(1));
+	transform(left.begin(), left.end(), right.begin(), ret.begin(), multiplies<double>());
+	return ret;
+}
+
+Matrix Matlab::_one_multiply_many(const Matrix& left, const Matrix & right) {
+	Matrix ret;
+	if (left.size(0) == 1 && left.size(1) == right.size(1)) {
+		for (int t = 0; t < right.size(0); t++) {
+			ret.appendRow(_exact_multiply(right.getRow(t), left));
+		}
+	}
+	else if (left.size(1) == 1 && left.size(0) == right.size(0)) {
+		for (int t = 0; t < right.size(1); t++) {
+			ret.appendCol(_exact_multiply(right.getColumn(t), left));
+		}
+	}
+	else {
+		throw new dimenDismatchExcep("Dimensions dismatch.");
+	}
+	return ret;
+}
+
 Matrix Matlab::multiply(const Matrix & left, const Matrix & right)
 {
-	if ((left.size(0) != right.size(0)) || (left.size(1) != right.size(1))) {
+	Matrix ret;
+	if (left.size(0) == 1 || left.size(1) == 1) {
+		ret = _one_multiply_many(left, right);
+	}
+	else if (right.size(0) == 1 || right.size(1) == 1)
+	{
+		ret = _one_multiply_many(right, left);
+	}
+	else
+	{
 		throw new dimenDismatchExcep(left.size(0), left.size(1), right.size(0), right.size(1));
 	}
-	Matrix ret(left.size(0), left.size(1));
-	transform(left.begin(), left.end(), right.begin(), ret.begin(), multiplies<double>());
 	return ret;
 }
 

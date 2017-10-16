@@ -18,7 +18,11 @@ int test::test(){
 	q.appendRow(vector<double>(ar + 4, ar + 7));
 	q.print();
 
-	cout << Matlab::norm1(q);
+	Matrix p(vector<double>(ar, ar+3));
+	Matrix r = Matlab::multiply(p, q);
+	r.print();
+	r = Matlab::multiply(q, p);
+	r.print();
 
 	return 0;
 }

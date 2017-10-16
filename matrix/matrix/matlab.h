@@ -21,6 +21,8 @@ namespace Matlab{
 	Matrix square(const Matrix&);
 	Matrix power(const Matrix&, double);
 	Matrix sqrt(const Matrix&);
+	std::vector<double> _exact_multiply(const Matrix & left, const Matrix & right);
+	Matrix _one_multiply_many(const Matrix & left, const Matrix & right);
 	Matrix multiply(const Matrix&, const Matrix&);
 	Matrix plus(const Matrix&, const Matrix&);
 	Matrix minus(const Matrix&, const Matrix&);
