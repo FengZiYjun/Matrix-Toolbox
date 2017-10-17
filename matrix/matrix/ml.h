@@ -23,13 +23,18 @@ class ml::ligisticClassifier {
 
 class ml::linearClassifier {
 public:
-	linearClassifier();
+	/*
+		Constructors: specify the number of iteration
+	*/
+	linearClassifier(int);
 	void train(const Matrix&, const Matrix&);
 	Matrix predict(const Matrix&);
 	double loss_func(const Matrix&, const Matrix&);
 private:
 	Matrix weights;
 	double bias;
+	// should inheritate
+	void _matrix_check(const Matrix&);
 };
 
 class ml::neuralNetwork {
