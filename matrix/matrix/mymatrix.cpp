@@ -399,7 +399,23 @@ Matrix Matrix::inverse(){
 
 Matrix Matrix::elemRowOp()
 {
-	return Matrix();
+	if (_row != _col) {
+		throw new dimenDismatchExcep("must be a square matrix.");
+	}
+	if (_row < 2) {
+		return *this;
+	}
+	using namespace concurrency;
+	Matrix ret(*this);
+	for (int k = 0; k < _col-1; k++) {
+		parallel_for_each(ret._mat.begin()+k+1, ret._mat.end(), [&](vector<double>& vec) {
+			double ratio = vec[k] / ret._mat[k][k];
+			parallel_for(0, _row, [&](int j) {
+				vec[j] -= ratio * ret._mat[k][j];
+			});
+		});
+	}
+	return ret;
 }
 
 
