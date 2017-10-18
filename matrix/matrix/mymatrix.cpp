@@ -297,11 +297,12 @@ double Matrix::determinant(){
 
 double Matrix::trace()
 {
-	int diag = std::min<int>(_row, _col);
+	using namespace concurrency;
+	const int & diag = std::min<int>(_row, _col);
 	double trace = 1.0;
-	for (int i = 0; i < diag; i++) {
+	parallel_for(0, diag, [&](int i) {
 		trace *= _mat[i][i];
-	}
+	});
 	return trace;
 }
 
