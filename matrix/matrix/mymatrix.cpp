@@ -290,8 +290,9 @@ Matrix Matrix::transpose(){
 	return ret;
 }
 
-double Matrix::determine(){
+double Matrix::determinant(){
 	// to do
+	// need elementary row operation
 	return 0;
 }
 
@@ -394,6 +395,11 @@ Matrix Matrix::inverse(){
 	// to do
 
 	return *this;
+}
+
+Matrix Matrix::elemRowOp()
+{
+	return Matrix();
 }
 
 

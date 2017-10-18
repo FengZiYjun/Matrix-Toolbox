@@ -254,6 +254,11 @@ double Matlab::FrobeniusNorm(const Matrix & m)
 	return std::sqrt(ret);
 }
 
+Matrix Matlab::solve(const Matrix &, const Matrix &)
+{
+	return Matrix();
+}
+
 std::tuple<Matrix> Matlab::eigenDecompose(const Matrix &)
 {
 	return std::tuple<Matrix>();

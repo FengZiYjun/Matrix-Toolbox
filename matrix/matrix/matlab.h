@@ -56,8 +56,16 @@ namespace Matlab{
 	double norm2(const Matrix&);
 	double FrobeniusNorm(const Matrix&);
 
+	// Solve matrix equation
+	Matrix solve(const Matrix&, const Matrix&);
+	
+	// Eigen decomposition
 	std::tuple<Matrix> eigenDecompose(const Matrix&);
+
+	// Single value decomposition
 	std::tuple<Matrix> SVD(const Matrix&);
+
+	// MP-Inverse
 	Matrix pseudoInverse(const Matrix&);
 
 	/*

@@ -117,8 +117,11 @@ public:
 	// reverse to make a new matrix
 	Matrix inverse();
 
+	// elementary row operation
+	Matrix elemRowOp();
+
 	// det
-	double determine();
+	double determinant();
 
 	// trace
 	double trace();
