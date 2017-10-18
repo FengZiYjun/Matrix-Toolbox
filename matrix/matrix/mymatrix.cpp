@@ -291,9 +291,8 @@ Matrix Matrix::transpose(){
 }
 
 double Matrix::determinant(){
-	// to do
-	// need elementary row operation
-	return 0;
+
+	return (this->elemRowOp()).trace();
 }
 
 double Matrix::trace()

@@ -18,8 +18,7 @@ int test::test(){
 	//q.appendRow(vector<double>(ar + 4, ar + 7));
 	q.print();
 
-	Matrix r = q.elemRowOp();
-	r.print();
+	cout <<endl<< q.determinant();
 
 	return 0;
 }
