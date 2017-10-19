@@ -85,6 +85,9 @@ public:
 	*/
 	void appendRow(const std::vector<double>&);
 	void appendCol(const std::vector<double>&);
+	// general version of append
+	void appendRow(const Matrix&);
+	void appendCol(const Matrix&);
 
 	// Splitting 
 	// horizontal split

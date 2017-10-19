@@ -6,14 +6,13 @@
  Require C++ 11
 
 ## Development Schedule
-1. Implement Matrix Class (mostly done)
- - inverse, determine (waiting-hard)
+1. Implement Matrix Class
+ - inverse (waiting-hard)
  (Inversion needs to decide whether a matrix is singular. This needs 
  elementary row operation to transform the matrix into echelon form or 
  computation of determinant. Also, MP-inversion needs to solve a matrix 
  equation.)
- (Determinant also needs elemRowOp to transform into echelon form)
- 
+
 2. The second class "matlab" provides methods for 
   - operations associated with more than two matrices (SVD, eigendecomposition) (waiting-hard)
   - statistics methods: mean, variance, covariance, etc. (undergoing)
@@ -28,6 +27,7 @@
 - exceptions handling optimization
 - file read/write
 - more element-wise arithmetic operations
+- elementary row operation in case of rounding error
 
 5. Documentation 
 

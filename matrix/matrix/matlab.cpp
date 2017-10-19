@@ -254,8 +254,20 @@ double Matlab::FrobeniusNorm(const Matrix & m)
 	return std::sqrt(ret);
 }
 
-Matrix Matlab::solve(const Matrix &, const Matrix &)
+Matrix Matlab::solve(const Matrix & A, const Matrix & b)
 {
+	// perform dimension check
+	if (A.size(0) != b.size(0)) {
+		throw new dimenDismatchExcep(A.size(0), A.size(1), b.size(0), b.size(1));
+	}
+	// needs optimization: compute rank first
+	if (A.size(0) > A.size(1)) {
+		throw new invalidParamExcep("unsolvable equation.");
+	}
+	// to do 
+	// needs matrix concatenate
+
+
 	return Matrix();
 }
 

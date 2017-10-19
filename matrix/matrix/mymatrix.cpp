@@ -136,6 +136,33 @@ void Matrix::appendCol(const vector<double>& vec){
 	}
 }
 
+void Matrix::appendRow(const Matrix & m)
+{
+	if (_col != m._col) {
+		throw new dimenDismatchExcep(_row, _col, m._row, m._col);
+	}
+	for_each(m._mat.begin(), m._mat.end(), [&](const vector<double>& vec) {
+		this->appendRow(vec);
+	});
+	
+}
+
+void Matrix::appendCol(const Matrix & m)
+{
+	if (_row != m._row) {
+		throw new dimenDismatchExcep(_row, _col, m._row, m._col);
+	}
+	using namespace concurrency;
+	parallel_for(0, m._col, [&](int t){
+		parallel_for(0, _row, [&](int i) {
+			_mat[i].push_back(m._mat[i][t]);
+		});
+	});
+	_col += m._col;
+	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size(), _mat.size());
+	_end = Matrix::iterator(_mat.end() - 1, (_mat.end() - 1)->end(), _mat[0].size(), _mat.size());
+}
+
 Matrix::~Matrix(){}
 
 bool Matrix::operator==(const Matrix& m){
