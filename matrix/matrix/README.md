@@ -12,6 +12,7 @@
  elementary row operation to transform the matrix into echelon form or 
  computation of determinant. Also, MP-inversion needs to solve a matrix 
  equation.)
+ - solve, rank
 
 2. The second class "matlab" provides methods for 
   - operations associated with more than two matrices (SVD, eigendecomposition) (waiting-hard)

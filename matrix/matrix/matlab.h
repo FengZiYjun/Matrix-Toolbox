@@ -58,6 +58,7 @@ namespace Matlab{
 
 	// Solve matrix equation
 	Matrix solve(const Matrix&, const Matrix&);
+	Matrix concatenate(const Matrix&, const Matrix&, int);
 	
 	// Eigen decomposition
 	std::tuple<Matrix> eigenDecompose(const Matrix&);

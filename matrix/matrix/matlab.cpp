@@ -264,11 +264,38 @@ Matrix Matlab::solve(const Matrix & A, const Matrix & b)
 	if (A.size(0) > A.size(1)) {
 		throw new invalidParamExcep("unsolvable equation.");
 	}
-	// to do 
-	// needs matrix concatenate
 
+	// make expansion a square matrix
+	Matrix expansion(Matlab::concatenate(A, b, 1));
+	expansion.appendRow(vector<double>(A.size(1)+1, 0));
+	expansion = expansion.elemRowOp();
+	int row = A.size(0);
+	int col = expansion.size(1);
+	Matrix X(row, 1);
+	for (int t = row - 1; t >= 0; t--) {
+		double sum = 0.0;
+		for (int r = t; r <= row-2; r++) {
+			sum += expansion.get(t, r+1) * X.get(r+1, 0);
+		}
+		double tmp = (expansion.get(t, col - 1) - sum) / expansion.get(t, t);
+		X.set(t, 0, tmp);
+	}
+	return X;
+}
 
-	return Matrix();
+Matrix Matlab::concatenate(const Matrix & A, const Matrix & B, int sign = 0)
+{
+	if (sign != 0 && sign != 1) {
+		throw new invalidParamExcep("invalid param in Matrix::concatenate()");
+	}
+	Matrix ret(A);
+	if (sign == 0) {
+		ret.appendRow(B);
+	}
+	else {
+		ret.appendCol(B);
+	}
+	return ret;
 }
 
 std::tuple<Matrix> Matlab::eigenDecompose(const Matrix &)

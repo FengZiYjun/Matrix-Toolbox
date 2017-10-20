@@ -147,7 +147,7 @@ void Matrix::appendRow(const Matrix & m)
 	
 }
 
-void Matrix::appendCol(const Matrix & m)
+void Matrix::appendCol(const Matrix & m) 
 {
 	if (_row != m._row) {
 		throw new dimenDismatchExcep(_row, _col, m._row, m._col);
