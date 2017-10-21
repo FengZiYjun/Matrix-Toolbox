@@ -24,10 +24,11 @@ int test::test(){
 		Matrix A(vector<double>(arr, arr+3));
 		A.appendRow(vector<double>(arr+3, arr+6));
 		A.appendRow(vector<double>(arr+6, arr+9));
-		Matrix b(vector<double>(arr+9, arr+12));
-		b = b.transpose();
-		Matrix X = Matlab::solve(A, b);
-		X.print();
+		
+		A.swapRow(0,1);
+		//Matrix b(vector<double>(arr+9, arr+12));
+		//b = b.transpose();
+		A.print();
 	}
 	catch (MatrixException e) {
 		cout << e.what();

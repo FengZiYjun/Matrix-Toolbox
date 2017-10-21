@@ -163,6 +163,12 @@ void Matrix::appendCol(const Matrix & m)
 	_end = Matrix::iterator(_mat.end() - 1, (_mat.end() - 1)->end(), _mat[0].size(), _mat.size());
 }
 
+void Matrix::swapRow(int a, int b)
+{
+	// no check
+	_mat[a].swap(_mat[b]);
+}
+
 Matrix::~Matrix(){}
 
 bool Matrix::operator==(const Matrix& m){
@@ -377,6 +383,21 @@ void Matrix::setCol(int col_index, const Matrix & m)
 	});
 }
 
+void Matrix::removeRow(int index)
+{
+	if (index < 0 || index >= _row) {
+		throw new invalidParamExcep("Invalid row index.");
+	}
+	// optimize for efficent removal
+	if (index > _row / 2) {
+
+	}
+}
+
+void Matrix::removeCol(int index)
+{
+}
+
 vector<Matrix> Matrix::hsplit(const vector<int>& vec){
 	using namespace concurrency;
 	vector<Matrix> ret;
@@ -420,6 +441,11 @@ std::vector<Matrix> Matrix::vsplit()
 
 Matrix Matrix::inverse(){
 	// to do
+	if (this->determinant() == 0.0) {
+		// precision problem ? 
+		throw new invalidParamExcep("Not a singular matrix.");
+	}
+
 
 	return *this;
 }
@@ -429,9 +455,11 @@ Matrix Matrix::elemRowOp()
 	if (_row != _col) {
 		throw new dimenDismatchExcep("must be a square matrix.");
 	}
+	
 	if (_row < 2) {
 		return *this;
 	}
+	//int diag_pos = std::min<int>(_row, _col);
 	using namespace concurrency;
 	Matrix ret(*this);
 	for (int k = 0; k < _col-1; k++) {

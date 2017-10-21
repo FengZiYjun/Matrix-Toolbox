@@ -8,11 +8,10 @@
 ## Development Schedule
 1. Implement Matrix Class
  - inverse (waiting-hard)
- (Inversion needs to decide whether a matrix is singular. This needs 
- elementary row operation to transform the matrix into echelon form or 
- computation of determinant. Also, MP-inversion needs to solve a matrix 
- equation.)
- - solve, rank
+ (The only possible way to get a inverse of a matrix is to use 
+ its definition. So we need an adjacent matrix. Adjacent matrix 
+ needs to delete row/column of a matrix.)
+ - rank: how to get the rank of a non-square matrix?
 
 2. The second class "matlab" provides methods for 
   - operations associated with more than two matrices (SVD, eigendecomposition) (waiting-hard)

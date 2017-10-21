@@ -89,6 +89,16 @@ public:
 	void appendRow(const Matrix&);
 	void appendCol(const Matrix&);
 
+	// swap two row
+	void swapRow(int, int);
+
+	/*
+		Remove a row/column
+		Input: The row/column index of the row/column to remove.
+	*/
+	void removeRow(int);
+	void removeCol(int);
+
 	// Splitting 
 	// horizontal split
 	std::vector<Matrix> hsplit(const std::vector<int>&);
