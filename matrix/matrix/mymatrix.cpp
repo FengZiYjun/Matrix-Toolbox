@@ -388,14 +388,28 @@ void Matrix::removeRow(int index)
 	if (index < 0 || index >= _row) {
 		throw new invalidParamExcep("Invalid row index.");
 	}
-	// optimize for efficent removal
-	if (index > _row / 2) {
-
-	}
+	// optimize for efficent removal regardless of order
+	this->swapRow(index, _row-1);
+	_mat.pop_back();
+	_row--;
+	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size(), _mat.size());
+	_end = Matrix::iterator(_mat.end() - 1, (_mat.end() - 1)->end(), _mat[0].size(), _mat.size());
 }
 
 void Matrix::removeCol(int index)
 {
+	if (index < 0 || index >= _col) {
+		throw new invalidParamExcep("Invalid column index.");
+	}
+	// optimize for efficent removal regardless of order.
+	using namespace concurrency;
+	parallel_for_each(_mat.begin(), _mat.end(), [&](vector<double>& vec) {
+		std::swap(vec[index], vec[_col-1]);
+		vec.pop_back();
+	});
+	_col--;
+	_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size(), _mat.size());
+	_end = Matrix::iterator(_mat.end() - 1, (_mat.end() - 1)->end(), _mat[0].size(), _mat.size());
 }
 
 vector<Matrix> Matrix::hsplit(const vector<int>& vec){

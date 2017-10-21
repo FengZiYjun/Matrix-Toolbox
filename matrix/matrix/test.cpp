@@ -25,9 +25,11 @@ int test::test(){
 		A.appendRow(vector<double>(arr+3, arr+6));
 		A.appendRow(vector<double>(arr+6, arr+9));
 		
-		A.swapRow(0,1);
+		A.removeRow(0);
 		//Matrix b(vector<double>(arr+9, arr+12));
 		//b = b.transpose();
+		A.print();
+		A.removeCol(0);
 		A.print();
 	}
 	catch (MatrixException e) {
