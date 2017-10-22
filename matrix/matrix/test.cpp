@@ -20,17 +20,21 @@ int test::test(){
 		//q.appendRow(vector<double>(ar + 4, ar + 7));
 		q.print();
 		*/
-		double arr[] = {1,2,2,0,1,2,1,1,2,5,3,4};
-		Matrix A(vector<double>(arr, arr+3));
-		A.appendRow(vector<double>(arr+3, arr+6));
-		A.appendRow(vector<double>(arr+6, arr+9));
+		double arr[] = {6,2,5,8,1,2,4,1,2,5,3,4};
+		//Matrix A(vector<double>(arr, arr+3));
+		//A.appendRow(vector<double>(arr+3, arr+6));
+		//A.appendRow(vector<double>(arr+6, arr+9));
+		double ar[] = {1,5,4,6};
+		Matrix A(vector<double>(ar, ar + 2));
+		A.appendRow(vector<double>(ar + 2, ar + 4));
 		
-		A.removeRow(0);
-		//Matrix b(vector<double>(arr+9, arr+12));
-		//b = b.transpose();
-		A.print();
-		A.removeCol(0);
-		A.print();
+		cout << "inverse" << endl;
+		Matrix p = A.inverse();
+		p.print();
+		cout << "check" << endl;
+		Matrix m = A * p;
+		m.print();
+		
 	}
 	catch (MatrixException e) {
 		cout << e.what();

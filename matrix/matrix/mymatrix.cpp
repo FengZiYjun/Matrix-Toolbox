@@ -60,7 +60,7 @@ void Matrix::print(){
 	// but iterator does not provide such information.
 	for(int i=0;i<_row;i++){
 		for(int j=0;j<_col;j++){
-			printf("%6.3f\t", _mat[i][j]);
+			printf("%f\t", _mat[i][j]);
 		}
 		printf("\n");
 	}
@@ -454,14 +454,22 @@ std::vector<Matrix> Matrix::vsplit()
 }
 
 Matrix Matrix::inverse(){
-	// to do
-	if (this->determinant() == 0.0) {
+	double det;
+	if ((det=this->determinant()) == 0.0) {
 		// precision problem ? 
 		throw new invalidParamExcep("Not a singular matrix.");
 	}
-
-
-	return *this;
+	Matrix adj(_row, _col);
+	using namespace concurrency;
+	parallel_for(0, _row, [&](const int& r) {
+		parallel_for(0, _col, [&](const int& c) {
+			Matrix m(*this);
+			m.removeRow(r);
+			m.removeCol(c);
+			adj._mat[r][c] = m.determinant();
+		});
+	});
+	return adj.transpose() / det;
 }
 
 Matrix Matrix::elemRowOp()

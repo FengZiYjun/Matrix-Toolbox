@@ -7,10 +7,8 @@
 
 ## Development Schedule
 1. Implement Matrix Class
- - inverse (waiting-hard)
- (The only possible way to get a inverse of a matrix is to use 
- its definition. So we need an adjacent matrix. Adjacent matrix 
- needs to delete row/column of a matrix.)
+ - inverse (done, but with awful precision)
+ (Shall we need to convert double to fraction ? This needs reconstruction.)
  - rank: how to get the rank of a non-square matrix?
 
 2. The second class "matlab" provides methods for 
