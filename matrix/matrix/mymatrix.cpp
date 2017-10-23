@@ -289,6 +289,11 @@ Matrix operator+(const double& d, Matrix& m){
 	return ret;
 }
 
+Matrix operator+(Matrix & m, const double & d)
+{
+	return d + m;
+}
+
 Matrix Matrix::operator-(const Matrix& m)const{
 	Matrix ret(m._row, m._col);
 	transform(_begin, _end, m._begin, ret._begin, minus<double>());
@@ -310,6 +315,11 @@ Matrix operator-(const double& d, Matrix& m){
 	Matrix ret(m._row, m._col);
 	transform(m.begin(), m.end(), ret.begin(), bind(minus<double>(), d, placeholders::_1));
 	return ret;
+}
+
+Matrix operator-(Matrix & m, const double & d)
+{
+	return m + (-d);
 }
 
 

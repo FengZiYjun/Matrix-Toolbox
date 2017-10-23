@@ -208,14 +208,14 @@ Matrix Matlab::mean(const Matrix & m, int sign)
 	return m.sum(sign)/m.size(sign);
 }
 
-double Matlab::var(const Matrix &)
+double Matlab::var(const Matrix & m)
 {
-	return 0.0;
+	return Matlab::mean(Matlab::square(m)) - std::pow(Matlab::mean(m), 2);
 }
 
-Matrix Matlab::var(const Matrix &, int)
+Matrix Matlab::var(const Matrix & m, int sign)
 {
-	return Matrix();
+	return Matlab::mean(Matlab::square(m), sign) - std::pow(Matlab::mean(m), 2);
 }
 
 double Matlab::stderror(const Matrix &)
