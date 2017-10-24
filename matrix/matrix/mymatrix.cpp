@@ -84,6 +84,7 @@ int Matrix::set(int row, int col, double value){
 		_mat[row][col] = value;
 	}else{
 		ret = 1;
+		throw new invalidParamExcep("in Matrix::set()");
 	}
 	return ret;
 }
@@ -172,15 +173,15 @@ void Matrix::swapRow(int a, int b)
 Matrix::~Matrix(){}
 
 bool Matrix::operator==(const Matrix& m){
-	// change to STL?
+	// to do: use Matrix::const_iterator
 	if(this == &m){
 		return true;
 	}
-	if(m.size(0)!=_row || m.size(1)!=_col){
+	if (m.size(0) != _row || m.size(1) != _col) {
 		return false;
-	}else{
-		bool flag = true;
-		
+	}
+	bool flag = true;
+
 		for(int i=0;i<_row;i++){
 			for(int j=0;j<_col;j++){
 				if(this->get(i, j) != m.get(i, j)){
@@ -192,12 +193,12 @@ bool Matrix::operator==(const Matrix& m){
 				break;
 			}
 		}
+		
 		if(flag==true){
 			return true;
 		}else{
 			return false;
 		}
-	}
 	
 }
 
@@ -265,6 +266,7 @@ Matrix Matrix::operator*(const Matrix& m){
 		throw new dimenDismatchExcep("in Matrix::operator*(Matrix)");
 	}
 	Matrix ret(_row, m._col);
+	// to do: more parallel
 	parallel_for(0, _row, [&](int i) {
 		for (int t = 0; t < m._col; t++) {
 			double tmp = 0.;
@@ -325,6 +327,7 @@ Matrix operator-(Matrix & m, const double & d)
 
 Matrix Matrix::transpose(){
 	Matrix ret(_col, _row);
+	// to do: parallel
 	for (int i = 0; i < _row; i++) {
 		for (int j = 0; j < _col; j++) {
 			ret._mat[j][i] = _mat[i][j];
@@ -352,7 +355,6 @@ double Matrix::trace()
 Matrix Matrix::getRow(int row_index)const{
 	// range check
 	if (row_index >= _row || row_index < 0 ) {
-		// out of range
 		throw new outOfRangeExcep("in Matrix::getRow()");
 	}
 	return Matrix(_mat[row_index]);
@@ -447,6 +449,7 @@ std::vector<Matrix> Matrix::hsplit()
 
 vector<Matrix> Matrix::vsplit(const vector<int>& vec){
 	vector<Matrix> ret;
+	// to do: parallel
 	for (size_t i = 0; i < vec.size(); i++) {
 		ret.push_back(Matrix(_mat[vec[i]]));
 	}
@@ -466,7 +469,6 @@ std::vector<Matrix> Matrix::vsplit()
 Matrix Matrix::inverse(){
 	double det;
 	if ((det=this->determinant()) == 0.0) {
-		// precision problem ? 
 		throw new invalidParamExcep("Not a singular matrix.");
 	}
 	Matrix adj(_row, _col);
@@ -491,7 +493,7 @@ Matrix Matrix::elemRowOp()
 	if (_row < 2) {
 		return *this;
 	}
-	//int diag_pos = std::min<int>(_row, _col);
+	
 	using namespace concurrency;
 	Matrix ret(*this);
 	for (int k = 0; k < _col-1; k++) {
@@ -560,6 +562,7 @@ Matrix Matrix::product(int sign){
 	else if (sign == 1) {
 		ret = Matrix(1, _col);
 		parallel_for(0, _col, [&](int i) {
+			// to do parallel
 			double result = 1.0;
 			for (int t = 0; t < _row; t++) {
 				result *= _mat[t][i];

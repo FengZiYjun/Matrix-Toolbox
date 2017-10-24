@@ -218,9 +218,9 @@ Matrix Matlab::var(const Matrix & m, int sign)
 	return Matlab::mean(Matlab::square(m), sign) - std::pow(Matlab::mean(m), 2);
 }
 
-double Matlab::stderror(const Matrix &)
+double Matlab::stderror(const Matrix & m)
 {
-	return 0.0;
+	return std::sqrt(Matlab::var(m));
 }
 
 Matrix Matlab::stderror(const Matrix &, int)

@@ -13,7 +13,7 @@
 
 2. The second class "matlab" provides methods for 
   - operations associated with more than two matrices (SVD, eigendecomposition) (waiting-hard)
-  - statistics methods: mean, variance, covariance, etc. (undergoing)
+  - statistics methods: variance, covariance, etc. (undergoing, to check)
 
 3. The third class "ml" encapsulates machine learning architecture
   - prepocessing 
