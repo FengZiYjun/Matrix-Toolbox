@@ -129,6 +129,12 @@ public:
 	//	transpose to make a new matrix
 	Matrix transpose();
 
+	// cofactor matrix
+	Matrix cofactor();
+
+	// adjoint/adjugate matrix
+	Matrix adjoint();
+
 	// reverse to make a new matrix
 	Matrix inverse();
 

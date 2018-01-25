@@ -42,3 +42,14 @@
 /matrix/matrix/Debug/matlab.cpp.nativecodeanalysis.xml
 /matrix/matrix/Debug/exception.cpp.nativecodeanalysis.xml
 /matrix/Debug/matrix.exe.lastcodeanalysissucceeded
+*.sdf
+/Q-learning/Q-learning.v11.suo
+/Q-learning/Q-learning.sln
+/Q-learning/Q-learning/Debug/Q-learning.unsuccessfulbuild
+/Q-learning/Q-learning/Debug/Q-learning.log
+/Q-learning/Q-learning/Debug/Q-learning.lastbuildstate
+/Q-learning/Q-learning/Debug/Q-learning.Build.CppClean.log
+/Q-learning/Q-learning/Q-learning.vcxproj.filters
+/Q-learning/Q-learning/Q-learning.vcxproj
+/Q-learning/Q-learning/Debug/vc110.pdb
+/Q-learning/Q-learning/Debug/vc110.idb

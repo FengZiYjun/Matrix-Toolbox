@@ -7,9 +7,7 @@
 
 ## Development Schedule
 1. Implement Matrix Class
- - inverse (done, but with awful precision)
- (Shall we need to convert double to fraction ? This needs reconstruction.)
- - rank: how to get the rank of a non-square matrix?
+- rank: how to get the rank of a non-square matrix?
 
 2. The second class "matlab" provides methods for 
   - operations associated with more than two matrices (SVD, eigendecomposition) (waiting-hard)

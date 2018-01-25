@@ -64,6 +64,7 @@ void Matrix::print(){
 		}
 		printf("\n");
 	}
+	printf("\n");
 }
 
 double Matrix::get(int r, int c)const{
@@ -413,7 +414,7 @@ void Matrix::removeCol(int index)
 	if (index < 0 || index >= _col) {
 		throw new invalidParamExcep("Invalid column index.");
 	}
-	// optimize for efficent removal regardless of order.
+	// optimize for efficent removal regardless of order
 	using namespace concurrency;
 	parallel_for_each(_mat.begin(), _mat.end(), [&](vector<double>& vec) {
 		std::swap(vec[index], vec[_col-1]);
@@ -466,22 +467,34 @@ std::vector<Matrix> Matrix::vsplit()
 	return vsplit(v);
 }
 
-Matrix Matrix::inverse(){
-	double det;
-	if ((det=this->determinant()) == 0.0) {
-		throw new invalidParamExcep("Not a singular matrix.");
-	}
-	Matrix adj(_row, _col);
+Matrix Matrix::cofactor() {
 	using namespace concurrency;
+	Matrix cofactor(_row, _col);
 	parallel_for(0, _row, [&](const int& r) {
 		parallel_for(0, _col, [&](const int& c) {
 			Matrix m(*this);
 			m.removeRow(r);
 			m.removeCol(c);
-			adj._mat[r][c] = m.determinant();
+			int exp = r + c + (r <= _row - 2 ? r : _row - 2) + (c <= _col - 2 ? c : _col - 2);
+			int flag = exp % 2 ? -1 : 1;
+			cofactor._mat[r][c] = flag * m.determinant();
 		});
 	});
-	return adj.transpose() / det;
+
+	return cofactor;
+}
+
+Matrix Matrix::adjoint() {
+	return this->cofactor().transpose();
+}
+
+
+Matrix Matrix::inverse(){
+	double det;
+	if ((det=this->determinant()) == 0.0) {
+		throw new invalidParamExcep("Not a singular matrix.");
+	}
+	return this->adjoint() / det;
 }
 
 Matrix Matrix::elemRowOp()

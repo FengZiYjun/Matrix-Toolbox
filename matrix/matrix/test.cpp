@@ -24,9 +24,16 @@ int test::test(){
 		Matrix A(vector<double>(arr, arr+3));
 		A.appendRow(vector<double>(arr+3, arr+6));
 		A.appendRow(vector<double>(arr+6, arr+9));
-		cout << Matlab::var(A);
-		Matrix p = Matlab::var(A, 1);
+		A.print();
+		
+		Matrix c = A.cofactor();
+		c.print();
+		
+		Matrix p = A.inverse();
 		p.print();
+		Matrix m = A * p;
+		m.print();
+		
 	}
 	catch (MatrixException e) {
 		cout << e.what();
