@@ -7,16 +7,13 @@
 
 ## Development Schedule
 1. Implement Matrix Class
-- rank: how to get the rank of a non-square matrix?
+  - Mostly done.
 
 2. The second class "matlab" provides methods for 
-  - operations associated with more than two matrices (SVD, eigendecomposition) (waiting-hard)
-  - statistics methods: variance, covariance, etc. (undergoing, to check)
+  - operations associated with more than two matrices.
+  - statistics methods: variance, covariance, etc. 
 
-3. The third class "ml" encapsulates machine learning architecture
-  - prepocessing 
-  - linear/logistic regression (undergoing)
-  - shadow neural network
+
 
 ### Optimization items:
 - matrix operations with iterator & parallelism
@@ -57,7 +54,7 @@
 
 - ml.h
 
-	The definition of encapsulation of machine learning algorithm.
+	(future development) The definition of encapsulation of machine learning algorithm. 
 
 - test.cpp
 
