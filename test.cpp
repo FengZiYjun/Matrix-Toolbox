@@ -20,20 +20,19 @@ int test::test(){
 		//q.appendRow(vector<double>(ar + 4, ar + 7));
 		q.print();
 		*/
-		double arr[] = {6,2,5,8,1,2,4,1,2,5,3,4};
-		Matrix A(vector<double>(arr, arr+3));
-		A.appendRow(vector<double>(arr+3, arr+6));
-		A.appendRow(vector<double>(arr+6, arr+9));
+		double arr[] = {6,2,5,8,1,2,4,1,2,5,3,4,6,5,4,3,8,9,7,6};
+		Matrix A(vector<double>(arr, arr+4));
+		A.appendRow(vector<double>(arr+3, arr+7));
+		A.appendRow(vector<double>(arr+6, arr+10));
+		A.appendRow(vector<double>(arr+2, arr+6));
+		A.appendRow(vector<double>(arr+1, arr+5));
+		A.appendRow(vector<double>(arr+4, arr+8));
 		A.print();
 		
-		Matrix c = A.cofactor();
+		Matrix c = A.elemRowOp();
 		c.print();
-		
-		Matrix p = A.inverse();
-		p.print();
-		Matrix m = A * p;
-		m.print();
-		
+		//cout << c.rank() << endl;
+		cout << A.rank() << endl;
 	}
 	catch (MatrixException e) {
 		cout << e.what();

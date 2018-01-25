@@ -141,6 +141,9 @@ public:
 	// elementary row operation
 	Matrix elemRowOp();
 
+	// matrix rank
+	int rank();
+
 	// det
 	double determinant();
 

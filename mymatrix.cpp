@@ -499,25 +499,44 @@ Matrix Matrix::inverse(){
 
 Matrix Matrix::elemRowOp()
 {
+	/* extend to non-square matrix
 	if (_row != _col) {
 		throw new dimenDismatchExcep("must be a square matrix.");
 	}
-	
+	*/
 	if (_row < 2) {
 		return *this;
 	}
 	
 	using namespace concurrency;
 	Matrix ret(*this);
-	for (int k = 0; k < _col-1; k++) {
+	int min = _row > _col ? _col : _row;
+	for (int k = 0; k < min; k++) {
+		// reduce each left-down triangle to 0
 		parallel_for_each(ret._mat.begin()+k+1, ret._mat.end(), [&](vector<double>& vec) {
+			// all rows below k
 			double ratio = vec[k] / ret._mat[k][k];
-			parallel_for(0, _row, [&](int j) {
+			parallel_for(0, _col, [&](int j) {
+				// subtract with k-th row
 				vec[j] -= ratio * ret._mat[k][j];
 			});
 		});
 	}
 	return ret;
+}
+
+int Matrix::rank() {
+	Matrix m = this->elemRowOp();
+	int rank = _row;
+	for (int i = _row - 1; 0 <= i; i--) {
+		if (std::abs(m.getRow(i).sum()) < 1e-8) {
+			rank--;
+		}
+		else {
+			break;
+		}
+	}
+	return rank;
 }
 
 
