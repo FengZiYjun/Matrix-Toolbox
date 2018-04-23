@@ -29,8 +29,8 @@ int test::test(){
 
 		Matrix r = Matlab::stdDev(mat, 0);
 		r.print();
-
-
+		double d = Matlab::stdDev(mat);
+		cout << d << endl;
 
 		/*
 		Matrix A(vector<double>(arr, arr+4));

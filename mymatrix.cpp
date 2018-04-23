@@ -286,13 +286,13 @@ Matrix Matrix::operator+(const Matrix& m){
 	return ret;
 }
 
-Matrix operator+(const double& d, Matrix& m){
+Matrix operator+(const double& d, const Matrix& m){
 	Matrix ret(m.size(0), m.size(1));
 	transform(m.begin(), m.end(), ret.begin(), bind(plus<double>(), placeholders::_1, d));
 	return ret;
 }
 
-Matrix operator+(Matrix & m, const double & d)
+Matrix operator+(const Matrix & m, const double & d)
 {
 	return d + m;
 }
@@ -314,13 +314,13 @@ Matrix Matrix::operator/(double d)
 }
 
 
-Matrix operator-(const double& d, Matrix& m){
+Matrix operator-(const double& d, const Matrix& m){
 	Matrix ret(m._row, m._col);
 	transform(m.begin(), m.end(), ret.begin(), bind(minus<double>(), d, placeholders::_1));
 	return ret;
 }
 
-Matrix operator-(Matrix & m, const double & d)
+Matrix operator-(const Matrix & m, const double & d)
 {
 	return m + (-d);
 }

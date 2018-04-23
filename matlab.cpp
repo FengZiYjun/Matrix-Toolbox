@@ -203,12 +203,12 @@ Matrix Matlab::mean(const Matrix & m, int sign)
 
 double Matlab::var(const Matrix & m)
 {
-	return Matlab::mean(Matlab::square(m)) - std::pow(Matlab::mean(m), 2);
+	return Matlab::mean(Matlab::square(m - Matlab::mean(m)));
 }
 
 Matrix Matlab::var(const Matrix & m, int sign)
-{
-	return Matlab::mean(Matlab::square(m), sign) - std::pow(Matlab::mean(m), 2);
+{	
+	return Matlab::mean(Matlab::square(m), sign) - Matlab::power(Matlab::mean(m, sign), 2);
 }
 
 double Matlab::stdDev(const Matrix & m)

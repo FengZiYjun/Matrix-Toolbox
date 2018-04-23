@@ -169,13 +169,13 @@ public:
 
 	// plus 
 	Matrix operator+(const Matrix&);
-	friend Matrix operator+(const double&, Matrix&);
-	friend Matrix operator+(Matrix&, const double&);
+	friend Matrix operator+(const double&, const Matrix&);
+	friend Matrix operator+(const Matrix&, const double&);
 	
 	// minus
 	Matrix operator-(const Matrix&)const;
-	friend Matrix operator-(const double&, Matrix&);
-	friend Matrix operator-(Matrix&, const double&);
+	friend Matrix operator-(const double&, const Matrix&);
+	friend Matrix operator-(const Matrix&, const double&);
 	
 	Matrix operator/(double);
 
