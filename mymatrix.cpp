@@ -328,19 +328,18 @@ Matrix operator-(Matrix & m, const double & d)
 
 Matrix Matrix::transpose()const{
 	Matrix ret(_col, _row);
-	// to do: parallel
-	/*
+	
 	using namespace concurrency;
 	parallel_for(0, _row, [&](int i) {
 		ret.setCol(i, _mat[i]);
 	});
-	*/
-
+	/*
 	for (int i = 0; i < _row; i++) {
 		for (int j = 0; j < _col; j++) {
 			ret._mat[j][i] = _mat[i][j];
 		}
 	}
+	*/
 	return ret;
 }
 

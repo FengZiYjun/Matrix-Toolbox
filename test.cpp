@@ -28,9 +28,8 @@ int test::test(){
 		A.appendRow(vector<double>(arr+4, arr+8));
 		A.print();
 		
-		A.setRow(3, vector<double>(arr, arr + 4));
-		A.setCol(2, vector<double>(arr, arr + 6));
-		A.print();
+		A.transpose().print();
+		
 	}
 	catch (MatrixException e) {
 		cout << e.what();
