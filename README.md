@@ -39,4 +39,34 @@ Matrix matA(mat);
 3. convert into vector of vectors
 `vector<vector<double> > V = mat.toVector();`
 
+4. Row/Column Operations
+Access the i-th row. (0 <= i < #rows)
+`Matrix r = mat.getRow(i);`
+
+Access the j-th column. (0 <= j < #col)
+`Matrix c = mat.getColumn(j);`
+
+Modify the i-th row.
+```
+Matrix new_row(mat.size(0), 1);
+// add elements into new_row
+mat.setRow(i, new_mat);
+```
+
+Modify the j-th column.
+```
+Matrix new_col(1, mat.size(1));
+// add elements into new_row
+mat.setCol(j, new_mat);
+```
+
+Add new rows under the last row. 
+The `appendRow` member function takes a `vector<double>` or a `Matrix` with the same number of columns as parameter.
+`mat.appendRow(rowV); `
+`mat.appendRow(new_mat);`
+
+Add new columns after the last column. 
+`mat.appendCol(rowV); `
+`mat.appendCol(new_mat);` 
+`new_mat` must have the same number of rows.
 
