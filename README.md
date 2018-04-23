@@ -1,71 +1,42 @@
 
-# Matrix-Toolbox Project Overview
+# Matrix-Toolbox
 
-## Development Environment
- IDE: Microsoft Visual Studio 2017.
- Require C++ 11
+A simple C++ library to help you with matrix computations.
 
-## Development Schedule
-1. Implement Matrix Class
-  - Mostly done.
+## Demo
+To use the library, please `#include "mymatrix.h"`.
 
-2. The second class "matlab" provides methods for 
-  - operations associated with more than two matrices.
-  - statistics methods: variance, covariance, etc. 
+### Define a matrix.
+Initialize with the number of rows and columns.
+```
+int row = 10;
+int col = 5;
+Matrix mat(row, col);
+```
 
+Initialize with a row vector of **double**s.
+```
+vector<double> rowV; 
+// ... add elements into rowV
+Matrix mat(rowV);
+```
+Initialize from another matrix.
+```
+Matrix matA(mat);
+```
 
-### Optimization items:
-- matrix operations with iterator & parallelism
-- exceptions handling optimization
-- file read/write
-- more element-wise arithmetic operations
-- elementary row operation in case of rounding error
+### Basic Operations
+1. get the size of the matrix
+`mat.size(0)` returns the number of rows.
+`mat.size(1)` returns the number of columns.
 
-5. Documentation 
+2. access an element
+**Notice**: Matrix index starts from ZERO.
 
+`double x = mat.get(0, 1);`
+`mat.set(0, 1, x);`
 
-### Attention
-1. The Matrix class index from ZERO, not one.
-2. The core Matrix elements are stored in vector of vector.
-3. Matrix constructors should not support prmitave array (like double[][]) for safety reason.
-
-
-### Files
-- matrix.cpp
-  
-  The entry of the application.
-
-- mymatrix.h
-  
-  The definition of matrix class.
-
-- specialmat.h
-	
-	Some special matrices that inherite the base Matrix class.
-
-- matlab.h
-  
-  The definition of matlab class.
-
-- exception.h 
-  
-  The definition of Matrix related exception classes.
-
-- ml.h
-
-	(future development) The definition of encapsulation of machine learning algorithm. 
-
-- test.cpp
-
-	The test file.
-
-- stdafx.h targetver.h
-	
-	Additional file required by Visual Studio.
+3. convert into vector of vectors
+`vector<vector<double> > V = mat.toVector();`
 
 
-
-### Supplimentary Materials:
-1. About user-defined iterator. See https://stackoverflow.com/questions/8054273/how-to-implement-an-stl-style-iterator-and-avoid-common-pitfalls.
-2. About disable "D_SCL_SECURE_NO_WARNING". See https://stackoverflow.com/a/25046975/7110228.
-3. C++11 random number generator. See https://stackoverflow.com/a/19666713/7110228.
