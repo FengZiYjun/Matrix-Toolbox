@@ -3,7 +3,7 @@
 
 A simple C++ library to help you with matrix computations.
 
-## Documentaton
+## Documentation
 To use the library, please `#include "mymatrix.h"`.
 
 ### Define a matrix.
