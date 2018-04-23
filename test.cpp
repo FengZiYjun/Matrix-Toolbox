@@ -4,8 +4,6 @@
 #include "mymatrix.h"
 #include "matlab.h"
 #include "specialmat.h"
-// "stdafx.h" is required by VS application project.
-// If you deploy the codes in other places, drop it out.
 
 using namespace std;
 
@@ -29,10 +27,12 @@ int test::test(){
 		A.appendRow(vector<double>(arr+4, arr+8));
 		A.print();
 		
-		Matrix c = A.elemRowOp();
+		Matrix c = A.mean(0);
 		c.print();
-		//cout << c.rank() << endl;
-		cout << A.rank() << endl;
+		Matrix b = A.variance(0);
+		b.print();
+		Matrix d = A.variance(1);
+		d.print();
 	}
 	catch (MatrixException e) {
 		cout << e.what();

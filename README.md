@@ -14,7 +14,6 @@
   - statistics methods: variance, covariance, etc. 
 
 
-
 ### Optimization items:
 - matrix operations with iterator & parallelism
 - exceptions handling optimization

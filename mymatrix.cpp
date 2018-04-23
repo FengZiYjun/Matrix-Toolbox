@@ -326,7 +326,7 @@ Matrix operator-(Matrix & m, const double & d)
 }
 
 
-Matrix Matrix::transpose(){
+Matrix Matrix::transpose()const{
 	Matrix ret(_col, _row);
 	// to do: parallel
 	for (int i = 0; i < _row; i++) {
@@ -490,6 +490,9 @@ Matrix Matrix::adjoint() {
 
 
 Matrix Matrix::inverse(){
+	/*
+		To do: use eleRowOp to get inverse
+	*/
 	double det;
 	if ((det=this->determinant()) == 0.0) {
 		throw new invalidParamExcep("Not a singular matrix.");
@@ -664,6 +667,60 @@ Matrix Matrix::min(int sign)const
 			}
 			ret.set(0, i, d);
 		});
+	}
+	return ret;
+}
+
+Matrix Matrix::mean(int sign) const
+{
+	if (sign != 0 && sign != 1) {
+		throw new invalidParamExcep("invalid param in Matrix::mean");
+	}
+	using namespace concurrency;
+	Matrix ret;
+	if (sign == 1) {
+		ret = Matrix(_row, 1);
+		parallel_for(0, _row, [&](int i) {
+			double mean = accumulate(_mat[i].begin(), _mat[i].end(), 0.0) / _col;
+			ret.set(i, 0, mean);
+		});
+	}
+	else {
+		ret = Matrix(1, _col);
+		parallel_for(0, _col, [&](int j) {
+			double mean = 0.0;
+			for (int t = 0; t < _row; t++) {
+				mean += _mat[t][j];
+			}
+			ret.set(0, j, mean/_row);
+		});
+	}
+	return ret;
+}
+
+Matrix Matrix::variance(int sign) const
+{
+	if (sign != 0 && sign != 1) {
+		throw new invalidParamExcep("invalid param in Matrix::variance");
+	}
+	using namespace concurrency;
+	Matrix ret;
+	if (sign == 1) {
+		ret = Matrix(_row, 1);
+		Matrix meanVec = this->mean(1);
+		vector<double> tmp(_col);
+
+		parallel_for(0, _row, [&](int i) {
+			transform(_mat[i].begin(), _mat[i].end(), tmp.begin(), [&](double d) {
+				return d - meanVec.get(i, 0);
+			});
+			double var = inner_product(tmp.begin(), tmp.end(), tmp.begin(), 0.0);
+			ret.set(i, 0, var);
+		});
+	}
+	else {
+		Matrix trans = this->transpose();
+		ret = trans.variance(1).transpose();
 	}
 	return ret;
 }

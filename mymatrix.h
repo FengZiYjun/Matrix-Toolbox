@@ -121,13 +121,15 @@ public:
 	// max/min element
 	Matrix max(int)const;
 	Matrix min(int)const;
-
+	Matrix mean(int)const;
+	Matrix variance(int)const;
+	
 	// sorting the matrix by row or column
 	void sort(int);
 	Matrix sort(int)const;
 
 	//	transpose to make a new matrix
-	Matrix transpose();
+	Matrix transpose()const;
 
 	// cofactor matrix
 	Matrix cofactor();
