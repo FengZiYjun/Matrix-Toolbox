@@ -18,25 +18,19 @@ int test::test(){
 		//q.appendRow(vector<double>(ar + 4, ar + 7));
 		q.print();
 		*/
-		//double arr[] = {6,2,5,8,1,2,4,1,2,5,3,4,6,5,4,3,8,9,7,6};
-		double arr[] = { -1, 0, 1, 2, 3 };
+		double arr[] = {6,2,5,8,1,2,4,1,2,5,3,4,6,5,4,3,8,9,7,6};
+		//double arr[] = { -1, 0, 1, 2, 3 };
 		Matrix A(vector<double>(arr, arr+4));
 		A.appendRow(vector<double>(arr, arr+4));
-		//A.appendRow(vector<double>(arr+6, arr+10));
-		//A.appendRow(vector<double>(arr+2, arr+6));
-		//A.appendRow(vector<double>(arr+1, arr+5));
-		//A.appendRow(vector<double>(arr+4, arr+8));
+		A.appendRow(vector<double>(arr+6, arr+10));
+		A.appendRow(vector<double>(arr+2, arr+6));
+		A.appendRow(vector<double>(arr+1, arr+5));
+		A.appendRow(vector<double>(arr+4, arr+8));
 		A.print();
 		
-		Matrix c = A.mean(0);
-		c.print();
-		c = A.mean(1);
-		c.print();
-
-		Matrix b = A.variance(0);
-		b.print();
-		Matrix d = A.variance(1);
-		d.print();
+		A.setRow(3, vector<double>(arr, arr + 4));
+		A.setCol(2, vector<double>(arr, arr + 6));
+		A.print();
 	}
 	catch (MatrixException e) {
 		cout << e.what();

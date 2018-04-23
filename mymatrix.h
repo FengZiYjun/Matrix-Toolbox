@@ -79,6 +79,8 @@ public:
 	Matrix getColumn(int)const;
 	void setRow(int, const Matrix&);
 	void setCol(int, const Matrix&);
+	void setRow(int, const std::vector<double>&);
+	void setCol(int, const std::vector<double>&);
 
 	/*
 		Add a new row.

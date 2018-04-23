@@ -329,6 +329,13 @@ Matrix operator-(Matrix & m, const double & d)
 Matrix Matrix::transpose()const{
 	Matrix ret(_col, _row);
 	// to do: parallel
+	/*
+	using namespace concurrency;
+	parallel_for(0, _row, [&](int i) {
+		ret.setCol(i, _mat[i]);
+	});
+	*/
+
 	for (int i = 0; i < _row; i++) {
 		for (int j = 0; j < _col; j++) {
 			ret._mat[j][i] = _mat[i][j];
@@ -393,6 +400,32 @@ void Matrix::setCol(int col_index, const Matrix & m)
 	using namespace concurrency;
 	parallel_for(0, _row, [&](int i) {
 		_mat[i][col_index] = m.get(i, 0);
+	});
+}
+
+void Matrix::setRow(int row_index, const vector<double>& vec)
+{
+	if (vec.size() != _col) {
+		throw new dimenDismatchExcep();
+	}
+	if (row_index < 0 || row_index >= _row) {
+		throw new invalidParamExcep("invalid row index.");
+	}
+	vector<double> V(vec.begin(), vec.end());
+	_mat[row_index] = V;
+}
+
+void Matrix::setCol(int col_index, const vector<double>& vec)
+{
+	if (vec.size() != _row) {
+		throw new dimenDismatchExcep();
+	}
+	if (col_index < 0 || col_index >= _col) {
+		throw new invalidParamExcep("invalid column index.");
+	}
+	using namespace concurrency;
+	parallel_for(0, _row, [&](int i) {
+		_mat[i][col_index] = vec[i];
 	});
 }
 
