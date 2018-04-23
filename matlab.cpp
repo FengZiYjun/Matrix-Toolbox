@@ -2,18 +2,11 @@
 #include "mymatrix.h"
 #include "stdafx.h"
 #include <cmath>
-// "stdafx.h" is required by VS application project.
+// "stdafx.h" is required by Windows application project.
 // If you deploy the codes in other places, drop it out.
 
 using namespace std;
 
-/*
-	Actually we want to design element-wise operations
-	with parallelism but our Matrix::iterator only is 
-	designed for tranversal. If we want to apply parallelism
-	our itrerator has to be redesigned or make it member function
-	of the Matrix class.
-*/
 
 Matrix Matlab::abs(const Matrix & m)
 {
@@ -47,7 +40,7 @@ Matrix Matlab::square(const Matrix & m)
 {
 	Matrix ret(m.size(0), m.size(1));
 	transform(m.begin(), m.end(), ret.begin(), [&](double d) {
-		return std::pow(d, 2);
+		return d * d;
 	});
 	return ret;
 }
@@ -218,14 +211,14 @@ Matrix Matlab::var(const Matrix & m, int sign)
 	return Matlab::mean(Matlab::square(m), sign) - std::pow(Matlab::mean(m), 2);
 }
 
-double Matlab::stderror(const Matrix & m)
+double Matlab::stdDev(const Matrix & m)
 {
 	return std::sqrt(Matlab::var(m));
 }
 
-Matrix Matlab::stderror(const Matrix &, int)
+Matrix Matlab::stdDev(const Matrix & m, int sign)
 {
-	return Matrix();
+	return Matlab::sqrt(Matlab::var(m, sign));
 }
 
 Matrix Matlab::covar(const Matrix &)

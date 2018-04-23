@@ -44,8 +44,8 @@ namespace Matlab{
 	double var(const Matrix&);
 	Matrix var(const Matrix&, int);
 	// standard error
-	double stderror(const Matrix&);
-	Matrix stderror(const Matrix&, int);
+	double stdDev(const Matrix&);
+	Matrix stdDev(const Matrix&, int);
 	// covariance matrix
 	Matrix covar(const Matrix&);
 	
@@ -64,7 +64,7 @@ namespace Matlab{
 	std::tuple<Matrix> eigenDecompose(const Matrix&);
 
 	// Single value decomposition
-	std::tuple<Matrix> SVD(const Matrix&);
+	std::tuple<Matrix> SVD(const Matrix&); 
 
 	// MP-Inverse
 	Matrix pseudoInverse(const Matrix&);

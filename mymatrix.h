@@ -3,7 +3,6 @@
 //	It aims to provide users with the most convenient approach to handle 
 //	matrix computation. We are also exploring ways to fasten all these 
 //	operations with C++. 
-//	This class is being built...
 ////////////////////////////////////////////////////////////////////////
 #pragma once
 
@@ -190,7 +189,7 @@ public:
 	public:
 		iterator();
 		// Attention: the 3-th param is the size of the row.
-		iterator(std::vector<std::vector<double> >::iterator&, std::vector<double>::iterator&, int, int);
+		iterator(std::vector<std::vector<double> >::iterator, std::vector<double>::iterator, int, int);
 		iterator& operator=(const iterator&);
 		iterator operator++(int);
 		iterator operator++();

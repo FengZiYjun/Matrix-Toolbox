@@ -35,3 +35,5 @@
 /test/write.csv
 /test/data.csv
 /ReadMe.txt
+/stdafx.*
+/targetver.*

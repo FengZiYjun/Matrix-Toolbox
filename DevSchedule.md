@@ -21,6 +21,9 @@
 
 5. Documentation 
 
+### Pitfalls
+1. Be extremely careful about any operation of `_mat` that may **invalidate** Matrix::iterator.
+`_mat` must keep its iterators stable with any computation except construction(including row/col editing).
 
 ### Attention
 1. The Matrix class index from ZERO, not one.

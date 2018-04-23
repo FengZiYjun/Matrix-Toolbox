@@ -18,8 +18,21 @@ int test::test(){
 		//q.appendRow(vector<double>(ar + 4, ar + 7));
 		q.print();
 		*/
-		double arr[] = {6,2,5,8,1,2,4,1,2,5,3,4,6,5,4,3,8,9,7,6};
-		//double arr[] = { -1, 0, 1, 2, 3 };
+
+		 // Demo script
+		double arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+		Matrix mat(3, 3);
+		mat.setRow(0, vector<double>(arr, arr + 3));
+		mat.setRow(1, vector<double>(arr + 3, arr + 6));
+		mat.setRow(2, vector<double>(arr + 6, arr + 9));
+		mat.print();
+
+		Matrix r = Matlab::stdDev(mat, 0);
+		r.print();
+
+
+
+		/*
 		Matrix A(vector<double>(arr, arr+4));
 		A.appendRow(vector<double>(arr, arr+4));
 		A.appendRow(vector<double>(arr+6, arr+10));
@@ -29,7 +42,7 @@ int test::test(){
 		A.print();
 		
 		A.transpose().print();
-		
+		*/
 	}
 	catch (MatrixException e) {
 		cout << e.what();

@@ -410,8 +410,7 @@ void Matrix::setRow(int row_index, const vector<double>& vec)
 	if (row_index < 0 || row_index >= _row) {
 		throw new invalidParamExcep("invalid row index.");
 	}
-	vector<double> V(vec.begin(), vec.end());
-	_mat[row_index] = V;
+	copy(vec.begin(), vec.end(), _mat[row_index].begin());
 }
 
 void Matrix::setCol(int col_index, const vector<double>& vec)
@@ -792,8 +791,8 @@ Matrix Matrix::sort(int i) const
 
 // Definition of Public Member Functions of the sub-class - Matrix::iterator
 
-Matrix::iterator::iterator(std::vector<std::vector<double> >::iterator& outer, 
-	std::vector<double>::iterator& inner, int width, int height){
+Matrix::iterator::iterator(std::vector<std::vector<double> >::iterator outer, 
+	std::vector<double>::iterator inner, int width, int height){
 		this->iter1 = outer;
 		this->iter2 = inner;
 		this->_width = width;
@@ -863,5 +862,6 @@ bool operator!=(const Matrix::iterator& left, const Matrix::iterator& right){
 }
 
 double& Matrix::iterator::operator*(){
+	// why "*iter2" does not work ?
 	return *iter2;
 }
