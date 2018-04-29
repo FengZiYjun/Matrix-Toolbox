@@ -223,6 +223,7 @@ Matrix Matlab::stdDev(const Matrix & m, int sign)
 
 Matrix Matlab::covar(const Matrix &)
 {
+	// to do
 	return Matrix();
 }
 
@@ -293,16 +294,19 @@ Matrix Matlab::concatenate(const Matrix & A, const Matrix & B, int sign = 0)
 
 std::tuple<Matrix> Matlab::eigenDecompose(const Matrix &)
 {
+	// to do
 	return std::tuple<Matrix>();
 }
 
 std::tuple<Matrix> Matlab::SVD(const Matrix &)
 {
+	// to do
 	return std::tuple<Matrix>();
 }
 
 Matrix Matlab::pseudoInverse(const Matrix &)
 {
+	// to do
 	return Matrix();
 }
 

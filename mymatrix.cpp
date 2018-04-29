@@ -181,8 +181,9 @@ bool Matrix::operator==(const Matrix& m){
 	if (m.size(0) != _row || m.size(1) != _col) {
 		return false;
 	}
-	bool flag = true;
-
+	
+	return equal(this->begin(), this->end(), m.begin());
+	/*
 		for(int i=0;i<_row;i++){
 			for(int j=0;j<_col;j++){
 				if(this->get(i, j) != m.get(i, j)){
@@ -194,13 +195,8 @@ bool Matrix::operator==(const Matrix& m){
 				break;
 			}
 		}
+	*/
 		
-		if(flag==true){
-			return true;
-		}else{
-			return false;
-		}
-	
 }
 
 bool Matrix::operator!=(const Matrix& m){
@@ -522,6 +518,10 @@ Matrix Matrix::adjoint() {
 Matrix Matrix::inverse(){
 	/*
 		To do: use eleRowOp to get inverse
+		1. extend to _row * (2*_col)
+		2. eleRowOp
+		3. change left part into unit matrix
+		4. take out the right part
 	*/
 
 	double det;

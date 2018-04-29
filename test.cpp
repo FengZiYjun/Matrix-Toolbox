@@ -27,14 +27,10 @@ int test::test(){
 		mat.setRow(2, vector<double>(arr + 6, arr + 9));
 		mat.print();
 
-		vector<int> vec;
-		vec.push_back(1);
-		vec.push_back(2);
-		vector<Matrix> ret = mat.vsplit(vec);
-		for (auto it : ret) {
-			it.print();
-			cout << endl;
-		}
+		Matrix r(mat);
+		r.set(1, 1, -3);
+		cout << (r == mat) << endl;
+
 		/*
 		Matrix A(vector<double>(arr, arr+4));
 		A.appendRow(vector<double>(arr, arr+4));
