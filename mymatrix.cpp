@@ -481,11 +481,10 @@ std::vector<Matrix> Matrix::hsplit()
 
 vector<Matrix> Matrix::vsplit(const vector<int>& vec){
 	vector<Matrix> ret;
-	// to do: parallel
-	for (size_t i = 0; i < vec.size(); i++) {
+	for (int i = 0; i < static_cast<int>(vec.size()); i++) {
 		ret.push_back(Matrix(_mat[vec[i]]));
 	}
-
+	
 	return ret;
 }
 
@@ -524,6 +523,7 @@ Matrix Matrix::inverse(){
 	/*
 		To do: use eleRowOp to get inverse
 	*/
+
 	double det;
 	if ((det=this->determinant()) == 0.0) {
 		throw new invalidParamExcep("Not a singular matrix.");

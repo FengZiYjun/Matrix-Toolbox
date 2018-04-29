@@ -27,11 +27,14 @@ int test::test(){
 		mat.setRow(2, vector<double>(arr + 6, arr + 9));
 		mat.print();
 
-		Matrix r = Matlab::stdDev(mat, 0);
-		r.print();
-		double d = Matlab::stdDev(mat);
-		cout << d << endl;
-
+		vector<int> vec;
+		vec.push_back(1);
+		vec.push_back(2);
+		vector<Matrix> ret = mat.vsplit(vec);
+		for (auto it : ret) {
+			it.print();
+			cout << endl;
+		}
 		/*
 		Matrix A(vector<double>(arr, arr+4));
 		A.appendRow(vector<double>(arr, arr+4));
