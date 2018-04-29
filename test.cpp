@@ -19,7 +19,7 @@ int test::test(){
 		q.print();
 		*/
 
-		 // Demo script
+		// Demo script
 		double arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
 		Matrix mat(3, 3);
 		mat.setRow(0, vector<double>(arr, arr + 3));
@@ -27,9 +27,8 @@ int test::test(){
 		mat.setRow(2, vector<double>(arr + 6, arr + 9));
 		mat.print();
 
-		Matrix r(mat);
-		r.set(1, 1, -3);
-		cout << (r == mat) << endl;
+		Matrix r = mat.product(1);
+		r.print();
 
 		/*
 		Matrix A(vector<double>(arr, arr+4));
