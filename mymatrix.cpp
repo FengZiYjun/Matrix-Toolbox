@@ -612,25 +612,11 @@ Matrix Matrix::product(int sign){
 		});
 	}
 	else if (sign == 1) {
-		ret = Matrix(1, _col);
-		// fill with 1s
-		for (int i = 0; i < _col; i++) {
-			ret.set(0, i, 1);
-		}
+		ret = Matrix(1, _col, 1.0);
+		
 		for (int i = 0; i < _row; i++) {
 			transform(_mat[i].begin(), _mat[i].end(), ret.begin(), ret.begin(), multiplies<double>());
 		}
-		/*
-		parallel_for(0, _col, [&](int i) {
-			// to do parallel
-			
-			double result = 1.0;
-			for (int t = 0; t < _row; t++) {
-				result *= _mat[t][i];
-			}
-			ret.set(0, i, result);
-		});
-		*/
 	}
 	return ret;
 }

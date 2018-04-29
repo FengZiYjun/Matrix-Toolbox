@@ -30,6 +30,7 @@ int test::test(){
 		Matrix r = mat.product(1);
 		r.print();
 
+
 		/*
 		Matrix A(vector<double>(arr, arr+4));
 		A.appendRow(vector<double>(arr, arr+4));
