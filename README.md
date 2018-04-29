@@ -78,3 +78,29 @@ mat.appendCol(new_mat);
 ```
 `new_mat` must have the same number of rows.
 
+Swap two rows.
+```C++
+// swap the first and second row
+mat.swap(0, 1); 
+```
+
+5. Splitting
+Horizontal split over a matrix indicated by its column index.
+```C++
+vector<int> vec;
+vec.push_back(0);
+vec.push_back(2);
+vector<Matrix> split_mats = mat.hsplit(vec);
+//split_mats[0] is the first column of mat
+//split_mats[1] is the third column of mat
+```
+
+Split all columns. Pass no parameters.
+```C++
+vector<Matrix> split_mats = mat.hsplit();
+```
+
+The same to vertical splitting, with `vspilt` and row index as parameters.
+To split all rows, pass no parameters.
+
+6. Simple computation
