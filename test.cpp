@@ -20,14 +20,17 @@ int test::test(){
 		*/
 
 		// Demo script
-		double arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+		double arr[] = {1, 2, 3, 3, 5, 6, 7, 1, 3, 4, 5, 6, 7, 8, 9, 0};
 		Matrix mat(3, 3);
 		mat.setRow(0, vector<double>(arr, arr + 3));
 		mat.setRow(1, vector<double>(arr + 3, arr + 6));
 		mat.setRow(2, vector<double>(arr + 6, arr + 9));
 		mat.print();
 
-		Matrix r = mat.product(1);
+		Matrix q = mat.elemRowOp();
+		q.print();
+
+		Matrix r = mat.diagonalize();
 		r.print();
 
 

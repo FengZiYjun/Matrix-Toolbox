@@ -145,6 +145,9 @@ public:
 	// elementary row operation
 	Matrix elemRowOp();
 
+	// turn into diagonal matrix by elementary row operation
+	Matrix diagonalize();
+
 	// matrix rank
 	int rank();
 

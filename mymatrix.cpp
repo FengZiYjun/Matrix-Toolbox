@@ -3,6 +3,8 @@
 #include <numeric>
 #include <functional>
 #include "mymatrix.h"
+#include "specialmat.h"
+
 #include "stdafx.h"
 // "stdafx.h" is required by VS application project.
 // If you deploy the codes in other places, drop it out.
@@ -506,9 +508,18 @@ Matrix Matrix::inverse(){
 		To do: use eleRowOp to get inverse
 		1. extend to _row * (2*_col)
 		2. eleRowOp
-		3. change left part into unit matrix
+		3. change left part into unit matrix: diagonalize
 		4. take out the right part
 	*/
+	/*
+		check square matrix
+	*/
+	if (_row != _col) {
+		throw new dimenDismatchExcep("inverse only for square matrix");
+	}
+	Matrix extend(*this);
+	extend.appendCol(unitMatrix(_row));
+	// to do
 
 	double det;
 	if ((det=this->determinant()) == 0.0) {
@@ -540,6 +551,26 @@ Matrix Matrix::elemRowOp()
 				// subtract with k-th row
 				vec[j] -= ratio * ret._mat[k][j];
 			});
+		});
+	}
+	return ret;
+}
+
+Matrix Matrix::diagonalize()
+{
+	if (_row < 2) {
+		return *this;
+	}
+	Matrix ret(this->elemRowOp());
+	using namespace concurrency;
+	for (int r = 1; r < ret._row; r++) {
+		parallel_for(0, r, [&](int p){
+			if (abs(ret._mat[r][r]) > 1e-8) {
+				double ratio = -ret._mat[p][r] / ret._mat[r][r];
+				parallel_for(r, _col, [&](int t) {
+					ret._mat[p][t] += ratio * ret._mat[r][t];
+				});
+			}
 		});
 	}
 	return ret;
