@@ -104,3 +104,59 @@ The same to vertical splitting, with `vspilt` and row index as parameters.
 To split all rows, pass no parameters.
 
 6. Simple computation
+### overloaded operators
+Matrix & Matrix
+```C++
+Matrix matA;
+Matrix matB;
+// ... initialization
+Matrix result;
+result = matA + matB; // addition
+result = matA - matB; // subtraction
+result = matA * matB; // matrix multiply. matA column number == matB row number
+
+bool equal = (matA == matB);
+bool noneq = (matA != matB);
+```
+
+Matrix & scalar
+```C++
+result = matA * 0.01; // element-wise multiply
+result = 0.01 * matA;
+result = matA / 2;	// element-wise division
+```
+
+
+**Notice**: 0 means row operations. 1 means column operations.
+
+Sum up elements along rows.
+```C++
+Matrix sum = mat.sum(0);
+```
+
+Sum  up elements along columns.
+```C++
+Matrix sum = mat.sum(1);
+```
+
+The same to `product`, `max`, and `min`.
+Elements multiplication, maximum or minimum element along rows/columns, respectively.
+
+Sum up all matrix elements.
+```C++
+double sum = mat.sum();
+```
+
+Multipliy all matrix elements.
+```C++
+double product = mat.product();
+```
+
+Get the mean of each row or column with `mean`.
+
+Get the variance of each row or column with `variance`.
+
+Sort rows or columns with `sort`.
+
+
+7. Linear algebra
