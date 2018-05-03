@@ -38,6 +38,20 @@ Matrix::Matrix(const vector<double>& vec){
 	_end = Matrix::iterator(_mat.end()-1, (_mat.end()-1)->end(), _mat[0].size(), _mat.size());
 }
 
+Matrix::Matrix(const vector<vector<double> >& vec) {
+	// check 2D vector
+	_row = static_cast<int>(vec.size());
+	_col = static_cast<int>(vec[0].size());
+	for (auto it : vec) {
+		if (static_cast<int>(it.size()) != _col) {
+			throw new invalidParamExcep("dimension inconsistent in 2-D vector");
+		}
+	}
+	_mat = vec;
+	this->_begin = Matrix::iterator(_mat.begin(), _mat[0].begin(), _mat[0].size(), _mat.size());
+	this->_end = Matrix::iterator(_mat.end() - 1, (_mat.end() - 1)->end(), _mat[0].size(), _mat.size());
+}
+
 Matrix::Matrix(const Matrix& m){
 	this->_row = m._row;
 	this->_col = m._col;
@@ -351,6 +365,12 @@ Matrix Matrix::getRow(int row_index)const{
 	return Matrix(_mat[row_index]);
 }
 
+Matrix Matrix::getRow(const std::vector<int>& index)
+{
+	// to do
+	return Matrix();
+}
+
 
 Matrix Matrix::getColumn(int col_index)const{
 	Matrix ret(_row, 1);
@@ -359,6 +379,12 @@ Matrix Matrix::getColumn(int col_index)const{
 		ret.set(i, 0, _mat[i][col_index]);
 	});
 	return ret;
+}
+
+Matrix Matrix::getColumn(const std::vector<int>&)
+{
+	// to do
+	return Matrix();
 }
 
 void Matrix::setRow(int row_index, const Matrix & m)
@@ -413,6 +439,7 @@ void Matrix::setCol(int col_index, const vector<double>& vec)
 
 void Matrix::removeRow(int index)
 {
+	// To do: fix it to do stable removal
 	if (index < 0 || index >= _row) {
 		throw new invalidParamExcep("Invalid row index.");
 	}
@@ -426,6 +453,7 @@ void Matrix::removeRow(int index)
 
 void Matrix::removeCol(int index)
 {
+	// To do: fix it to do stable removal
 	if (index < 0 || index >= _col) {
 		throw new invalidParamExcep("Invalid column index.");
 	}
@@ -519,6 +547,7 @@ Matrix Matrix::inverse(){
 	}
 	Matrix extend(*this);
 	extend.appendCol(unitMatrix(_row));
+	extend = extend.diagonalize();
 	// to do
 
 	double det;
@@ -530,11 +559,7 @@ Matrix Matrix::inverse(){
 
 Matrix Matrix::elemRowOp()
 {
-	/* extend to non-square matrix
-	if (_row != _col) {
-		throw new dimenDismatchExcep("must be a square matrix.");
-	}
-	*/
+	// extend to non-square matrix. No dim check.
 	if (_row < 2) {
 		return *this;
 	}

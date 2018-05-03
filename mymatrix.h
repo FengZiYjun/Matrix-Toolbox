@@ -26,6 +26,8 @@ public:
 	Matrix(int, int);
 	// Initialize with a vector
 	Matrix(const std::vector<double>&);
+	// Initialize with vector of vector
+	Matrix(const std::vector<std::vector<double> >&);
 	// Copy constructor
 	Matrix(const Matrix&);
 
@@ -75,7 +77,10 @@ public:
 	
 	// row and column selecting 
 	Matrix getRow(int)const;
+	Matrix getRow(const std::vector<int>&);
 	Matrix getColumn(int)const;
+	Matrix getColumn(const std::vector<int>&);
+
 	void setRow(int, const Matrix&);
 	void setCol(int, const Matrix&);
 	void setRow(int, const std::vector<double>&);
