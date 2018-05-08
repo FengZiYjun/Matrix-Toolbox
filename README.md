@@ -1,5 +1,5 @@
 
-# Matrix-Toolbox
+# Matrix-Toolbox (under active construction)
 
 A simple C++ library to help you with matrix computations.
 
