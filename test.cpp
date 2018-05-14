@@ -34,7 +34,7 @@ int test::test(){
 		index.push_back(2);
 		index.push_back(0);
 
-		Matrix q = mat.getRow(index);
+		Matrix q = mat.getColumn(index);
 		q.print();
 
 

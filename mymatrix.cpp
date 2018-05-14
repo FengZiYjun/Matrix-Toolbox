@@ -394,8 +394,21 @@ Matrix Matrix::getColumn(int col_index)const{
 
 Matrix Matrix::getColumn(const std::vector<int>& index)
 {
-	// to do
-	return Matrix();
+	// range check
+	for (auto it = index.begin(); it != index.end(); it++) {
+		if (*it >= _col || *it < 0) {
+			throw new outOfRangeExcep("in Matrix::getColumn()");
+		}
+	}
+
+	Matrix ret(static_cast<int>(index.size()), _col);
+	using namespace concurrency;
+	parallel_for(0, static_cast<int>(index.size()), [&](int i) {
+		parallel_for(0, _row, [&](int j) {
+			ret._mat[j][i] = _mat[j][index[i]]; 
+		});
+	});
+	return ret;
 }
 
 void Matrix::setRow(int row_index, const Matrix & m)
