@@ -1,5 +1,5 @@
 
-# Matrix-Toolbox
+# Matrix-Toolbox (under active construction)
 
 A simple C++ library to help you with matrix computations.
 
@@ -26,20 +26,23 @@ Matrix matA(mat);
 ```
 
 ### Basic Operations
-1. get the size of the matrix
+#### 1. get the size of the matrix
 `mat.size(0)` returns the number of rows.
+
 `mat.size(1)` returns the number of columns.
 
-2. access an element
+#### 2. access an element
 **Notice**: Matrix index starts from ZERO.
 
 `double x = mat.get(0, 1);`
 `mat.set(0, 1, x);`
 
-3. convert into vector of vectors
+#### 3. convert into vector of vectors
+
 `vector<vector<double> > V = mat.toVector();`
 
-4. Row/Column Operations
+#### 4. Row/Column Operations
+
 Access the i-th row. (0 <= i < #rows)
 ```C++
 Matrix r = mat.getRow(i);
@@ -65,6 +68,7 @@ mat.setCol(j, new_mat);
 ```
 
 Add new rows under the last row. 
+
 The `appendRow` member function takes a `vector<double>` or a `Matrix` with the same number of columns as parameter.
 ```C++
 mat.appendRow(rowV); 
@@ -84,7 +88,7 @@ Swap two rows.
 mat.swap(0, 1); 
 ```
 
-5. Splitting
+#### 5. Splitting
 Horizontal split over a matrix indicated by its column index.
 ```C++
 vector<int> vec;
@@ -101,10 +105,12 @@ vector<Matrix> split_mats = mat.hsplit();
 ```
 
 The same to vertical splitting, with `vspilt` and row index as parameters.
+
 To split all rows, pass no parameters.
 
-6. Simple computation
-### overloaded operators
+#### 6. Simple computation
+**overloaded operators**
+
 Matrix & Matrix
 ```C++
 Matrix matA;
@@ -140,6 +146,7 @@ Matrix sum = mat.sum(1);
 ```
 
 The same to `product`, `max`, and `min`.
+
 Elements multiplication, maximum or minimum element along rows/columns, respectively.
 
 Sum up all matrix elements.
@@ -159,4 +166,4 @@ Get the variance of each row or column with `mat.variance(i)`.
 Sort rows or columns with `mat.sort(i)`.
 
 
-7. Linear algebra
+#### 7. Linear algebra
