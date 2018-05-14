@@ -63,7 +63,7 @@ namespace Matlab{
 	// Eigen decomposition
 	std::tuple<Matrix> eigenDecompose(const Matrix&);
 
-	// Single value decomposition
+	// Singular value decomposition
 	std::tuple<Matrix> SVD(const Matrix&); 
 
 	// MP-Inverse
