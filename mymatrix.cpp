@@ -367,8 +367,19 @@ Matrix Matrix::getRow(int row_index)const{
 
 Matrix Matrix::getRow(const std::vector<int>& index)
 {
-	// to do
-	return Matrix();
+	// range check
+	for (auto it = index.begin(); it != index.end(); it++) {
+		if (*it >= _row || *it < 0) {
+			throw new outOfRangeExcep("in Matrix::getRow()");
+		}
+	}
+
+	Matrix ret(static_cast<int>(index.size()), _col);
+	using namespace concurrency;
+	parallel_for(0, static_cast<int>(index.size()), [&](int i) {
+		ret._mat[i] = _mat[index[i]];
+	});
+	return ret;
 }
 
 
@@ -381,7 +392,7 @@ Matrix Matrix::getColumn(int col_index)const{
 	return ret;
 }
 
-Matrix Matrix::getColumn(const std::vector<int>&)
+Matrix Matrix::getColumn(const std::vector<int>& index)
 {
 	// to do
 	return Matrix();

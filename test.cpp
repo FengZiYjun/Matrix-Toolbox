@@ -27,12 +27,15 @@ int test::test(){
 		vec.push_back(vector<double>(arr + 6, arr + 9));
 		
 		Matrix mat(vec);
+		mat.print();
 
-		Matrix q = mat.elemRowOp();
+		vector<int> index;
+		index.push_back(0);
+		index.push_back(2);
+		index.push_back(0);
+
+		Matrix q = mat.getRow(index);
 		q.print();
-
-		Matrix r = mat.diagonalize();
-		r.print();
 
 
 		/*
