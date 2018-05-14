@@ -152,11 +152,11 @@ Multipliy all matrix elements.
 double product = mat.product();
 ```
 
-Get the mean of each row or column with `mean`.
+Get the mean of each row or column with `mat.mean(i)`.
 
-Get the variance of each row or column with `variance`.
+Get the variance of each row or column with `mat.variance(i)`.
 
-Sort rows or columns with `sort`.
+Sort rows or columns with `mat.sort(i)`.
 
 
 7. Linear algebra
