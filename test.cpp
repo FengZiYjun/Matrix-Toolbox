@@ -29,14 +29,11 @@ int test::test(){
 		Matrix mat(vec);
 		mat.print();
 
-		vector<int> index;
-		index.push_back(0);
-		index.push_back(2);
-		index.push_back(0);
-
-		Matrix q = mat.getColumn(index);
+		Matrix q = mat.inverse();
 		q.print();
 
+		Matrix r = q * mat;
+		r.print();
 
 		/*
 		Matrix A(vector<double>(arr, arr+4));

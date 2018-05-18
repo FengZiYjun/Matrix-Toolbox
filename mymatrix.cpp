@@ -401,13 +401,14 @@ Matrix Matrix::getColumn(const std::vector<int>& index)
 		}
 	}
 
-	Matrix ret(static_cast<int>(index.size()), _col);
+	Matrix ret(_row, static_cast<int>(index.size()));
 	using namespace concurrency;
-	parallel_for(0, static_cast<int>(index.size()), [&](int i) {
+	parallel_for(0, static_cast<int>(index.size()), [&](int i){
 		parallel_for(0, _row, [&](int j) {
-			ret._mat[j][i] = _mat[j][index[i]]; 
+			ret._mat[j][i] = _mat[j][index[i]];
 		});
 	});
+
 	return ret;
 }
 
@@ -572,13 +573,20 @@ Matrix Matrix::inverse(){
 	Matrix extend(*this);
 	extend.appendCol(unitMatrix(_row));
 	extend = extend.diagonalize();
-	// to do
 
+	vector<int> index;
+	for (int i = _col; i < _col*2; i++) {
+		index.push_back(i);
+	}
+	return extend.getColumn(index);
+	
+	/*
 	double det;
 	if ((det=this->determinant()) == 0.0) {
 		throw new invalidParamExcep("Not a singular matrix.");
 	}
 	return this->adjoint() / det;
+	*/
 }
 
 Matrix Matrix::elemRowOp()
