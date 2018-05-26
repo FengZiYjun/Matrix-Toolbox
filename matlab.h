@@ -60,6 +60,9 @@ namespace Matlab{
 	Matrix solve(const Matrix&, const Matrix&);
 	Matrix concatenate(const Matrix&, const Matrix&, int);
 	
+	// Inverse Matrix: Gauss-Jordon
+	Matrix inverseGJ(const Matrix&);
+
 	// Eigen decomposition
 	std::tuple<Matrix> eigenDecompose(const Matrix&);
 

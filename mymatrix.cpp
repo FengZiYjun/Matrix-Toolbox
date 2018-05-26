@@ -557,19 +557,62 @@ Matrix Matrix::adjoint() {
 
 
 Matrix Matrix::inverse(){
-	/*
-		To do: use eleRowOp to get inverse
-		1. extend to _row * (2*_col)
-		2. eleRowOp
-		3. change left part into unit matrix: diagonalize
-		4. take out the right part
-	*/
-	/*
-		check square matrix
-	*/
 	if (_row != _col) {
 		throw new dimenDismatchExcep("inverse only for square matrix");
 	}
+
+	// by Gauss-Jordon method
+	int n = _row;
+	Matrix inv(*this);
+	vector<int> IP;
+	for (int k = 0; k < n; k++) {
+		double max = inv.get(k, k);
+		int max_row_id = k;
+		for (int i = k; i < n; i++) {
+			if (inv.get(i, k) > max) {
+				max = inv.get(i, k);
+				max_row_id = i;
+			}
+		}
+		IP.push_back(max_row_id); // IP[k] == max_row_id
+		inv.swapRow(max_row_id, k);
+
+		double main = inv.get(k, k);
+		inv.set(k, k, 1 / main);
+		for (int i = 0; i < n; i++) {
+			if (i == k) {
+				continue;
+			}
+			else
+			{
+				inv.set(i, k, -inv.get(i, k) / main);
+			}
+		}
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if (i == k || j == k) {
+					continue;
+				}
+				inv.set(i, j, inv.get(i, j) + inv.get(i, k) * inv.get(k, j));
+			}
+		}
+		for (int j = 0; j < n; j++) {
+			if (j != k) {
+				inv.set(k, j, inv.get(k, k) * inv.get(k, j));
+			}
+		}
+	}
+
+	inv = inv.transpose();
+	for (int t = 0; t < static_cast<int>(IP.size()); t++) {
+		inv.swapRow(t, IP[t]);
+	}
+	return inv.transpose();
+
+	/*
+	// by elementary row exchanges
+
 	Matrix extend(*this);
 	extend.appendCol(unitMatrix(_row));
 	extend = extend.diagonalize();
@@ -580,7 +623,10 @@ Matrix Matrix::inverse(){
 	}
 	return extend.getColumn(index);
 	
-	/*
+	*/
+	
+	/*  
+	// by definition
 	double det;
 	if ((det=this->determinant()) == 0.0) {
 		throw new invalidParamExcep("Not a singular matrix.");

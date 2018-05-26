@@ -292,6 +292,60 @@ Matrix Matlab::concatenate(const Matrix & A, const Matrix & B, int sign = 0)
 	return ret;
 }
 
+Matrix Matlab::inverseGJ(const Matrix & A)
+{
+	if (A.size(0) != A.size(1)) {
+		throw invalidParamExcep("Only square matrix has inverse matrix.");
+	}
+	int n = A.size(0);
+	Matrix inv(A);
+	vector<int> IP;
+	for (int k = 0; k < n; k++) {
+		double max = inv.get(k, k);
+		int max_row_id = k;
+		for (int i = k; i < n; i++) {
+			if (inv.get(i, k) > max) {
+				max = inv.get(i, k);
+				max_row_id = i;
+			}
+		}
+		IP.push_back(max_row_id); // IP[k] == max_row_id
+		inv.swapRow(max_row_id, k);
+
+		double main = inv.get(k, k);
+		inv.set(k, k, 1 / main);
+		for (int i = 0; i < n; i++) {
+			if (i == k) {
+				continue;
+			}
+			else
+			{
+				inv.set(i, k, - inv.get(i, k) / main);
+			}
+		}
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if (i == k || j == k) {
+					continue;
+				}
+				inv.set(i, j, inv.get(i, j) + inv.get(i, k) * inv.get(k, j));
+			}
+		}
+		for (int j = 0; j < n; j++) {
+			if (j != k) {
+				inv.set(k, j, inv.get(k, k) * inv.get(k, j));
+			}
+		}
+	}
+
+	inv = inv.transpose();
+	for (int t = 0; t < static_cast<int>(IP.size()); t++) {
+		inv.swapRow(t, IP[t]);
+	}
+	return inv.transpose();
+}
+
 std::tuple<Matrix> Matlab::eigenDecompose(const Matrix &)
 {
 	// to do
