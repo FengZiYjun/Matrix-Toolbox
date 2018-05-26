@@ -167,3 +167,10 @@ Sort rows or columns with `mat.sort(i)`.
 
 
 #### 7. Linear algebra
+Inverse of a square matrix using Gauss-Jordon method.
+```c++
+Matrix inv = mat.inverse();
+// or 
+#include "matlab.h"
+Matrix inv = matlab::inverse(mat);
+```
