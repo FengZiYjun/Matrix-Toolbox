@@ -287,18 +287,27 @@ Matrix Matlab::solve(const Matrix & A, const Matrix & b)
 
 Matrix Matlab::solve_iterative(const Matrix & B, const Matrix & f, int max_iter=100)
 {
-	// To do: perform argument check !
+	if (max_iter <= 0 || max_iter >= INT_MAX) {
+		throw new invalidParamExcep("invalid argument max_iter");
+	}
+	if (B.size(0) != f.size(0)) {
+		throw new dimenDismatchExcep(B.size(0), B.size(1), f.size(0), f.size(1));
+	}
+	if (f.size(1) != 1) {
+		throw new invalidParamExcep("f dimension error");
+	}
 
+	double eps = 0.1;
 	Matrix x = randomMatrix(B.size(0), 1);
 	Matrix new_x(x.size(0), x.size(1));
 	for (int t = 0; t < max_iter; t++) {
 		new_x = B * x + f; 
-		if (Matlab::norm2(new_x - x) <= 0.1) {
+		if (Matlab::norm2(new_x - x) <= eps) {
 			break;
 		}
 		x = new_x;
 	}
-	return Matrix();
+	return x;
 }
 
 Matrix Matlab::solve_Jacobi_iterative(const Matrix & A, const Matrix & b)
