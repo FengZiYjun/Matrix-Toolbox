@@ -412,6 +412,19 @@ Matrix Matrix::getColumn(const std::vector<int>& index)
 	return ret;
 }
 
+Matrix Matrix::getDiagonal() const
+{
+	if (_row != _col) {
+		throw new invalidParamExcep("diagonal is only for square matrix");
+	}
+	Matrix ret(_row, _col, 0.0);
+
+	for (int i = 0; i < _row; i++) {
+		ret.set(i, i, _mat[i][i]);
+	}
+	return ret;
+}
+
 void Matrix::setRow(int row_index, const Matrix & m)
 {
 	if (m.size(0) != 1 || m.size(1) != _col) {

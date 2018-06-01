@@ -92,3 +92,7 @@ end
 ```
 
 
+## Iterative method for solving linear equations
+
+## power method for solving eigen-vectors and eigen-values
+

@@ -250,7 +250,15 @@ double Matlab::FrobeniusNorm(const Matrix & m)
 
 Matrix Matlab::solve(const Matrix & A, const Matrix & b)
 {
-	// perform dimension check
+	/*
+		Solve linear equation Ax=b.
+		Produce the solution, or raise error if not solvable.
+
+		Arguments:
+		A: coefficient matrix, size [n, n]
+		b: objective vector, size [n, 1]
+	*/
+
 	if (A.size(0) != b.size(0)) {
 		throw new dimenDismatchExcep(A.size(0), A.size(1), b.size(0), b.size(1));
 	}
@@ -275,6 +283,11 @@ Matrix Matlab::solve(const Matrix & A, const Matrix & b)
 		X.set(t, 0, tmp);
 	}
 	return X;
+}
+
+Matrix Matlab::solve_Jacobi_iterative(const Matrix & A, const Matrix & b)
+{
+	return Matrix();
 }
 
 Matrix Matlab::concatenate(const Matrix & A, const Matrix & B, int sign = 0)

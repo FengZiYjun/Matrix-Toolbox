@@ -80,6 +80,7 @@ public:
 	Matrix getRow(const std::vector<int>&);
 	Matrix getColumn(int)const;
 	Matrix getColumn(const std::vector<int>&);
+	Matrix getDiagonal()const;
 
 	void setRow(int, const Matrix&);
 	void setCol(int, const Matrix&);
