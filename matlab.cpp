@@ -324,15 +324,19 @@ Matrix Matlab::solve_Jacobi_iterative(const Matrix & A, const Matrix & b)
 	Matrix B = D_inv * LU;
 	Matrix f = D_inv * b;
 
-	Matrix x = Matlab::_solve_iterative(B, f);
-
-	return x;
+	return Matlab::_solve_iterative(B, f);
 }
 
 Matrix Matlab::solve_Gauss_Seidel_iterative(const Matrix & A, const Matrix & b)
 {
+	Matrix D = A.getDiagonal();
+	Matrix U = (-1) * A.getUpper();
+	Matrix L = (-1) * A.getLower();
+	Matrix inv = Matlab::inverseGJ(D - L);
+	Matrix B =  inv * U;
+	Matrix f = inv * b;
 
-	return Matrix();
+	return Matlab::_solve_iterative(B, f);
 }
 
 Matrix Matlab::concatenate(const Matrix & A, const Matrix & B, int sign = 0)

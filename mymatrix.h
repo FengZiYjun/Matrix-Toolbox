@@ -111,7 +111,8 @@ public:
 		Remove a row/column
 		Input: The row/column index of the row/column to remove.
 		Danger: This operation disarranges the matrix order.
-		To do: fix it to do stable removal
+		
+		: fix it to do stable removal
 	*/
 	void removeRow(int);
 	void removeCol(int);
