@@ -229,6 +229,11 @@ Matrix operator*(const double& d, Matrix& m){
 	return ret;
 }
 
+Matrix operator*(const Matrix & A, const Matrix & B)
+{
+	return A * B;
+}
+
 
 Matrix::iterator Matrix::begin(){
 	return _begin;

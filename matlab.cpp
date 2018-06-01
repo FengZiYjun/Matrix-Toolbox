@@ -285,8 +285,33 @@ Matrix Matlab::solve(const Matrix & A, const Matrix & b)
 	return X;
 }
 
-Matrix Matlab::solve_Jacobi_iterative(const Matrix & A, const Matrix & b)
+Matrix Matlab::solve_iterative(const Matrix & B, const Matrix & f, int max_iter=100)
 {
+	// To do: perform argument check !
+
+	Matrix x = randomMatrix(B.size(0), 1);
+	Matrix new_x(x.size(0), x.size(1));
+	for (int t = 0; t < max_iter; t++) {
+		new_x = B * x + f; 
+		if (Matlab::norm2(new_x - x) <= 0.1) {
+			break;
+		}
+		x = new_x;
+	}
+	return Matrix();
+}
+
+Matrix Matlab::solve_Jacobi_iterative(const Matrix & A, const Matrix & b)
+{	
+	// No check A, b dimension
+	Matrix D = A.getDiagonal();
+	Matrix LU = A - D;
+	Matrix D_inv = Matlab::inverseGJ(D);
+	Matrix B = D_inv * LU;
+	Matrix f = D_inv * b;
+
+	Matrix x = Matlab::solve_iterative(B, f);
+
 	return Matrix();
 }
 

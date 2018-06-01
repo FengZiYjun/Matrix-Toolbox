@@ -176,6 +176,7 @@ public:
 	
 	// multiply with a matrix
 	Matrix operator*(const Matrix&);
+	friend Matrix operator*(const Matrix&, const Matrix&);
 
 	// plus 
 	Matrix operator+(const Matrix&);
