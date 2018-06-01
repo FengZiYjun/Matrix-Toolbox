@@ -2,8 +2,6 @@
 #include "mymatrix.h"
 #include "stdafx.h"
 #include <cmath>
-// "stdafx.h" is required by Windows application project.
-// If you deploy the codes in other places, drop it out.
 
 using namespace std;
 
@@ -288,7 +286,7 @@ Matrix Matlab::solve(const Matrix & A, const Matrix & b)
 	return Matlab::solve_Jacobi_iterative(A, b);
 }
 
-Matrix Matlab::solve_iterative(const Matrix & B, const Matrix & f, int max_iter=100)
+Matrix Matlab::_solve_iterative(const Matrix & B, const Matrix & f, int max_iter=100)
 {	
 	/*
 	if (max_iter <= 0 || max_iter >= INT_MAX) {
@@ -302,28 +300,31 @@ Matrix Matlab::solve_iterative(const Matrix & B, const Matrix & f, int max_iter=
 	}
 	*/
 
-	double eps = 0.1;
-	Matrix x = randomMatrix(B.size(0), 1);
+	double eps = 1e-6;
+	Matrix x = zerosMatrix(B.size(0), 1);
 	Matrix new_x(x.size(0), x.size(1));
+	int return_iter = max_iter;
 	for (int t = 0; t < max_iter; t++) {
 		new_x = B * x + f; 
 		if (Matlab::norm2(new_x - x) <= eps) {
+			return_iter = t;
 			break;
 		}
 		x = new_x;
 	}
+	cout << "Iteration ends at " << return_iter << endl;
 	return x;
 }
 
 Matrix Matlab::solve_Jacobi_iterative(const Matrix & A, const Matrix & b)
 {	
 	Matrix D = A.getDiagonal();
-	Matrix LU = A - D;
+	Matrix LU = D - A;
 	Matrix D_inv = Matlab::inverseGJ(D);
 	Matrix B = D_inv * LU;
 	Matrix f = D_inv * b;
 
-	Matrix x = Matlab::solve_iterative(B, f);
+	Matrix x = Matlab::_solve_iterative(B, f);
 
 	return x;
 }
