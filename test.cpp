@@ -16,10 +16,13 @@ int test::test(){
 		mat.appendRow(vector<double>(arr+3, arr + 6));
 		mat.appendRow(vector<double>(arr+6, arr + 9));
 
-		Matrix inv = Matlab::inverseGJ(mat);
-		inv.print();
+		const Matrix b(vector<double>(arr, arr+3));
+		
+		//Matrix x = Matlab::solve(mat, b);
+		//x.print();
 
-		mat.inverse().print();
+		Matrix p = b * mat;
+		p.print();
 
 	}
 	catch (MatrixException e) {

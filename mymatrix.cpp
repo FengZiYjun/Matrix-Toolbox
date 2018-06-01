@@ -229,10 +229,12 @@ Matrix operator*(const double& d, Matrix& m){
 	return ret;
 }
 
+/*
 Matrix operator*(const Matrix & A, const Matrix & B)
 {
-	return A * B;
+	return A.operator*(B);
 }
+*/
 
 
 Matrix::iterator Matrix::begin(){
@@ -263,7 +265,7 @@ Matrix::Matrix(int r, int c, double d):_row(r), _col(c){
 }
 
 
-Matrix Matrix::operator*(const Matrix& m){
+Matrix Matrix::operator*(const Matrix& m)const{
 	using namespace concurrency;
 	if (_col != m._row) {
 		// dimension dismatch excep
