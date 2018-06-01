@@ -329,6 +329,12 @@ Matrix Matlab::solve_Jacobi_iterative(const Matrix & A, const Matrix & b)
 	return x;
 }
 
+Matrix Matlab::solve_Gauss_Seidel_iterative(const Matrix & A, const Matrix & b)
+{
+
+	return Matrix();
+}
+
 Matrix Matlab::concatenate(const Matrix & A, const Matrix & B, int sign = 0)
 {
 	if (sign != 0 && sign != 1) {

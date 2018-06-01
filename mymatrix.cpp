@@ -229,14 +229,6 @@ Matrix operator*(const double& d, Matrix& m){
 	return ret;
 }
 
-/*
-Matrix operator*(const Matrix & A, const Matrix & B)
-{
-	return A.operator*(B);
-}
-*/
-
-
 Matrix::iterator Matrix::begin(){
 	return _begin;
 }
@@ -428,6 +420,36 @@ Matrix Matrix::getDiagonal() const
 
 	for (int i = 0; i < _row; i++) {
 		ret.set(i, i, _mat[i][i]);
+	}
+	return ret;
+}
+
+Matrix Matrix::getUpper() const
+{
+	// square matrix check
+	if (_row != _col) {
+		throw new invalidParamExcep("Not square matrix.");
+	}
+	zerosMatrix ret(_row, _col);
+	for (int i = 0; i < _row; i++) {
+		for (int j = i + 1; j < _col; j++) {
+			ret.set(i, j, _mat[i][j]);
+		}
+	}
+	return ret;
+}
+
+Matrix Matrix::getLower() const
+{
+	// square matrix check
+	if (_row != _col) {
+		throw new invalidParamExcep("Not square matrix.");
+	}
+	zerosMatrix ret(_row, _col);
+	for (int i = 0; i < _row; i++) {
+		for (int j = 0; j < i; j++) {
+			ret.set(i, j, _mat[i][j]);
+		}
 	}
 	return ret;
 }

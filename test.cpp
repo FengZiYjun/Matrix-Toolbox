@@ -16,6 +16,10 @@ int test::test(){
 		mat.appendRow(vector<double>(arr+3, arr + 6));
 		mat.appendRow(vector<double>(arr+6, arr + 9));
 
+		(mat.getUpper()).print();
+		(mat.getLower()).print();
+
+		/*
 		double aa[] = {8, -3, 2, 4, 11, -1, 2, 1, 4};
 		Matrix A;
 		A.appendRow(vector<double>(aa, aa+3));
@@ -33,6 +37,7 @@ int test::test(){
 
 		cout << "Recover:" << endl;
 		(A * x).print();
+		*/
 	}
 	catch (MatrixException e) {
 		cout << e.what();

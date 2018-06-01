@@ -60,6 +60,8 @@ namespace Matlab{
 	Matrix solve(const Matrix&, const Matrix&);
 	Matrix _solve_iterative(const Matrix&, const Matrix&, int);
 	Matrix solve_Jacobi_iterative(const Matrix&, const Matrix&);
+	Matrix solve_Gauss_Seidel_iterative(const Matrix&, const Matrix&);
+
 	Matrix concatenate(const Matrix&, const Matrix&, int);
 	
 	// Inverse Matrix: Gauss-Jordon

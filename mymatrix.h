@@ -80,12 +80,19 @@ public:
 	Matrix getRow(const std::vector<int>&);
 	Matrix getColumn(int)const;
 	Matrix getColumn(const std::vector<int>&);
-	Matrix getDiagonal()const;
-
+	
 	void setRow(int, const Matrix&);
 	void setCol(int, const Matrix&);
 	void setRow(int, const std::vector<double>&);
 	void setCol(int, const std::vector<double>&);
+
+
+	/*
+		special slicing
+	*/
+	Matrix getDiagonal()const;
+	Matrix getUpper()const;
+	Matrix getLower()const;
 
 	/*
 		Add a new row.
