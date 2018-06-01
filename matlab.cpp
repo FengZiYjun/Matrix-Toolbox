@@ -267,6 +267,7 @@ Matrix Matlab::solve(const Matrix & A, const Matrix & b)
 		throw new invalidParamExcep("unsolvable equation.");
 	}
 
+	/*
 	// make expansion a square matrix
 	Matrix expansion(Matlab::concatenate(A, b, 1));
 	expansion.appendRow(vector<double>(A.size(1)+1, 0));
@@ -282,11 +283,14 @@ Matrix Matlab::solve(const Matrix & A, const Matrix & b)
 		double tmp = (expansion.get(t, col - 1) - sum) / expansion.get(t, t);
 		X.set(t, 0, tmp);
 	}
-	return X;
+	*/
+
+	return Matlab::solve_Jacobi_iterative(A, b);
 }
 
 Matrix Matlab::solve_iterative(const Matrix & B, const Matrix & f, int max_iter=100)
-{
+{	
+	/*
 	if (max_iter <= 0 || max_iter >= INT_MAX) {
 		throw new invalidParamExcep("invalid argument max_iter");
 	}
@@ -296,6 +300,7 @@ Matrix Matlab::solve_iterative(const Matrix & B, const Matrix & f, int max_iter=
 	if (f.size(1) != 1) {
 		throw new invalidParamExcep("f dimension error");
 	}
+	*/
 
 	double eps = 0.1;
 	Matrix x = randomMatrix(B.size(0), 1);
@@ -312,7 +317,6 @@ Matrix Matlab::solve_iterative(const Matrix & B, const Matrix & f, int max_iter=
 
 Matrix Matlab::solve_Jacobi_iterative(const Matrix & A, const Matrix & b)
 {	
-	// No check A, b dimension
 	Matrix D = A.getDiagonal();
 	Matrix LU = A - D;
 	Matrix D_inv = Matlab::inverseGJ(D);
@@ -321,7 +325,7 @@ Matrix Matlab::solve_Jacobi_iterative(const Matrix & A, const Matrix & b)
 
 	Matrix x = Matlab::solve_iterative(B, f);
 
-	return Matrix();
+	return x;
 }
 
 Matrix Matlab::concatenate(const Matrix & A, const Matrix & B, int sign = 0)
